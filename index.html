@@ -336,6 +336,8 @@ transform: rotate(0deg);
 </body>
 <!--suppress JSValidateTypes -->
 <script>
+		var vision = 6;
+
 		var searchbox = document.getElementById("secarh-box");
 		var bgImg = document.getElementById("bg");
 	
@@ -347,7 +349,7 @@ transform: rotate(0deg);
 	
 		var isClick = 0;
 		var changeMode = 0;
-		var updateLog_num = 6;
+		var updateLog_num = vision;
 	
 		var but_left = document.getElementById("but-left");
 		var but_right = document.getElementById("but-right");
@@ -481,12 +483,13 @@ transform: rotate(0deg);
 		}
 	
 		function About() {
+			updateLog_num = vision;
 			changeAboutWin();
 			tipbox.style.filter = "blur(0px)";
 			tipbox.style.backgroundColor = "rgba(255,255,255,0.8)";
 //			tipbox.style.display = "block";
 			tipbox.style.visibility = "inherit";
-			updateLogText.innerHTML = "版本号：v1.23\n更新日期：2020/5/10 21:36\n\n更新描述：\n优化：“关于”界面的关闭图标\n优化：页面加载速度\n新增：“关于”界面的关闭图标的动态效果\n新增：“关于”界面的左右箭头的动态效果\n修复：“关于”界面在PC上显示位置错误的bug...";
+			updateLogText.innerHTML = "版本号：v1.23\n更新日期：2020/5/10 21:36\n\n更新描述：\n优化：“关于”界面的关闭图标\n优化：页面加载速度\n新增：“关于”界面的关闭图标的动态效果\n新增：“关于”界面的左右箭头的动态效果\n修复：“关于”界面在PC上显示位置错误的bug...\n修复：更新日志显示错误的bug";
 			but_left.style.display = "inline";
 			but_right.style.display = "inline";
 			
@@ -531,7 +534,7 @@ transform: rotate(0deg);
 		}
 	
 		function add() {
-			if(updateLog_num < 6)
+			if(updateLog_num < vision)
 				updateLog_num ++;
 //			if(updateLog_num == 2) {
 //				but_right.setAttribute("disabled", true);
@@ -559,7 +562,7 @@ transform: rotate(0deg);
 				updateLogText.innerHTML = "版本号：v1.22\n更新日期：2020/5/7 9:09\n\n更新描述：\n优化：进入“设置”的算法\n优化：信息提示框，由“p”更改为“texarea”，控件位置重新排版\n更改：进入“设置”：双击搜索框，进入设置\n更改：退出“设置”：再次双击搜索框，退出设置";
 
 			if(updateLog_num == 6)
-				updateLogText.innerHTML = "版本号：v1.23\n更新日期：2020/5/10 21:36\n\n更新描述：\n优化：“关于”界面的关闭图标\n优化：页面加载速度\n新增：“关于”界面的关闭图标的动态效果\n新增：“关于”界面的左右箭头的动态效果\n修复：“关于”界面在PC上显示位置错误的bug...";
+				updateLogText.innerHTML = "版本号：v1.23\n更新日期：2020/5/10 21:36\n\n更新描述：\n优化：“关于”界面的关闭图标\n优化：页面加载速度\n新增：“关于”界面的关闭图标的动态效果\n新增：“关于”界面的左右箭头的动态效果\n修复：“关于”界面在PC上显示位置错误的bug...\n修复：更新日志显示错误的bug";
 		}
 	
 		function logoClick() {
