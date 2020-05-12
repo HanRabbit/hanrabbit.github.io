@@ -3,6 +3,9 @@
 <head>
 	<title>Quick HSearch</title>
 	<meta charset="utf-8" />
+
+
+
 	<meta name="viewport" content="width=device-width,initial-scale=0.7,maximum-scale=0.7,minimum-scale=0.7,user-scalable=no">
 	<link rel="icon" href="./img/logo.ico" sizes="64x64" type="image/x-icon" />
 	<link rel="shortcut icon" href="./img/logo.ico" sizes="64x64" type="image/x-icon"/>
@@ -111,11 +114,10 @@
 		}
 
 		.logo {
-			left: 630px;
 			position: fixed;
 			bottom: -7px;
 			z-index: 100;
-			left: 50%;
+			left: 48.5%;
 			margin-left: -130px;
 			cursor:pointer;
 		}
@@ -183,10 +185,9 @@
 			transform: rotate(0deg);
 			transition: 0.5s;
 			background-color: rgba(0, 0, 0, 0);
-			border: 0px;
 			border-radius: 50px;
-			height: 48px;
-			width: 48px;
+			height: 32px;
+			width: 32px;
 			margin-top: 230px;
 			left: 45%;
 			outline: none;
@@ -196,13 +197,14 @@
 
 		.ok_button:hover {
 			transform: rotate(90deg);
-			box-shadow: rgba(0, 0, 0, .1) -1px -1px 5px;
+			/*box-shadow: rgba(0, 0, 0, .1) -1px -1px 5px;*/
 		}
 
 		.ok_button:active {
 			transition: 0.2s;
 			margin-top: 220px;
-			box-shadow: rgba(0, 0, 0, .1) 1px 1px 10px;
+			margin-bottom: 10px;
+			/*box-shadow: rgba(0, 0, 0, .1) 1px 1px 10px;*/
 		}
 
 		/*.ok_button:active {*/
@@ -221,8 +223,10 @@
 			/*top: 87%;*/
 			margin-right: 130px;
 			border: 50px;
-			height: 30px;
-			border-radius: 3px;
+			height: 40px;
+			width: 40px;
+			text-align: center;
+			border-radius: 50px;
 			outline: none;
 		}
 
@@ -234,6 +238,7 @@
 			/*animation: 0.15s butleftAn;*/
 			margin-right: 135px;
 			margin-left: -5px;
+			/*background: rgba(255, 255, 255, .5);*/
 		}
 
 		/*@keyframes butleftAn {*/
@@ -247,8 +252,9 @@
 			background-color: rgba(0,0,0,0.00);
 			margin-left: 130px;
 			border: 50px;
-			height: 30px;
-			border-radius: 3px;
+			height: 40px;
+			width: 40px;
+			border-radius: 50px;
 			outline: none;
 		}
 
@@ -267,7 +273,7 @@
 		.bing-search-but {
 			transition: 0.3s;
 			margin-left: -15px;
-			margin-top: 10px;
+			margin-bottom: 8px;
 			background: rgba(0,0,0,0.55);
 			border: 50px;
 			border-radius: 3px;
@@ -313,17 +319,18 @@
 
 		.ul {
 			list-style-type:none;
-			text-align: left;
+			text-align: -webkit-left;
 			border: 50px;
 			border-radius: 10px;
 			background: rgba(0, 0, 0, .5);
 			box-shadow: rgba(0, 0, 0, .7) 1px 1px 10px;
+			visibility: hidden;
 		}
 
 		.keyWord {
 			transition: .3s;
 			border: 50px;
-			border-radius: 5px;
+			border-radius: 10px;
 			display: inline-block;
 			width: 100%;
 			text-decoration: none;
@@ -350,24 +357,26 @@
 		<h5 class="Han-text">By Han</h5>
 	</div>
 
-	<a class="myselfAbout" onClick="About()" >© 2020 田梓涵   |   v1.34</a>
+	<a class="myselfAbout" onClick="About()" >© 2020 「田梓涵」   |   v1.34</a>
 	<img src="./img/Logo3.png" width="80" height="45" class="logo" id="logo" onClick="logoClick()" />
 
 	<br />
 
 	<input class="search-input" id="secarh-box" type="search" onmouseover="onMouseBox()" onmouseout="onOutBox()" placeholder="Search" onkeypress="onEnterSearch()" ondblclick="ondClick()" onclick="onClickBox()" onblur="onBlurBox()"/>
 
+	<br />
+
 	<div class="tip" id="tip-box">
-		<h3 class="title-tipbox" id="title-tipbox" style="margin-top: 0px">更新日志</h3>
+		<h3 class="title-tipbox" id="title-tipbox" style="margin-top: 0">更新日志</h3>
 		<textarea class="box-textupdateLog" id="updateLogText" readonly="readonly"></textarea>
 		<br/>
 		<button class="but-left" id="but-left" onClick="reduce()"><svg t="1588749508035" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3188" width="40" height="40"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#000" p-id="3189"></path></svg></button>
-		<svg t="1589114541344" class="ok_button" onClick="AboutExit()" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3980" width="48" height="48"><path d="M816 816m-32 0a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z" p-id="3981" fill="#515151"></path><path d="M512 968a456 456 0 1 1 395.76-229.36 32 32 0 0 1-55.52-32 392 392 0 1 0-145.44 145.44 32 32 0 0 1 32 55.52A456 456 0 0 1 512 968z" p-id="3982" fill="#515151"></path><path d="M376 680a32 32 0 0 1-22.64-54.64L625.12 353.6a32 32 0 1 1 45.28 45.28L398.88 670.4A32 32 0 0 1 376 680z" p-id="3983" fill="#515151"></path><path d="M648 680a32 32 0 0 1-22.64-9.36L353.6 398.88a32 32 0 0 1 45.28-45.28L670.4 625.12A32 32 0 0 1 648 680z" p-id="3984" fill="#515151"></path></svg>
+		<svg t="1589275643612" class="ok_button" onClick="AboutExit()" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4300" width="32" height="32"><path d="M1007.67938 1007.616358a56.313464 56.313464 0 0 1-79.107008 0L646.111189 725.155175l-39.553504-39.553504a55.866531 55.866531 0 0 1 0-79.107009 55.866531 55.866531 0 0 1 79.107009 0l39.553504 39.553505 282.461182 282.461182a56.313464 56.313464 0 0 1 0 79.107009z" fill="#00C569" p-id="4301"></path><path d="M1007.67938 16.320625a56.313464 56.313464 0 0 0-79.107008 0L512.031514 432.861483 95.490656 16.320625a56.089997 56.089997 0 0 0-79.107008 0 56.313464 56.313464 0 0 0 0 79.107008l416.540858 416.540858L16.383648 928.509349a55.866531 55.866531 0 0 0 79.107008 79.107009L1007.67938 95.427633a56.089997 56.089997 0 0 0 0-79.107008z" fill="#111111" p-id="4302"></path></svg>
 		<button class="but-right" id="but-right" onClick="add()"><svg t="1588749970741" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3191" width="48" height="40"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#181818" p-id="3192"></path></svg></button>
 	</div>
 
 	<ul class="ul" id="ul" ></ul>
-	<br/>
+
 	<button class="bing-search-but" id="bing" onClick="bing_C()"><svg t="1588751675331" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2448" width="32" height="32"><path d="M119.466667 887.466667h-6.826667c-6.826667-3.413333-10.24-10.24-10.24-17.066667V17.066667c0-6.826667 3.413333-10.24 6.826667-13.653334 3.413333-3.413333 10.24-3.413333 17.066666-3.413333l238.933334 85.333333c6.826667 3.413333 10.24 10.24 10.24 17.066667v563.2c0 3.413333-3.413333 10.24-6.826667 13.653333l-238.933333 204.8c-3.413333 3.413333-6.826667 3.413333-10.24 3.413334zM136.533333 40.96v791.893333l204.8-174.08V116.053333L136.533333 40.96z" fill="#ffffff" p-id="2449"></path><path d="M358.4 1024c-3.413333 0-6.826667 0-6.826667-3.413333l-238.933333-136.533334c-6.826667-3.413333-10.24-6.826667-10.24-13.653333s3.413333-10.24 10.24-13.653333l785.066667-426.666667c6.826667-3.413333 10.24-3.413333 17.066666 0s6.826667 10.24 6.826667 13.653333v221.866667c0 6.826667-3.413333 10.24-6.826667 13.653333l-546.133333 341.333334c-3.413333 3.413333-6.826667 3.413333-10.24 3.413333z m-204.8-153.6l204.8 116.053333L887.466667 655.36v-184.32L153.6 870.4z" fill="#ffffff" p-id="2450"></path><path d="M716.8 563.2h-3.413333L525.653333 512c-3.413333 0-10.24-3.413333-10.24-10.24l-102.4-238.933333c-3.413333-6.826667 0-13.653333 3.413334-17.066667 3.413333-6.826667 10.24-6.826667 17.066666-6.826667l477.866667 187.733334c6.826667 3.413333 10.24 6.826667 10.24 13.653333s-3.413333 13.653333-10.24 17.066667l-187.733333 102.4c0 3.413333-3.413333 3.413333-6.826667 3.413333z m-174.08-81.92l174.08 47.786667 150.186667-81.92-409.6-160.426667 85.333333 194.56z" fill="#ffffff" p-id="2451"></path></svg></button>
 
 	<button class="baidu-search-but" id="baidu" onClick="baidu_C()"><svg t="1588752335833" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1934" width="32" height="32"><path d="M153.6 614.4c-57.4464 0-102.4-67.6864-102.4-154.1632s44.9536-154.1632 102.4-154.1632 102.4 67.6864 102.4 154.1632-44.9536 154.1632-102.4 154.1632zM153.6 357.2736c-24.1664 0-51.2 44.032-51.2 102.9632s27.0336 102.9632 51.2 102.9632 51.2-44.032 51.2-102.9632-27.0336-102.9632-51.2-102.9632zM358.2976 409.6c-57.344 0-102.2976-67.4816-102.2976-153.6s44.9536-153.6 102.2976-153.6 102.2976 67.4816 102.2976 153.6-44.9536 153.6-102.2976 153.6zM358.2976 153.6c-24.1152 0-51.0976 43.776-51.0976 102.4s26.9824 102.4 51.0976 102.4 51.0976-43.776 51.0976-102.4-26.9824-102.4-51.0976-102.4zM614.4 409.6c-57.4464 0-102.4-67.4816-102.4-153.6s44.9536-153.6 102.4-153.6 102.4 67.4816 102.4 153.6-44.9536 153.6-102.4 153.6zM614.4 153.6c-24.1664 0-51.2 43.776-51.2 102.4s27.0336 102.4 51.2 102.4 51.2-43.776 51.2-102.4-27.0336-102.4-51.2-102.4zM819.2 614.4c-57.4464 0-102.4-67.6864-102.4-154.1632s44.9536-154.1632 102.4-154.1632 102.4 67.6864 102.4 154.1632-44.9536 154.1632-102.4 154.1632zM819.2 357.2736c-24.1664 0-51.2 44.032-51.2 102.9632s27.0336 102.9632 51.2 102.9632 51.2-44.032 51.2-102.9632-27.0336-102.9632-51.2-102.9632zM665.6 921.6c-44.4416 0-74.496-15.0528-100.9664-28.3136-24.576-12.288-45.7728-22.8864-78.2336-22.8864-32.3072 0-53.504 10.5984-78.08 22.8864-26.5728 13.2608-56.6784 28.3136-101.12 28.3136-28.4672 0-55.2448-15.5136-73.5744-42.5472-32.1024-47.4112-32.6144-119.3472-1.4336-197.376 56.1664-140.3904 148.7872-220.8768 254.1568-220.8768s198.0416 80.4864 254.1568 220.8768c31.1808 78.0288 30.6688 149.9648-1.4336 197.376-18.2784 27.0336-45.1072 42.5472-73.5744 42.5472zM486.4 819.2c44.4928 0 74.5984 15.0528 101.12 28.3136 24.5248 12.288 45.7216 22.8864 78.08 22.8864 11.1616 0 22.528-7.3216 31.1808-20.0192 22.1184-32.6144 20.6848-88.576-3.7376-149.6576-47.9744-119.9104-123.2896-188.7232-206.6432-188.7232s-158.6688 68.7616-206.6432 188.7232c-24.4224 61.0816-25.8048 117.0432-3.7376 149.6576 8.6016 12.7488 19.968 20.0192 31.1808 20.0192 32.3584 0 53.064-10.5984 78.2336-22.9376 26.5216-13.2608 56.6272-28.3136 100.9664-28.3136z" p-id="1935" fill="#ffffff"></path></svg></button>
@@ -425,7 +434,7 @@
 		document.body.appendChild(oScript)
 	}
 	function aa(data) {
-		oUl.style.display = 'block';
+		oUl.style.visibility = "inherit";
 		var list = data.s;
 		var str = '';
 		if (list.length > 0) {
@@ -434,14 +443,14 @@
 			})
 			oUl.innerHTML = str;
 		} else {
-			oUl.style.display = 'none';
+			oUl.style.visibility = 'hidden';
 			isIn = 0;
 		}
 	}
 
 	function clearSearch() {
 		searchbox.value = "";
-		oUl.style.display = 'none';
+		oUl.style.visibility = 'hidden';
 	}
 
 	var searchMode = 2;
@@ -514,7 +523,7 @@
 
 		if (noeClickFlag == 0 && isIn == 0) {
 			searchbox.value = "";
-			oUl.style.display = 'none';
+			oUl.style.visibility = 'hidden';
 			searchbox.style.marginTop = "150px";
 			searchbox.style.height = "50px";
 			searchbox.style.backgroundColor = "rgba(0,0,0,0.50)";
