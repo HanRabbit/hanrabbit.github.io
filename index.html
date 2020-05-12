@@ -1,583 +1,650 @@
 <!DOCTYPE>
 <html>
 <head>
-<title>Quick HSearch</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=0.7,maximum-scale=0.7,minimum-scale=0.7,user-scalable=no">
-<link rel="icon" href="./img/logo.ico" sizes="64x64" type="image/x-icon" />
-<link rel="shortcut icon" href="./img/logo.ico" sizes="64x64" type="image/x-icon"/>
+	<title>Quick HSearch</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=0.7,maximum-scale=0.7,minimum-scale=0.7,user-scalable=no">
+	<link rel="icon" href="./img/logo.ico" sizes="64x64" type="image/x-icon" />
+	<link rel="shortcut icon" href="./img/logo.ico" sizes="64x64" type="image/x-icon"/>
 
-<style>
-html,html{  overflow: hidden;  height: 100%;}
+	<style>
+		html,html{  overflow: hidden;  height: 100%;}
 
-@font-face{
-font-family: "Raleway";
-src:url(./raleway.ttf);
-}
+		@font-face{
+			font-family: "Raleway";
+			src:url(./raleway.ttf);
+		}
 
-.text-title {
-	padding-top: 20px;
-	color: white;
-	font-family: Raleway;
-	font-weight: 100;
-	font-size: 29px;
-}
-	
-.titleBox {
-	margin-top: 120px;
-	margin-bottom: -120px;
-}
-	
-.search-input {
-	transition: 0.4s;
-	text-align: center;
-	margin-top: 150px;
-	height: 45px;
-	width: 30%;
-	border-radius: 50px;
-	font-size: 18px;
-	outline: none;
-	border: 3px;
-	border-color: rgba(255,255,255,0.30);
-	background-color: rgba(0,0,0,0.50);
-	color: rgba(0,0,0,0.00);
-	box-shadow: rgba(0,0,0,.8) 1px 1px 10px;
-	background-position: center top;
-	background-size: cover;
-	outline: none;/*				border: 30px;*/
-}
-	
-/*
-	.search-input:before {
-		content: '';
-		background: url("img/background/BG_A.jpg") center center / cover no-repeat fixed;
-		filter: blur(10px);
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		z-index: -1;
-		margin: -30px;
-	}
-*/
+		.text-title {
+			padding-top: 20px;
+			color: white;
+			font-family: Raleway;
+			font-weight: 100;
+			font-size: 29px;
+		}
 
-.bg {
-	transition: 0.3s;
-	z-index: -3;
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	display: block;
-	/*                 filter: blur(10px); */
-	position: absolute;
-	transform: scale(1.0);
-	outline: none;
-}
-			
-::-webkit-scrollbar {
-	display:none;
-}
-.Han-text {
-	font-family: Raleway;
-	margin-left: 300px;
-	margin-top: -50px;
-	font-size: 8px;
-}
-.myselfAbout {
-	transition: 0.5s;
-	color: white;
-	font-size: 10px;
-	left: 0;
-	position: fixed;
-	bottom: 7px;
-	width: 100%;
-	z-index: 100;
-	cursor:pointer;
-}
+		.titleBox {
+			margin-top: 120px;
+			margin-bottom: -120px;
+		}
 
-.myselfAbout:hover {
-	animation: 0.5s myselfAbout_an;
-}
-	
-@keyframes myselfAbout_an {
-	0% {left: 0px;}
-	30% {left: 10px;}
-	60% {left: -10px;}
-	100% {left: 0px;}
-}
+		.search-input {
+			transition: 0.4s;
+			text-align: center;
+			margin-top: 150px;
+			height: 45px;
+			width: 30%;
+			border-radius: 50px;
+			font-size: 18px;
+			outline: none;
+			border: 3px;
+			border-color: rgba(255,255,255,0.30);
+			background-color: rgba(0,0,0,0.50);
+			color: rgba(0,0,0,0.00);
+			box-shadow: rgba(0,0,0,.8) 1px 1px 10px;
+			background-position: center top;
+			background-size: cover;
+			outline: none;/*				border: 30px;*/
+		}
 
-.logo {
-	left: 630px;
-	position: fixed;
-	bottom: -7px;
-	z-index: 100;
-	left: 50%;
-	margin-left: -130px;
-	cursor:pointer;
-}
-.logo:hover {
-	animation: logo_an 1s;
-}
-@keyframes logo_an {
-0% {
-transform: rotate(0deg);
-}
-10% {
-transform: rotate(10deg);
-}
-30% {
-transform: rotate(-10deg);
-}
-50% {
-transform: scale(1.4)
-}
-90% {
-transform: scale(1.0);
-}
-100% {
-transform: rotate(0deg);
-}
-}
-	
-	.tip {
-		position: fixed;
-		visibility: hidden;
-		transition: 0.3s;
-		border: 1px solid white;
-		width: 500px;
-		margin-left: 0;
-		filter: blur(100px);
-		background-color: rgba(0,0,0,0.00);
-		border-radius: 20px;
-		height: 350px;
-		box-shadow: 2px 2px 10px 2px rgba(0, 0, 0,.6);
-		text-align: center;
-		-webkit-box-shadow: 2px 2px 10px 2px rgba(0, 0, 0,.6);
-		outline: none;
-		/*transform: matrix3d(1, 0, 0, 0, 0,  1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);*/
-	}
-	
-	.box-textupdateLog {
-		position: fixed;
-		height: 250px;
-		width: 452px;
-		left: 5%;
-/*		margin-top: -10px;*/
-/*		border: 50px;*/
-		border: 1px;
-		background-color: rgba(255,255,255,.0);
-/*		box-shadow: rgba(0, 0, 0,.8) -1px -1px 10px;*/
-		border-radius: 5px;
-		text-align: center;
-/*		font-family:"Microsoft JhengHei UI";*/
-		font-size: 15px;
-		resize: none;
-		outline: none;
-	}
-	
-	.ok_button {
-		transform: rotate(0deg);
-		transition: 0.5s;
-		background-color: rgba(0, 0, 0, 0);
-		border: 0px;
-		border-radius: 50px;
-		height: 48px;
-		width: 48px;
-		margin-top: 230px;
-		left: 45%;
-		outline: none;
-		/*transform-origin:30px 25px;*/
-		/*box-shadow: rgba(0, 0, 0, .7) 1px 1px 5px;*/
-	}
+		/*
+            .search-input:before {
+                content: '';
+                background: url("img/background/BG_A.jpg") center center / cover no-repeat fixed;
+                filter: blur(10px);
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: -1;
+                margin: -30px;
+            }
+        */
 
-	.ok_button:hover {
-		transform: rotate(90deg);
-		box-shadow: rgba(0, 0, 0, .1) -1px -1px 5px;
-	}
+		.bg {
+			transition: 0.3s;
+			z-index: -3;
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+			/*                 filter: blur(10px); */
+			position: absolute;
+			transform: scale(1.0);
+			outline: none;
+		}
 
-	.ok_button:active {
-		transition: 0.2s;
-		margin-top: 220px;
-		box-shadow: rgba(0, 0, 0, .1) 1px 1px 10px;
-	}
-	
-	/*.ok_button:active {*/
-	/*	width: 180px;*/
-	/*	height: 35px;*/
-	/*	margin-top: 242px;*/
-	/*	left: 32%;*/
-	/*	color: green;*/
-	/*	background-color: white;*/
-	/*}*/
-	
-	.but-left {
-		transition: 0.15s;
-		background-color: rgba(0,0,0,0.00);
-		/*left: 5%;*/
-		/*top: 87%;*/
-		margin-right: 130px;
-		border: 50px;
-		height: 30px;
-		border-radius: 3px;
-		outline: none;
-	}
+		::-webkit-scrollbar {
+			display:none;
+		}
+		.Han-text {
+			font-family: Raleway;
+			margin-left: 300px;
+			margin-top: -50px;
+			font-size: 8px;
+		}
+		.myselfAbout {
+			transition: 0.5s;
+			color: white;
+			font-size: 10px;
+			left: 0;
+			position: fixed;
+			bottom: 7px;
+			width: 100%;
+			z-index: 100;
+			cursor:pointer;
+		}
 
-	/*.but-left:hover {*/
-	/*	animation: 0.4s butleftAn;*/
-	/*}*/
+		.myselfAbout:hover {
+			animation: 0.5s myselfAbout_an;
+		}
 
-	.but-left:active {
-		/*animation: 0.15s butleftAn;*/
-		margin-right: 135px;
-		margin-left: -5px;
-	}
+		@keyframes myselfAbout_an {
+			0% {left: 0px;}
+			30% {left: 10px;}
+			60% {left: -10px;}
+			100% {left: 0px;}
+		}
 
-	/*@keyframes butleftAn {*/
-	/*	0% {margin-right: 130px;margin-left: 0;}*/
-	/*	50% {margin-right: 125px;margin-left: 5px;}*/
-	/*	100% {margin-right: 130px;margin-left: 0;}*/
-	/*}*/
-	
-	.but-right {
-		transition: 0.15s;
-		background-color: rgba(0,0,0,0.00);
-		margin-left: 130px;
-		border: 50px;
-		height: 30px;
-		border-radius: 3px;
-		outline: none;
-	}
+		.logo {
+			left: 630px;
+			position: fixed;
+			bottom: -7px;
+			z-index: 100;
+			left: 50%;
+			margin-left: -130px;
+			cursor:pointer;
+		}
+		.logo:hover {
+			animation: logo_an 1s;
+		}
+		@keyframes logo_an {
+			0% {
+				transform: rotate(0deg);
+			}
+			10% {
+				transform: rotate(10deg);
+			}
+			30% {
+				transform: rotate(-10deg);
+			}
+			50% {
+				transform: scale(1.4)
+			}
+			90% {
+				transform: scale(1.0);
+			}
+			100% {
+				transform: rotate(0deg);
+			}
+		}
 
-	.but-right:active {
-		/*animation: 0.15s butrightAn;*/
-		margin-left: 135px;
-		margin-right: -5px;
-	}
+		.tip {
+			position: fixed;
+			visibility: hidden;
+			transition: 0.3s;
+			border: 1px solid white;
+			width: 500px;
+			margin-left: 0;
+			filter: blur(100px);
+			background-color: rgba(0,0,0,0.00);
+			border-radius: 20px;
+			height: 350px;
+			box-shadow: 2px 2px 10px 2px rgba(0, 0, 0,.6);
+			text-align: center;
+			-webkit-box-shadow: 2px 2px 10px 2px rgba(0, 0, 0,.6);
+			outline: none;
+			/*transform: matrix3d(1, 0, 0, 0, 0,  1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);*/
+		}
 
-	/*@keyframes butrightAn {*/
-	/*	0% {margin-left: 130px;margin-right: 0;}*/
-	/*	50% {margin-left: 135px;margin-right: -5px;}*/
-	/*	100% {margin-left: 130px;margin-right: 0;}*/
-	/*}*/
-	
-	.bing-search-but {
-		transition: 0.3s;
-		margin-left: -15px;
-		margin-top: 10px;
-		background: rgba(0,0,0,0.55);
-		border: 50px;
-		border-radius: 3px;
-		height: 3px;
-		width: 50px;
-		outline: none;
-		box-shadow: rgba(255, 255, 255,.8) 1px 1px 10px;
-		visibility: hidden;
-		opacity: 0;
-	}
-	
-	.baidu-search-but {
-		transition: 0.3s;
-		transition-delay: 0.2s;
-		margin-left: 30px;
-		background: rgba(0,0,0,0.55);
-		border: 50px;
-		border-radius: 3px;
-		height: 3px;
-		width: 50px;
-		outline: none;
-		box-shadow: rgba(255, 255, 255,.8) 1px 1px 10px;
-		visibility: hidden;
-		opacity: 0;
-	}
-	
-	.google-search-but {
-		transition: 0.3s;
-		transition-delay: 0.4s;
-		margin-top: 3px;
-		margin-left: 30px;
-		background: rgba(0,0,0,0.55);
-		border: 50px;
-		border-radius: 3px;
-		height: 3px;
-		width: 50px;
-		text-align: center;
-		outline: none;
-		box-shadow: rgba(255, 255, 255,.8) 1px 1px 10px;
-		visibility: hidden;
-		opacity: 0;
-	}
-</style>
+		.box-textupdateLog {
+			position: fixed;
+			height: 250px;
+			width: 452px;
+			left: 5%;
+			/*		margin-top: -10px;*/
+			/*		border: 50px;*/
+			border: 1px;
+			background-color: rgba(255,255,255,.0);
+			/*		box-shadow: rgba(0, 0, 0,.8) -1px -1px 10px;*/
+			border-radius: 5px;
+			text-align: center;
+			/*		font-family:"Microsoft JhengHei UI";*/
+			font-size: 15px;
+			resize: none;
+			outline: none;
+		}
+
+		.ok_button {
+			transform: rotate(0deg);
+			transition: 0.5s;
+			background-color: rgba(0, 0, 0, 0);
+			border: 0px;
+			border-radius: 50px;
+			height: 48px;
+			width: 48px;
+			margin-top: 230px;
+			left: 45%;
+			outline: none;
+			/*transform-origin:30px 25px;*/
+			/*box-shadow: rgba(0, 0, 0, .7) 1px 1px 5px;*/
+		}
+
+		.ok_button:hover {
+			transform: rotate(90deg);
+			box-shadow: rgba(0, 0, 0, .1) -1px -1px 5px;
+		}
+
+		.ok_button:active {
+			transition: 0.2s;
+			margin-top: 220px;
+			box-shadow: rgba(0, 0, 0, .1) 1px 1px 10px;
+		}
+
+		/*.ok_button:active {*/
+		/*	width: 180px;*/
+		/*	height: 35px;*/
+		/*	margin-top: 242px;*/
+		/*	left: 32%;*/
+		/*	color: green;*/
+		/*	background-color: white;*/
+		/*}*/
+
+		.but-left {
+			transition: 0.15s;
+			background-color: rgba(0,0,0,0.00);
+			/*left: 5%;*/
+			/*top: 87%;*/
+			margin-right: 130px;
+			border: 50px;
+			height: 30px;
+			border-radius: 3px;
+			outline: none;
+		}
+
+		/*.but-left:hover {*/
+		/*	animation: 0.4s butleftAn;*/
+		/*}*/
+
+		.but-left:active {
+			/*animation: 0.15s butleftAn;*/
+			margin-right: 135px;
+			margin-left: -5px;
+		}
+
+		/*@keyframes butleftAn {*/
+		/*	0% {margin-right: 130px;margin-left: 0;}*/
+		/*	50% {margin-right: 125px;margin-left: 5px;}*/
+		/*	100% {margin-right: 130px;margin-left: 0;}*/
+		/*}*/
+
+		.but-right {
+			transition: 0.15s;
+			background-color: rgba(0,0,0,0.00);
+			margin-left: 130px;
+			border: 50px;
+			height: 30px;
+			border-radius: 3px;
+			outline: none;
+		}
+
+		.but-right:active {
+			/*animation: 0.15s butrightAn;*/
+			margin-left: 135px;
+			margin-right: -5px;
+		}
+
+		/*@keyframes butrightAn {*/
+		/*	0% {margin-left: 130px;margin-right: 0;}*/
+		/*	50% {margin-left: 135px;margin-right: -5px;}*/
+		/*	100% {margin-left: 130px;margin-right: 0;}*/
+		/*}*/
+
+		.bing-search-but {
+			transition: 0.3s;
+			margin-left: -15px;
+			margin-top: 10px;
+			background: rgba(0,0,0,0.55);
+			border: 50px;
+			border-radius: 3px;
+			height: 3px;
+			width: 50px;
+			outline: none;
+			box-shadow: rgba(255, 255, 255,.8) 1px 1px 10px;
+			visibility: hidden;
+			opacity: 0;
+		}
+
+		.baidu-search-but {
+			transition: 0.3s;
+			transition-delay: 0.2s;
+			margin-left: 30px;
+			background: rgba(0,0,0,0.55);
+			border: 50px;
+			border-radius: 3px;
+			height: 3px;
+			width: 50px;
+			outline: none;
+			box-shadow: rgba(255, 255, 255,.8) 1px 1px 10px;
+			visibility: hidden;
+			opacity: 0;
+		}
+
+		.google-search-but {
+			transition: 0.3s;
+			transition-delay: 0.4s;
+			margin-top: 3px;
+			margin-left: 30px;
+			background: rgba(0,0,0,0.55);
+			border: 50px;
+			border-radius: 3px;
+			height: 3px;
+			width: 50px;
+			text-align: center;
+			outline: none;
+			box-shadow: rgba(255, 255, 255,.8) 1px 1px 10px;
+			visibility: hidden;
+			opacity: 0;
+		}
+
+		.ul {
+			list-style-type:none;
+			text-align: left;
+			border: 50px;
+			border-radius: 10px;
+			background: rgba(0, 0, 0, .5);
+			box-shadow: rgba(0, 0, 0, .7) 1px 1px 10px;
+		}
+
+		.keyWord {
+			transition: .3s;
+			border: 50px;
+			border-radius: 5px;
+			display: inline-block;
+			width: 100%;
+			text-decoration: none;
+			color: #cdcdcd;
+			outline: none;
+			height: 30px;
+			/*line-height: 30px;*/
+		}
+
+		.keyWord:hover {
+			background: rgba(255, 255, 255, .3);
+			color: black;
+		}
+
+	</style>
 </head>
 
 <body bgcolor="black">
 <center>
-    <img class="bg" id="bg" src="./img/background/BG_A.jpg" />
-	
+	<img class="bg" id="bg" src="./img/background/BG_A.jpg" />
+
 	<div class="titleBox">
-	<h3 class="text-title" style="margin-left: 30px">Quick HSearch<img src="img/searchLogo.gif" style="margin-left: -10px; height: 50px; width: 50px" />  </h3>
+		<h3 class="text-title" style="margin-left: 30px">Quick HSearch<img src="img/searchLogo.gif" style="margin-left: -10px; height: 50px; width: 50px" />  </h3>
 		<h5 class="Han-text">By Han</h5>
 	</div>
-	
-    <a class="myselfAbout" onClick="About()" >© 2020 田梓涵   |   v1.24</a>
-	<img src="./img/Logo3.png" width="80" height="45" class="logo" id="logo" onClick="logoClick()" /> 
-	
+
+	<a class="myselfAbout" onClick="About()" >© 2020 田梓涵   |   v1.34</a>
+	<img src="./img/Logo3.png" width="80" height="45" class="logo" id="logo" onClick="logoClick()" />
+
 	<br />
-	
-    <input class="search-input" id="secarh-box" type="search" onmouseover="onMouseBox()" onmouseout="onOutBox()" placeholder="Search" onkeypress="onEnterSearch()" ondblclick="ondClick()" onclick="onClickBox()" onblur="onBlurBox()"/>
-	<br/>
-	<button class="bing-search-but" id="bing" onClick="bing_C()"><svg t="1588751675331" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2448" width="32" height="32"><path d="M119.466667 887.466667h-6.826667c-6.826667-3.413333-10.24-10.24-10.24-17.066667V17.066667c0-6.826667 3.413333-10.24 6.826667-13.653334 3.413333-3.413333 10.24-3.413333 17.066666-3.413333l238.933334 85.333333c6.826667 3.413333 10.24 10.24 10.24 17.066667v563.2c0 3.413333-3.413333 10.24-6.826667 13.653333l-238.933333 204.8c-3.413333 3.413333-6.826667 3.413333-10.24 3.413334zM136.533333 40.96v791.893333l204.8-174.08V116.053333L136.533333 40.96z" fill="#ffffff" p-id="2449"></path><path d="M358.4 1024c-3.413333 0-6.826667 0-6.826667-3.413333l-238.933333-136.533334c-6.826667-3.413333-10.24-6.826667-10.24-13.653333s3.413333-10.24 10.24-13.653333l785.066667-426.666667c6.826667-3.413333 10.24-3.413333 17.066666 0s6.826667 10.24 6.826667 13.653333v221.866667c0 6.826667-3.413333 10.24-6.826667 13.653333l-546.133333 341.333334c-3.413333 3.413333-6.826667 3.413333-10.24 3.413333z m-204.8-153.6l204.8 116.053333L887.466667 655.36v-184.32L153.6 870.4z" fill="#ffffff" p-id="2450"></path><path d="M716.8 563.2h-3.413333L525.653333 512c-3.413333 0-10.24-3.413333-10.24-10.24l-102.4-238.933333c-3.413333-6.826667 0-13.653333 3.413334-17.066667 3.413333-6.826667 10.24-6.826667 17.066666-6.826667l477.866667 187.733334c6.826667 3.413333 10.24 6.826667 10.24 13.653333s-3.413333 13.653333-10.24 17.066667l-187.733333 102.4c0 3.413333-3.413333 3.413333-6.826667 3.413333z m-174.08-81.92l174.08 47.786667 150.186667-81.92-409.6-160.426667 85.333333 194.56z" fill="#ffffff" p-id="2451"></path></svg></button>
-	
-	<button class="baidu-search-but" id="baidu" onClick="baidu_C()"><svg t="1588752335833" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1934" width="32" height="32"><path d="M153.6 614.4c-57.4464 0-102.4-67.6864-102.4-154.1632s44.9536-154.1632 102.4-154.1632 102.4 67.6864 102.4 154.1632-44.9536 154.1632-102.4 154.1632zM153.6 357.2736c-24.1664 0-51.2 44.032-51.2 102.9632s27.0336 102.9632 51.2 102.9632 51.2-44.032 51.2-102.9632-27.0336-102.9632-51.2-102.9632zM358.2976 409.6c-57.344 0-102.2976-67.4816-102.2976-153.6s44.9536-153.6 102.2976-153.6 102.2976 67.4816 102.2976 153.6-44.9536 153.6-102.2976 153.6zM358.2976 153.6c-24.1152 0-51.0976 43.776-51.0976 102.4s26.9824 102.4 51.0976 102.4 51.0976-43.776 51.0976-102.4-26.9824-102.4-51.0976-102.4zM614.4 409.6c-57.4464 0-102.4-67.4816-102.4-153.6s44.9536-153.6 102.4-153.6 102.4 67.4816 102.4 153.6-44.9536 153.6-102.4 153.6zM614.4 153.6c-24.1664 0-51.2 43.776-51.2 102.4s27.0336 102.4 51.2 102.4 51.2-43.776 51.2-102.4-27.0336-102.4-51.2-102.4zM819.2 614.4c-57.4464 0-102.4-67.6864-102.4-154.1632s44.9536-154.1632 102.4-154.1632 102.4 67.6864 102.4 154.1632-44.9536 154.1632-102.4 154.1632zM819.2 357.2736c-24.1664 0-51.2 44.032-51.2 102.9632s27.0336 102.9632 51.2 102.9632 51.2-44.032 51.2-102.9632-27.0336-102.9632-51.2-102.9632zM665.6 921.6c-44.4416 0-74.496-15.0528-100.9664-28.3136-24.576-12.288-45.7728-22.8864-78.2336-22.8864-32.3072 0-53.504 10.5984-78.08 22.8864-26.5728 13.2608-56.6784 28.3136-101.12 28.3136-28.4672 0-55.2448-15.5136-73.5744-42.5472-32.1024-47.4112-32.6144-119.3472-1.4336-197.376 56.1664-140.3904 148.7872-220.8768 254.1568-220.8768s198.0416 80.4864 254.1568 220.8768c31.1808 78.0288 30.6688 149.9648-1.4336 197.376-18.2784 27.0336-45.1072 42.5472-73.5744 42.5472zM486.4 819.2c44.4928 0 74.5984 15.0528 101.12 28.3136 24.5248 12.288 45.7216 22.8864 78.08 22.8864 11.1616 0 22.528-7.3216 31.1808-20.0192 22.1184-32.6144 20.6848-88.576-3.7376-149.6576-47.9744-119.9104-123.2896-188.7232-206.6432-188.7232s-158.6688 68.7616-206.6432 188.7232c-24.4224 61.0816-25.8048 117.0432-3.7376 149.6576 8.6016 12.7488 19.968 20.0192 31.1808 20.0192 32.3584 0 53.064-10.5984 78.2336-22.9376 26.5216-13.2608 56.6272-28.3136 100.9664-28.3136z" p-id="1935" fill="#ffffff"></path></svg></button>
-	
-	<button class="google-search-but" id="google" onClick="google_C()"><svg t="1588752380025" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2744" width="32" height="32"><path d="M680.97024 343.06048A238.26432 238.26432 0 0 0 512 273.05984c-131.93216 0-238.92992 106.97728-238.92992 238.92992S380.06784 750.94016 512 750.94016c120.29952 0 219.5968-89.05728 236.19584-204.81024H512v-68.27008h307.2v34.12992a313.1392 313.1392 0 0 1-1.9968 34.14016C800.2048 699.74016 670.12608 819.21024 512 819.21024c-169.66656 0-307.2-137.53344-307.2-307.22048 0-169.64608 137.53344-307.2 307.2-307.2 84.82816 0 161.62816 34.39616 217.23136 89.99936l-48.26112 48.27136z" p-id="2745" fill="#ffffff"></path></svg></button>
-	
-    <div class="tip" id="tip-box">
+
+	<input class="search-input" id="secarh-box" type="search" onmouseover="onMouseBox()" onmouseout="onOutBox()" placeholder="Search" onkeypress="onEnterSearch()" ondblclick="ondClick()" onclick="onClickBox()" onblur="onBlurBox()"/>
+
+	<div class="tip" id="tip-box">
 		<h3 class="title-tipbox" id="title-tipbox" style="margin-top: 0px">更新日志</h3>
-        <textarea class="box-textupdateLog" id="updateLogText" readonly="readonly"></textarea>
+		<textarea class="box-textupdateLog" id="updateLogText" readonly="readonly"></textarea>
 		<br/>
 		<button class="but-left" id="but-left" onClick="reduce()"><svg t="1588749508035" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3188" width="40" height="40"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#000" p-id="3189"></path></svg></button>
 		<svg t="1589114541344" class="ok_button" onClick="AboutExit()" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3980" width="48" height="48"><path d="M816 816m-32 0a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z" p-id="3981" fill="#515151"></path><path d="M512 968a456 456 0 1 1 395.76-229.36 32 32 0 0 1-55.52-32 392 392 0 1 0-145.44 145.44 32 32 0 0 1 32 55.52A456 456 0 0 1 512 968z" p-id="3982" fill="#515151"></path><path d="M376 680a32 32 0 0 1-22.64-54.64L625.12 353.6a32 32 0 1 1 45.28 45.28L398.88 670.4A32 32 0 0 1 376 680z" p-id="3983" fill="#515151"></path><path d="M648 680a32 32 0 0 1-22.64-9.36L353.6 398.88a32 32 0 0 1 45.28-45.28L670.4 625.12A32 32 0 0 1 648 680z" p-id="3984" fill="#515151"></path></svg>
 		<button class="but-right" id="but-right" onClick="add()"><svg t="1588749970741" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3191" width="48" height="40"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#181818" p-id="3192"></path></svg></button>
-    </div>
+	</div>
+
+	<ul class="ul" id="ul" ></ul>
+	<br/>
+	<button class="bing-search-but" id="bing" onClick="bing_C()"><svg t="1588751675331" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2448" width="32" height="32"><path d="M119.466667 887.466667h-6.826667c-6.826667-3.413333-10.24-10.24-10.24-17.066667V17.066667c0-6.826667 3.413333-10.24 6.826667-13.653334 3.413333-3.413333 10.24-3.413333 17.066666-3.413333l238.933334 85.333333c6.826667 3.413333 10.24 10.24 10.24 17.066667v563.2c0 3.413333-3.413333 10.24-6.826667 13.653333l-238.933333 204.8c-3.413333 3.413333-6.826667 3.413333-10.24 3.413334zM136.533333 40.96v791.893333l204.8-174.08V116.053333L136.533333 40.96z" fill="#ffffff" p-id="2449"></path><path d="M358.4 1024c-3.413333 0-6.826667 0-6.826667-3.413333l-238.933333-136.533334c-6.826667-3.413333-10.24-6.826667-10.24-13.653333s3.413333-10.24 10.24-13.653333l785.066667-426.666667c6.826667-3.413333 10.24-3.413333 17.066666 0s6.826667 10.24 6.826667 13.653333v221.866667c0 6.826667-3.413333 10.24-6.826667 13.653333l-546.133333 341.333334c-3.413333 3.413333-6.826667 3.413333-10.24 3.413333z m-204.8-153.6l204.8 116.053333L887.466667 655.36v-184.32L153.6 870.4z" fill="#ffffff" p-id="2450"></path><path d="M716.8 563.2h-3.413333L525.653333 512c-3.413333 0-10.24-3.413333-10.24-10.24l-102.4-238.933333c-3.413333-6.826667 0-13.653333 3.413334-17.066667 3.413333-6.826667 10.24-6.826667 17.066666-6.826667l477.866667 187.733334c6.826667 3.413333 10.24 6.826667 10.24 13.653333s-3.413333 13.653333-10.24 17.066667l-187.733333 102.4c0 3.413333-3.413333 3.413333-6.826667 3.413333z m-174.08-81.92l174.08 47.786667 150.186667-81.92-409.6-160.426667 85.333333 194.56z" fill="#ffffff" p-id="2451"></path></svg></button>
+
+	<button class="baidu-search-but" id="baidu" onClick="baidu_C()"><svg t="1588752335833" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1934" width="32" height="32"><path d="M153.6 614.4c-57.4464 0-102.4-67.6864-102.4-154.1632s44.9536-154.1632 102.4-154.1632 102.4 67.6864 102.4 154.1632-44.9536 154.1632-102.4 154.1632zM153.6 357.2736c-24.1664 0-51.2 44.032-51.2 102.9632s27.0336 102.9632 51.2 102.9632 51.2-44.032 51.2-102.9632-27.0336-102.9632-51.2-102.9632zM358.2976 409.6c-57.344 0-102.2976-67.4816-102.2976-153.6s44.9536-153.6 102.2976-153.6 102.2976 67.4816 102.2976 153.6-44.9536 153.6-102.2976 153.6zM358.2976 153.6c-24.1152 0-51.0976 43.776-51.0976 102.4s26.9824 102.4 51.0976 102.4 51.0976-43.776 51.0976-102.4-26.9824-102.4-51.0976-102.4zM614.4 409.6c-57.4464 0-102.4-67.4816-102.4-153.6s44.9536-153.6 102.4-153.6 102.4 67.4816 102.4 153.6-44.9536 153.6-102.4 153.6zM614.4 153.6c-24.1664 0-51.2 43.776-51.2 102.4s27.0336 102.4 51.2 102.4 51.2-43.776 51.2-102.4-27.0336-102.4-51.2-102.4zM819.2 614.4c-57.4464 0-102.4-67.6864-102.4-154.1632s44.9536-154.1632 102.4-154.1632 102.4 67.6864 102.4 154.1632-44.9536 154.1632-102.4 154.1632zM819.2 357.2736c-24.1664 0-51.2 44.032-51.2 102.9632s27.0336 102.9632 51.2 102.9632 51.2-44.032 51.2-102.9632-27.0336-102.9632-51.2-102.9632zM665.6 921.6c-44.4416 0-74.496-15.0528-100.9664-28.3136-24.576-12.288-45.7728-22.8864-78.2336-22.8864-32.3072 0-53.504 10.5984-78.08 22.8864-26.5728 13.2608-56.6784 28.3136-101.12 28.3136-28.4672 0-55.2448-15.5136-73.5744-42.5472-32.1024-47.4112-32.6144-119.3472-1.4336-197.376 56.1664-140.3904 148.7872-220.8768 254.1568-220.8768s198.0416 80.4864 254.1568 220.8768c31.1808 78.0288 30.6688 149.9648-1.4336 197.376-18.2784 27.0336-45.1072 42.5472-73.5744 42.5472zM486.4 819.2c44.4928 0 74.5984 15.0528 101.12 28.3136 24.5248 12.288 45.7216 22.8864 78.08 22.8864 11.1616 0 22.528-7.3216 31.1808-20.0192 22.1184-32.6144 20.6848-88.576-3.7376-149.6576-47.9744-119.9104-123.2896-188.7232-206.6432-188.7232s-158.6688 68.7616-206.6432 188.7232c-24.4224 61.0816-25.8048 117.0432-3.7376 149.6576 8.6016 12.7488 19.968 20.0192 31.1808 20.0192 32.3584 0 53.064-10.5984 78.2336-22.9376 26.5216-13.2608 56.6272-28.3136 100.9664-28.3136z" p-id="1935" fill="#ffffff"></path></svg></button>
+
+	<button class="google-search-but" id="google" onClick="google_C()"><svg t="1588752380025" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2744" width="32" height="32"><path d="M680.97024 343.06048A238.26432 238.26432 0 0 0 512 273.05984c-131.93216 0-238.92992 106.97728-238.92992 238.92992S380.06784 750.94016 512 750.94016c120.29952 0 219.5968-89.05728 236.19584-204.81024H512v-68.27008h307.2v34.12992a313.1392 313.1392 0 0 1-1.9968 34.14016C800.2048 699.74016 670.12608 819.21024 512 819.21024c-169.66656 0-307.2-137.53344-307.2-307.22048 0-169.64608 137.53344-307.2 307.2-307.2 84.82816 0 161.62816 34.39616 217.23136 89.99936l-48.26112 48.27136z" p-id="2745" fill="#ffffff"></path></svg></button>
 </center>
 </body>
 <!--suppress JSValidateTypes -->
 <script>
-		var vision = 7;
+	var vision = 8;
 
-		var searchbox = document.getElementById("secarh-box");
-		var bgImg = document.getElementById("bg");
-	
-		var tipbox = document.getElementById("tip-box");
-	
-		var updateLogText = document.getElementById("updateLogText");
-		
-		document.body.style.overflow='hidden';
-	
-		var isClick = 0;
-		var changeMode = 0;
-		var updateLog_num = vision;
-	
-		var but_left = document.getElementById("but-left");
-		var but_right = document.getElementById("but-right");
-	
-		var logo = document.getElementById("logo");
-	
-		var bing = document.getElementById("bing");
-		var baidu = document.getElementById("baidu");
-		var google = document.getElementById("google");
-	
-		var titleTipbox = document.getElementById("title-tipbox");
+	var searchbox = document.getElementById("secarh-box");
+	var bgImg = document.getElementById("bg");
 
+	var tipbox = document.getElementById("tip-box");
+
+	var updateLogText = document.getElementById("updateLogText");
+
+	document.body.style.overflow='hidden';
+
+	var isClick = 0;
+	var changeMode = 0;
+	var updateLog_num = vision;
+
+	var but_left = document.getElementById("but-left");
+	var but_right = document.getElementById("but-right");
+
+	var logo = document.getElementById("logo");
+
+	var bing = document.getElementById("bing");
+	var baidu = document.getElementById("baidu");
+	var google = document.getElementById("google");
+
+	var titleTipbox = document.getElementById("title-tipbox");
+
+	var winX = window.innerWidth;
+	var winY = window.innerHeight;
+
+	var isIn = 0;
+
+	if(winX <= winY)
+		searchbox.style.width = "40%";
+	else
+		searchbox.style.width = "17%";
+
+	var oUl = document.getElementById('ul')
+	searchbox.onkeyup = function () {
+		isIn = 1;
+		var value = this.value;
+		var oScript = document.createElement('script');
+		oScript.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + value + '&cb=aa'
+// 核心在这里，
+// 1.实时获取参数 value
+// 2.cb=返回值的处理函数（aa）
+		document.body.appendChild(oScript)
+	}
+	function aa(data) {
+		oUl.style.display = 'block';
+		var list = data.s;
+		var str = '';
+		if (list.length > 0) {
+			list.forEach(function (ele, index) {
+				str += '<li><a class="keyWord" onclick="clearSearch()" target="_blank" href ="https://www.baidu.com/s?wd=' + ele + '">' + ele + '</li>';
+			})
+			oUl.innerHTML = str;
+		} else {
+			oUl.style.display = 'none';
+			isIn = 0;
+		}
+	}
+
+	function clearSearch() {
+		searchbox.value = "";
+		oUl.style.display = 'none';
+	}
+
+	var searchMode = 2;
+	updateSearchMode();
+	var noeClickFlag = 0;
+
+	function bing_C() {
+		searchMode = 1;
+		updateSearchMode();
+	}
+
+	function baidu_C() {
+		searchMode = 2;
+		updateSearchMode();
+	}
+
+	function google_C() {
+		searchMode = 3;
+		updateSearchMode();
+	}
+
+	function updateSearchMode() {
+		if(searchMode == 1) {
+			bing.style.backgroundColor = "rgba(40,250,58,0.76)";
+			baidu.style.backgroundColor = "rgba(0,0,0,0.55)";
+			google.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
+		}
+
+		if(searchMode == 2) {
+			bing.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
+			baidu.style.backgroundColor = "rgba(40,250,58,0.76)";
+			google.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
+		}
+
+		if(searchMode == 3) {
+			bing.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
+			baidu.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
+			google.style.backgroundColor = "rgba(40,250,58,0.76)";
+		}
+//			searchbox.focus();
+	}
+
+	function ondClick() {
+		if(noeClickFlag == 0) {
+			noeClickFlag = 1;
+			bing.style.visibility = "inherit";
+			baidu.style.visibility = "inherit";
+			google.style.visibility = "inherit";
+			bing.style.opacity = "1";
+			baidu.style.opacity = "1";
+			google.style.opacity = "1";
+		}
+
+		else {
+			noeClickFlag = 0;
+			bing.style.visibility = "hidden";
+			baidu.style.visibility = "hidden";
+			google.style.visibility = "hidden";
+			bing.style.opacity = "0";
+			baidu.style.opacity = "0";
+			google.style.opacity = "0";
+		}
+	}
+
+	function onBlurBox() {
+//			alert(changeMode);
 		var winX = window.innerWidth;
 		var winY = window.innerHeight;
 
-		if(winX <= winY)
-			searchbox.style.width = "40%";
-		else
-			searchbox.style.width = "17%";
 
-		var searchMode = 2;
-		updateSearchMode();
-		var noeClickFlag = 0;
-	
-		function bing_C() {
-			searchMode = 1;
-			updateSearchMode();
-		}
-	
-		function baidu_C() {
-			searchMode = 2;
-			updateSearchMode();
-		}
-	
-		function google_C() {
-			searchMode = 3;
-			updateSearchMode();
-		}
-		
-		function updateSearchMode() {
-			if(searchMode == 1) {
-				bing.style.backgroundColor = "rgba(40,250,58,0.76)";
-				baidu.style.backgroundColor = "rgba(0,0,0,0.55)";
-				google.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
-			}
-			
-			if(searchMode == 2) {
-				bing.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
-				baidu.style.backgroundColor = "rgba(40,250,58,0.76)";
-				google.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
-			}
-			
-			if(searchMode == 3) {
-				bing.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
-				baidu.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
-				google.style.backgroundColor = "rgba(40,250,58,0.76)";
-			}
-//			searchbox.focus();
-		}
-		
-		function ondClick() {
-			if(noeClickFlag == 0) {
-				noeClickFlag = 1;
-				bing.style.visibility = "inherit";
-				baidu.style.visibility = "inherit";
-				google.style.visibility = "inherit";
-				bing.style.opacity = "1";
-				baidu.style.opacity = "1";
-				google.style.opacity = "1";
-			}
-			
-			else {
-				noeClickFlag = 0;
-				bing.style.visibility = "hidden";
-				baidu.style.visibility = "hidden";
-				google.style.visibility = "hidden";
-				bing.style.opacity = "0";
-				baidu.style.opacity = "0";
-				google.style.opacity = "0";
-			}
-		}
-	
-		function onBlurBox() {
-//			alert(changeMode);
-			var winX = window.innerWidth;
-			var winY = window.innerHeight;
+		if (noeClickFlag == 0 && isIn == 0) {
+			searchbox.value = "";
+			oUl.style.display = 'none';
+			searchbox.style.marginTop = "150px";
+			searchbox.style.height = "50px";
+			searchbox.style.backgroundColor = "rgba(0,0,0,0.50)";
+			searchbox.style.color = "rgba(0, 0, 0, 0)";
+			bgImg.style.filter = "blur(0px)";
+			bgImg.style.transform = ("scale(1.0)");
 
+			bing.style.visibility = "hidden";
+			baidu.style.visibility = "hidden";
+			google.style.visibility = "hidden";
+			bing.style.opacity = "0";
+			baidu.style.opacity = "0";
+			google.style.opacity = "0";
+			isClick = 0;
+			if(winX<=winY)
+				searchbox.style.width = "40%";
+			else
+				searchbox.style.width = "17%";
+		}
 
-			if (noeClickFlag == 0) {
-				searchbox.style.marginTop = "150px";
-				searchbox.style.height = "50px";
-				searchbox.style.backgroundColor = "rgba(0,0,0,0.50)";
-				searchbox.style.color = "rgba(0, 0, 0, 0)";
-				bgImg.style.filter = "blur(0px)";
-				bgImg.style.transform = ("scale(1.0)");
-
-				bing.style.visibility = "hidden";
-				baidu.style.visibility = "hidden";
-				google.style.visibility = "hidden";
-				bing.style.opacity = "0";
-				baidu.style.opacity = "0";
-				google.style.opacity = "0";
-				isClick = 0;
-				if(winX<=winY)
-					searchbox.style.width = "40%";
-				else
-					searchbox.style.width = "17%";
-			}
-			
 //			changeMode = 0;
 //			searchbox.focus();
+	}
+
+	function onClickBox() {
+		var winX = window.innerWidth;
+		var winY = window.innerHeight;
+
+		if(winX<=winY) {
+			searchbox.style.height = "55px";
+			searchbox.style.width = "80%";
+			searchbox.style.marginTop = "145px";
+			searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
+			searchbox.style.color = "white";
+			bgImg.style.filter = "blur(8px)";
+			bgImg.style.transform=("scale(1.2)");
+			oUl.style.width = "75%";
+			isClick = 1;
 		}
-		
-		function onClickBox() {
+
+		else {
+			searchbox.style.height = "55px";
+			searchbox.style.width = "35%";
+			searchbox.style.marginTop = "145px";
+			searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
+			searchbox.style.color = "white";
+			bgImg.style.filter = "blur(8px)";
+			bgImg.style.transform = ("scale(1.2)");
+			oUl.style.width = "30%";
+			isClick = 1;
+		}
+	}
+
+	function onMouseBox() {
+		if (isClick == 0) {
 			var winX = window.innerWidth;
 			var winY = window.innerHeight;
 
-			if(winX<=winY) {
-				searchbox.style.height = "55px";
-				searchbox.style.width = "80%";
-				searchbox.style.marginTop = "145px";
-				searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
-				searchbox.style.color = "white";
-				bgImg.style.filter = "blur(8px)";
-				bgImg.style.transform=("scale(1.2)");
-				isClick = 1;
-			}
+			if(winX<=winY)
+				searchbox.style.width = "60%";
 
-			else {
-				searchbox.style.height = "55px";
-				searchbox.style.width = "35%";
-				searchbox.style.marginTop = "145px";
-				searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
-				searchbox.style.color = "white";
-				bgImg.style.filter = "blur(8px)";
-				bgImg.style.transform = ("scale(1.2)");
-				isClick = 1;
-			}
+			else
+				searchbox.style.width = "26%";
 		}
-		
-		function onMouseBox() {
-			if (isClick == 0) {
-				var winX = window.innerWidth;
-				var winY = window.innerHeight;
+	}
 
-				if(winX<=winY)
-					searchbox.style.width = "50%";
+	function onOutBox() {
+		if (isClick == 0) {
+			var winX = window.innerWidth;
+			var winY = window.innerHeight;
 
-				else
-					searchbox.style.width = "22%";
-			}
+			if(winX<=winY)
+				searchbox.style.width = "40%";
+
+			else
+				searchbox.style.width = "17%";
 		}
-		
-		function onOutBox() {
-			if (isClick == 0) {
-				var winX = window.innerWidth;
-				var winY = window.innerHeight;
+	}
 
-				if(winX<=winY)
-					searchbox.style.width = "40%";
+	function onEnterSearch() {
+		if (event.keyCode == 13) {
+			if(searchMode == 1)
+				window.open("https://cn.bing.com/search?q="+searchbox.value, "_blank");
+			if(searchMode == 2)
+				window.open("https://www.baidu.com/s?wd="+searchbox.value, "_blank");
+			if(searchMode == 3)
+				window.open("https://www.google.com/search?q="+searchbox.value, "_blank");
+			searchbox.value = "";
+		}
+	}
 
-				else
-					searchbox.style.width = "17%";
-			}
-		}
-		
-		function onEnterSearch() {
-			if (event.keyCode == 13) {
-				if(searchMode == 1)
-					window.open("https://cn.bing.com/search?q="+searchbox.value, "_blank");
-				if(searchMode == 2)
-					window.open("https://www.baidu.com/s?wd="+searchbox.value, "_blank");
-				if(searchMode == 3) 
-					window.open("https://www.google.com/search?q="+searchbox.value, "_blank");
-				searchbox.value = "";
-			}
-		}
-	
-		function About() {
-			updateLog_num = vision;
-			changeAboutWin();
-			tipbox.style.filter = "blur(0px)";
-			tipbox.style.backgroundColor = "rgba(255,255,255,0.8)";
+	function About() {
+		updateLog_num = vision;
+		changeAboutWin();
+		tipbox.style.filter = "blur(0px)";
+		tipbox.style.backgroundColor = "rgba(255,255,255,0.8)";
 //			tipbox.style.display = "block";
-			tipbox.style.visibility = "inherit";
-			updateLogText.innerHTML = "版本号：v1.24\n更新日期：2020/5/11 16:02\n\n更新描述：\n修复：客户端字体缺失而导致显示错误的问题\n修复：搜索框在PC上显示的大小\n重做：Quick HSearch的图标，将其更改为动态图标\n新增：响应式demo，同时适应PC和Android";
-			but_left.style.display = "inline";
-			but_right.style.display = "inline";
-			
+		tipbox.style.visibility = "inherit";
+		updateLogText.innerHTML = "版本号：v1.34\n更新日期：2020/5/12 8:59\n\n更新描述：\n优化：代码性能\n新增：关联词提示（注：退出搜索框需清除搜索框内容\n优化：html布局\n优化：关联词提示框会根据横竖屏自动更改大小\n优化：搜索框动画";
+		but_left.style.display = "inline";
+		but_right.style.display = "inline";
+
 //				updateLogText.innerHTML = "<h3>关于</h3>感谢您使用此网站<br/>此网站为Han的快捷搜索<br/>为Han本人开发及维护<br/>如有问题，请发送至<br/>“Tianzihan5357@163.com”<br/>谢谢您的配合！";
-		}
+	}
 
-		function changeAboutWin() {
-			var winX = window.innerWidth/2-260;
-			var winY = window.innerHeight-1060;
+	function changeAboutWin() {
+		var winX = window.innerWidth/2-260;
+		var winY = window.innerHeight-1060;
 
-			tipbox.style.marginLeft = winX;
-			tipbox.style.marginTop = winY;
-		}
-	
-//		function About_thanks() {
-//			tipbox.style.filter = "blur(0px)";
-//			tipbox.style.backgroundColor = "rgba(255,255,255,0.8)";
-////			tipbox.style.display = "block";
-//			tipbox.style.visibility = "inherit";
-//		}
-	
-		function AboutExit() {
-			tipbox.style.filter = "blur(200px)";
-			tipbox.style.backgroundColor = "rgba(0, 0, 0, 0)";
+		tipbox.style.marginLeft = winX;
+		tipbox.style.marginTop = winY;
+	}
+
+	//		function About_thanks() {
+	//			tipbox.style.filter = "blur(0px)";
+	//			tipbox.style.backgroundColor = "rgba(255,255,255,0.8)";
+	////			tipbox.style.display = "block";
+	//			tipbox.style.visibility = "inherit";
+	//		}
+
+	function AboutExit() {
+		tipbox.style.filter = "blur(200px)";
+		tipbox.style.backgroundColor = "rgba(0, 0, 0, 0)";
 //			tipbox.style.display = "none";
-			tipbox.style.visibility = "hidden";
-		}
-	
-		function reduce() {
-			if(updateLog_num > 1)
-				updateLog_num --;
+		tipbox.style.visibility = "hidden";
+	}
+
+	function reduce() {
+		if(updateLog_num > 1)
+			updateLog_num --;
 //			if(updateLog_num == 1) {
 //				but_left.setAttribute("disabled", true);
 //				but_right.setAttribute("disabled", false);
@@ -586,13 +653,13 @@ transform: rotate(0deg);
 //				but_left.setAttribute("disabled", false);
 //				but_right.setAttribute("disabled", false);
 //			}
-			update_list();
-			
-		}
-	
-		function add() {
-			if(updateLog_num < vision)
-				updateLog_num ++;
+		update_list();
+
+	}
+
+	function add() {
+		if(updateLog_num < vision)
+			updateLog_num ++;
 //			if(updateLog_num == 2) {
 //				but_right.setAttribute("disabled", true);
 //				but_left.setAttribute("disabled", false);
@@ -601,37 +668,40 @@ transform: rotate(0deg);
 //				but_right.setAttribute("disabled", false);
 //				but_left.setAttribute("disabled", false);
 //			}
-			update_list();
-		}
-	
-		function update_list() {
-			if(updateLog_num == 1)
-				updateLogText.innerHTML = "版本号：v1.0\n更新日期：2020/5/5 13:21\n\n更新描述：\n新增：添加毛玻璃效果以及一些动画效果\n新增：百度搜索引擎\n新增：黑色主题\n新增：Logo及版权声明\n优化：搜索框动画Bug";
-			if(updateLog_num == 2)
-				updateLogText.innerHTML = "版本号：v1.1\n更新日期：2020/5/6 7:55\n\n更新描述：\n新增：一些动画效果\n新增：“关于”窗口\n新增：“历史”更新日志\n优化：动画Bug";
-			if(updateLog_num == 3)
-				updateLogText.innerHTML = "版本号：v1.11\n更新日期：2020/5/6 15:52\n\n更新描述：\n新增：一些图标效果\n本网站更名为“Quick HSearch”";
-			
-			if(updateLog_num == 4)
-				updateLogText.innerHTML = "版本号：v1.21\n更新日期：2020/5/6 17:07\n\n更新描述：\n新增：“Google”和“Bing”两种搜索方式\n新增：设置\n进入设置：双击搜索框，可选择搜索方式\n\n\n此网站正式发布在“Github”上!!!";
-			
-			if(updateLog_num == 5)
-				updateLogText.innerHTML = "版本号：v1.22\n更新日期：2020/5/7 9:09\n\n更新描述：\n优化：进入“设置”的算法\n优化：信息提示框，由“p”更改为“texarea”，控件位置重新排版\n更改：进入“设置”：双击搜索框，进入设置\n更改：退出“设置”：再次双击搜索框，退出设置";
+		update_list();
+	}
 
-			if(updateLog_num == 6)
-				updateLogText.innerHTML = "版本号：v1.23\n更新日期：2020/5/10 21:36\n\n更新描述：\n优化：“关于”界面的关闭图标\n优化：页面加载速度\n新增：“关于”界面的关闭图标的动态效果\n新增：“关于”界面的左右箭头的动态效果\n修复：“关于”界面在PC上显示位置错误的bug...\n修复：更新日志显示错误的bug";
+	function update_list() {
+		if(updateLog_num === 1)
+			updateLogText.innerHTML = "版本号：v1.0\n更新日期：2020/5/5 13:21\n\n更新描述：\n新增：添加毛玻璃效果以及一些动画效果\n新增：百度搜索引擎\n新增：黑色主题\n新增：Logo及版权声明\n优化：搜索框动画Bug";
+		if(updateLog_num === 2)
+			updateLogText.innerHTML = "版本号：v1.1\n更新日期：2020/5/6 7:55\n\n更新描述：\n新增：一些动画效果\n新增：“关于”窗口\n新增：“历史”更新日志\n优化：动画Bug";
+		if(updateLog_num === 3)
+			updateLogText.innerHTML = "版本号：v1.11\n更新日期：2020/5/6 15:52\n\n更新描述：\n新增：一些图标效果\n本网站更名为“Quick HSearch”";
 
-			if(updateLog_num == 7)
-				updateLogText.innerHTML = "版本号：v1.24\n更新日期：2020/5/11 16:02\n\n更新描述：\n修复：客户端字体缺失而导致显示错误的问题\n修复：搜索框在PC上显示的大小\n重做：Quick HSearch的图标，将其更改为动态图标\n新增：响应式demo，同时适应PC和Android";
+		if(updateLog_num === 4)
+			updateLogText.innerHTML = "版本号：v1.21\n更新日期：2020/5/6 17:07\n\n更新描述：\n新增：“Google”和“Bing”两种搜索方式\n新增：设置\n进入设置：双击搜索框，可选择搜索方式\n\n\n此网站正式发布在“Github”上!!!";
 
-		}
-	
-		function logoClick() {
-			About();			
-			titleTipbox.innerHTML = "关于";
-			updateLogText.innerHTML = "感谢您使用此网站\n此网站为Han的快捷搜索\n为Han本人开发及维护\n如有问题，请发送至\n“Tianzihan5357@163.com”\n谢谢您的配合！";
-			but_left.style.display = "none";
-			but_right.style.display = "none";
-		}
-	</script>
+		if(updateLog_num === 5)
+			updateLogText.innerHTML = "版本号：v1.22\n更新日期：2020/5/7 9:09\n\n更新描述：\n优化：进入“设置”的算法\n优化：信息提示框，由“p”更改为“texarea”，控件位置重新排版\n更改：进入“设置”：双击搜索框，进入设置\n更改：退出“设置”：再次双击搜索框，退出设置";
+
+		if(updateLog_num === 6)
+			updateLogText.innerHTML = "版本号：v1.23\n更新日期：2020/5/10 21:36\n\n更新描述：\n优化：“关于”界面的关闭图标\n优化：页面加载速度\n新增：“关于”界面的关闭图标的动态效果\n新增：“关于”界面的左右箭头的动态效果\n修复：“关于”界面在PC上显示位置错误的bug...\n修复：更新日志显示错误的bug";
+
+		if(updateLog_num === 7)
+			updateLogText.innerHTML = "版本号：v1.24\n更新日期：2020/5/11 16:02\n\n更新描述：\n修复：客户端字体缺失而导致显示错误的问题\n修复：搜索框在PC上显示的大小\n重做：Quick HSearch的图标，将其更改为动态图标\n新增：响应式demo，同时适应PC和Android";
+
+		if(updateLog_num === 8)
+			updateLogText.innerHTML = "版本号：v1.34\n更新日期：2020/5/12 8:59\n\n更新描述：\n优化：代码性能\n新增：关联词提示（注：退出搜索框需清除搜索框内容\n优化：html布局\n优化：关联词提示框会根据横竖屏自动更改大小\n优化：搜索框动画";
+
+	}
+
+	function logoClick() {
+		About();
+		titleTipbox.innerHTML = "关于";
+		updateLogText.innerHTML = "感谢您使用此网站\n此网站为Han的快捷搜索\n为Han本人开发及维护\n如有问题，请发送至\n“Tianzihan5357@163.com”\n谢谢您的配合！";
+		but_left.style.display = "none";
+		but_right.style.display = "none";
+	}
+</script>
 </html>
