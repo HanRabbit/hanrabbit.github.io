@@ -4,8 +4,6 @@
 	<title>Quick HSearch</title>
 	<meta charset="utf-8" />
 
-
-
 	<meta name="viewport" content="width=device-width,initial-scale=0.7,maximum-scale=0.7,minimum-scale=0.7,user-scalable=no">
 	<link rel="icon" href="./img/logo.ico" sizes="64x64" type="image/x-icon" />
 	<link rel="shortcut icon" href="./img/logo.ico" sizes="64x64" type="image/x-icon"/>
@@ -465,11 +463,7 @@
 	<img src="./img/Logo3.png" width="80" height="45" class="logo" id="logo" onClick="logoClick()" />
 
 	<br />
-	<div class="mainHolder" >
-		<div class="textHolder">
-			<input class="search-input" id="secarh-box" type="search" onmouseover="onMouseBox()" onmouseout="onOutBox()" placeholder="Search" onkeypress="onEnterSearch()" ondblclick="ondClick()" onclick="onClickBox()" onblur="onBlurBox()"/>
-		</div>
-	</div>
+		<input  class="search-input" id="secarh-box" type="text" onmouseover="onMouseBox()" onmouseout="onOutBox()" placeholder="Search" onkeypress="onEnterSearch()" ondblclick="ondClick()" onclick="onClickBox()" onblur="onBlurBox()"/>
 	<br />
 
 	<div class="tip" id="tip-box">
@@ -613,7 +607,8 @@
 		oUl.style.display = "block";
 		var list = data.s;
 		var str = '';
-		if (list.length > 0) {
+
+		if (list.length > 0 && searchbox.value !== "") {
 			list.forEach(function (ele, index) {
 				str += '<li><a class="keyWord" onclick="clearSearch()" target="_blank" href ="https://www.baidu.com/s?wd=' + ele + '">' + ele + '</li>';
 			})
