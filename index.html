@@ -583,17 +583,17 @@
 	searchbox.style.width = searchBox_width;
 
 	function BgChange1() {
-		setCookie("bgNum", "1", "100");
+		setCookie("bgNum", "1", "365");
 		updateCookieData();
 	}
 
 	function BgChange2() {
-		setCookie("bgNum", "2", "100");
+		setCookie("bgNum", "2", "365");
 		updateCookieData();
 	}
 
 	function BgChange3() {
-		setCookie("bgNum", "3", "100");
+		setCookie("bgNum", "3", "365");
 		updateCookieData();
 	}
 
@@ -630,28 +630,31 @@
 		oUl.style.visibility = 'hidden';
 	}
 
-	var searchMode = 2;
+	// var searchMode = "2";
 	updateSearchMode();
 	var noeClickFlag = 0;
 
 	function bing_C() {
-		searchMode = 1;
-
+		searchMode = "1";
+		setCookie("searchMode", "1", "365")
 		updateSearchMode();
 	}
 
 	function baidu_C() {
-		searchMode = 2;
+		searchMode = "2";
+		setCookie("searchMode", "2", "365")
 		updateSearchMode();
 	}
 
 	function google_C() {
-		searchMode = 3;
+		searchMode = "3";
+		setCookie("searchMode", "3", "365")
 		updateSearchMode();
 	}
 
 	function updateSearchMode() {
-		if(searchMode == 1) {
+		searchMode = getCookie("searchMode");
+		if(searchMode == "1") {
 			bing.style.transitionDelay = "0s";
 			baidu.style.transitionDelay = "0s";
 			google.style.transitionDelay = "0s";
@@ -661,17 +664,7 @@
 			google.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
 		}
 
-		if(searchMode == 2) {
-			bing.style.transitionDelay = "0s";
-			baidu.style.transitionDelay = "0s";
-			google.style.transitionDelay = "0s";
-
-			bing.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
-			baidu.style.backgroundColor = "rgba(40,250,58,0.76)";
-			google.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
-		}
-
-		if(searchMode == 3) {
+		else if(searchMode == "3") {
 			bing.style.transitionDelay = "0s";
 			baidu.style.transitionDelay = "0s";
 			google.style.transitionDelay = "0s";
@@ -680,12 +673,23 @@
 			baidu.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
 			google.style.backgroundColor = "rgba(40,250,58,0.76)";
 		}
+
+		else {
+			bing.style.transitionDelay = "0s";
+			baidu.style.transitionDelay = "0s";
+			google.style.transitionDelay = "0s";
+
+			bing.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
+			baidu.style.backgroundColor = "rgba(40,250,58,0.76)";
+			google.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
+		}
 //			searchbox.focus();
 	}
 
 	function ondClick() {
 		if(noeClickFlag == 0) {
 			noeClickFlag = 1;
+			updateSearchMode();
 			baidu.style.transitionDelay = ".2s";
 			google.style.transitionDelay = ".4s";
 			bing.style.visibility = "inherit";
