@@ -32,22 +32,26 @@
 		}
 
 		.search-input {
+			/*z-index: 1;*/
+			color: white;
+			position: relative;
+			margin: 0;
 			transition: 0.4s;
 			text-align: center;
 			margin-top: 150px;
-			height: 45px;
+			height: 50px;
 			width: 30%;
 			border-radius: 50px;
 			font-size: 18px;
 			outline: none;
-			border: 3px;
-			border-color: rgba(255,255,255,0.30);
-			background-color: rgba(0,0,0,0.50);
+			border: 3px rgba(255, 255, 255, 0.30);
+			background-color: rgba(0,0,0,0.6);
 			color: rgba(0,0,0,0.00);
 			box-shadow: rgba(0,0,0,.8) 1px 1px 10px;
 			background-position: center top;
 			background-size: cover;
-			outline: none;/*				border: 30px;*/
+			word-break: break-all;
+			overflow: hidden;
 		}
 
 		/*
@@ -85,7 +89,7 @@
 			display:none;
 		}
 		.Han-text {
-			font-family: Raleway;
+			font-family: Raleway,serif;
 			margin-left: 300px;
 			margin-top: -50px;
 			font-size: 8px;
@@ -100,6 +104,7 @@
 			width: 100%;
 			z-index: 100;
 			cursor:pointer;
+			font-family: "microsoft yahei light",serif;
 		}
 
 		.myselfAbout:hover {
@@ -154,7 +159,7 @@
 			margin-left: 0;
 			filter: blur(100px);
 			background-color: rgba(0,0,0,0.00);
-			border-radius: 20px;
+			border-radius: 15px;
 			height: 350px;
 			box-shadow: 2px 2px 10px 2px rgba(0, 0, 0,.6);
 			text-align: center;
@@ -175,7 +180,7 @@
 			/*		box-shadow: rgba(0, 0, 0,.8) -1px -1px 10px;*/
 			border-radius: 5px;
 			text-align: center;
-			/*		font-family:"Microsoft JhengHei UI";*/
+			font-family: microsoft yahei light,fantasy;
 			font-size: 15px;
 			resize: none;
 			outline: none;
@@ -272,9 +277,10 @@
 		/*}*/
 
 		.bing-search-but {
+			position: absolute;
 			transition: 0.3s;
-			margin-left: -15px;
-			margin-bottom: 8px;
+			margin-left: -100px;
+			margin-top: 5px;
 			background: rgba(0,0,0,0.55);
 			border: 50px;
 			border-radius: 3px;
@@ -287,9 +293,11 @@
 		}
 
 		.baidu-search-but {
+			position: absolute;
 			transition: 0.3s;
 			transition-delay: 0.2s;
-			margin-left: 30px;
+			margin-left: -30px;
+			margin-top: 5px;
 			background: rgba(0,0,0,0.55);
 			border: 50px;
 			border-radius: 3px;
@@ -302,10 +310,11 @@
 		}
 
 		.google-search-but {
+			position: absolute;
 			transition: 0.3s;
 			transition-delay: 0.4s;
-			margin-top: 3px;
-			margin-left: 30px;
+			margin-top: 5px;
+			margin-left: 40px;
 			background: rgba(0,0,0,0.55);
 			border: 50px;
 			border-radius: 3px;
@@ -326,6 +335,7 @@
 			background: rgba(0, 0, 0, .5);
 			box-shadow: rgba(0, 0, 0, .7) 1px 1px 10px;
 			visibility: hidden;
+			display: none;
 		}
 
 		.keyWord {
@@ -346,25 +356,120 @@
 			color: black;
 		}
 
+		.BgImg1 {
+			transition: .2s;
+			position: absolute;
+			width: 120px;
+			height: 70px;
+			/*border: 100px;*/
+			border-radius: 5px;
+			/*margin: auto -300px;*/
+			margin-left: -220px;
+			/*top: 86%;*/
+			border-style: solid;
+			border-color: white;
+			border-width: 1px;
+			visibility: hidden;
+			opacity: 0;
+			top: 50%;
+		}
+
+
+		.BgImg1:hover {
+			/*transform: scale(1.1);*/
+			transform: scale(1.1);
+			animation: 0.5s BgImgHover;
+			border-color: rgba(0 ,0 ,0 ,0);
+		}
+
+		.BgImg1:active {
+			transition: .2s;
+			transform: scale(1);
+		}
+
+		@keyframes BgImgHover {
+			0% {transform: scale(1.0);}
+			50% {transform: scale(1.2);}
+			100% {transform: scale(1.1);}
+		}
+
+		.BgImg2 {
+			transition: .2s;
+			position: absolute;
+			width: 120px;
+			height: 70px;
+			/*border: 100px;*/
+			border-radius: 5px;
+			margin: auto -70px;
+			/*top: 86%;*/
+			border-style: solid;
+			border-color: white;
+			border-width: 1px;
+			visibility: hidden;
+			top: 50%;
+			opacity: 0;
+		}
+
+		.BgImg2:hover {
+			transform: scale(1.1);
+			animation: 0.5s BgImgHover;
+			border-color: rgba(0 ,0 ,0 ,0);
+		}
+
+		.BgImg2:active {
+			transition: .2s;
+			transform: scale(1);
+		}
+
+		.BgImg3 {
+			transition: .2s;
+			position: absolute;
+			width: 120px;
+			height: 70px;
+			/*border: 100px;*/
+			border-radius: 5px;
+			/*left: 65.3%;*/
+			margin-left: 80px;
+			/*top: 86%;*/
+			border-style: solid;
+			border-color: white;
+			border-width: 1px;
+			visibility: hidden;
+			top: 50%;
+			opacity: 0;
+		}
+
+		.BgImg3:hover {
+			transform: scale(1.1);
+			animation: 0.5s BgImgHover;
+			border-color: rgba(0 ,0 ,0 ,0);
+		}
+
+		.BgImg3:active {
+			transition: .2s;
+			transform: scale(1);
+		}
 	</style>
 </head>
 
 <body bgcolor="black">
 <center>
-	<img class="bg" id="bg" src="./img/background/BG_A.jpg" />
+	<img class="bg" id="bg" src="./img/background/BG_B.jpg" />
 
 	<div class="titleBox">
 		<h3 class="text-title" style="margin-left: 30px">Quick HSearch<img src="img/searchLogo.gif" style="margin-left: -10px; height: 50px; width: 50px" />  </h3>
 		<h5 class="Han-text">By Han</h5>
 	</div>
 
-	<a class="myselfAbout" onClick="About()" >© 2020 「田梓涵」   |   v1.34</a>
+	<a class="myselfAbout" onClick="About()" >© 2020「田梓涵」 v1.44</a>
 	<img src="./img/Logo3.png" width="80" height="45" class="logo" id="logo" onClick="logoClick()" />
 
 	<br />
-
-	<input class="search-input" id="secarh-box" type="search" onmouseover="onMouseBox()" onmouseout="onOutBox()" placeholder="Search" onkeypress="onEnterSearch()" ondblclick="ondClick()" onclick="onClickBox()" onblur="onBlurBox()"/>
-
+	<div class="mainHolder" >
+		<div class="textHolder">
+			<input class="search-input" id="secarh-box" type="search" onmouseover="onMouseBox()" onmouseout="onOutBox()" placeholder="Search" onkeypress="onEnterSearch()" ondblclick="ondClick()" onclick="onClickBox()" onblur="onBlurBox()"/>
+		</div>
+	</div>
 	<br />
 
 	<div class="tip" id="tip-box">
@@ -383,11 +488,17 @@
 	<button class="baidu-search-but" id="baidu" onClick="baidu_C()"><svg t="1588752335833" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1934" width="32" height="32"><path d="M153.6 614.4c-57.4464 0-102.4-67.6864-102.4-154.1632s44.9536-154.1632 102.4-154.1632 102.4 67.6864 102.4 154.1632-44.9536 154.1632-102.4 154.1632zM153.6 357.2736c-24.1664 0-51.2 44.032-51.2 102.9632s27.0336 102.9632 51.2 102.9632 51.2-44.032 51.2-102.9632-27.0336-102.9632-51.2-102.9632zM358.2976 409.6c-57.344 0-102.2976-67.4816-102.2976-153.6s44.9536-153.6 102.2976-153.6 102.2976 67.4816 102.2976 153.6-44.9536 153.6-102.2976 153.6zM358.2976 153.6c-24.1152 0-51.0976 43.776-51.0976 102.4s26.9824 102.4 51.0976 102.4 51.0976-43.776 51.0976-102.4-26.9824-102.4-51.0976-102.4zM614.4 409.6c-57.4464 0-102.4-67.4816-102.4-153.6s44.9536-153.6 102.4-153.6 102.4 67.4816 102.4 153.6-44.9536 153.6-102.4 153.6zM614.4 153.6c-24.1664 0-51.2 43.776-51.2 102.4s27.0336 102.4 51.2 102.4 51.2-43.776 51.2-102.4-27.0336-102.4-51.2-102.4zM819.2 614.4c-57.4464 0-102.4-67.6864-102.4-154.1632s44.9536-154.1632 102.4-154.1632 102.4 67.6864 102.4 154.1632-44.9536 154.1632-102.4 154.1632zM819.2 357.2736c-24.1664 0-51.2 44.032-51.2 102.9632s27.0336 102.9632 51.2 102.9632 51.2-44.032 51.2-102.9632-27.0336-102.9632-51.2-102.9632zM665.6 921.6c-44.4416 0-74.496-15.0528-100.9664-28.3136-24.576-12.288-45.7728-22.8864-78.2336-22.8864-32.3072 0-53.504 10.5984-78.08 22.8864-26.5728 13.2608-56.6784 28.3136-101.12 28.3136-28.4672 0-55.2448-15.5136-73.5744-42.5472-32.1024-47.4112-32.6144-119.3472-1.4336-197.376 56.1664-140.3904 148.7872-220.8768 254.1568-220.8768s198.0416 80.4864 254.1568 220.8768c31.1808 78.0288 30.6688 149.9648-1.4336 197.376-18.2784 27.0336-45.1072 42.5472-73.5744 42.5472zM486.4 819.2c44.4928 0 74.5984 15.0528 101.12 28.3136 24.5248 12.288 45.7216 22.8864 78.08 22.8864 11.1616 0 22.528-7.3216 31.1808-20.0192 22.1184-32.6144 20.6848-88.576-3.7376-149.6576-47.9744-119.9104-123.2896-188.7232-206.6432-188.7232s-158.6688 68.7616-206.6432 188.7232c-24.4224 61.0816-25.8048 117.0432-3.7376 149.6576 8.6016 12.7488 19.968 20.0192 31.1808 20.0192 32.3584 0 53.064-10.5984 78.2336-22.9376 26.5216-13.2608 56.6272-28.3136 100.9664-28.3136z" p-id="1935" fill="#ffffff"></path></svg></button>
 
 	<button class="google-search-but" id="google" onClick="google_C()"><svg t="1588752380025" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2744" width="32" height="32"><path d="M680.97024 343.06048A238.26432 238.26432 0 0 0 512 273.05984c-131.93216 0-238.92992 106.97728-238.92992 238.92992S380.06784 750.94016 512 750.94016c120.29952 0 219.5968-89.05728 236.19584-204.81024H512v-68.27008h307.2v34.12992a313.1392 313.1392 0 0 1-1.9968 34.14016C800.2048 699.74016 670.12608 819.21024 512 819.21024c-169.66656 0-307.2-137.53344-307.2-307.22048 0-169.64608 137.53344-307.2 307.2-307.2 84.82816 0 161.62816 34.39616 217.23136 89.99936l-48.26112 48.27136z" p-id="2745" fill="#ffffff"></path></svg></button>
+
+	<div class="setting-box" >
+		<img class="BgImg1" id="bg1" onclick="BgChange1()" src="img/background/BG_A.jpg"/>
+		<img class="BgImg2" id="bg2" onclick="BgChange2()" src="img/background/BG_B.jpg"/>
+		<img class="BgImg3" id="bg3" onclick="BgChange3()" src="img/background/BG_C.jpg"/>
+	</div>
 </center>
 </body>
 <!--suppress JSValidateTypes -->
 <script>
-	var vision = 8;
+	var vision = 9;
 
 	var searchbox = document.getElementById("secarh-box");
 	var bgImg = document.getElementById("bg");
@@ -413,15 +524,78 @@
 
 	var titleTipbox = document.getElementById("title-tipbox");
 
+	var isIn = 0;
+
+	var Bg1 = document.getElementById("bg1");
+	var Bg2 = document.getElementById("bg2");
+	var Bg3 = document.getElementById("bg3");
+
+	var searchBox_width;
+	var searchBox_clickWidth;
+
+	updateCookieData();
+
+	function setCookie(cname,cvalue,exdays)
+	{
+		var d = new Date();
+		d.setTime(d.getTime()+(exdays*24*60*60*1000));
+		var expires = "expires="+d.toGMTString();
+		document.cookie = cname + "=" + cvalue + "; " + expires;
+	}
+
+	function getCookie(cname)
+	{
+		var name = cname + "=";
+		var ca = document.cookie.split(';');
+		for(var i=0; i<ca.length; i++)
+		{
+			var c = ca[i].trim();
+			if (c.indexOf(name)===0) return c.substring(name.length,c.length);
+		}
+		return "";
+	}
+
+	// setCookie("bgNum", "2", "100");
+
 	var winX = window.innerWidth;
 	var winY = window.innerHeight;
 
-	var isIn = 0;
+	if(winX <= winY) {
+		searchBox_width = "40%";
+		searchBox_clickWidth = "80%";
+	}
+	else {
+		searchBox_width = "17%";
+		searchBox_clickWidth = "35%";
+	}
 
-	if(winX <= winY)
-		searchbox.style.width = "40%";
-	else
-		searchbox.style.width = "17%";
+	function updateCookieData() {
+		var CookieBgImg = getCookie("bgNum");
+
+		if(CookieBgImg === "2")
+			bgImg.src = "./img/background/BG_B.jpg";
+		else if(CookieBgImg === "3")
+			bgImg.src = "./img/background/BG_C.jpg";
+		else
+			bgImg.src = "./img/background/BG_A.jpg";
+	}
+
+	searchbox.style.width = searchBox_width;
+
+	function BgChange1() {
+		setCookie("bgNum", "1", "100");
+		updateCookieData();
+	}
+
+	function BgChange2() {
+		setCookie("bgNum", "2", "100");
+		updateCookieData();
+	}
+
+	function BgChange3() {
+		setCookie("bgNum", "3", "100");
+		updateCookieData();
+	}
 
 	var oUl = document.getElementById('ul')
 	searchbox.onkeyup = function () {
@@ -436,6 +610,7 @@
 	}
 	function aa(data) {
 		oUl.style.visibility = "inherit";
+		oUl.style.display = "block";
 		var list = data.s;
 		var str = '';
 		if (list.length > 0) {
@@ -445,6 +620,7 @@
 			oUl.innerHTML = str;
 		} else {
 			oUl.style.visibility = 'hidden';
+			oUl.style.display = "none";
 			isIn = 0;
 		}
 	}
@@ -460,6 +636,7 @@
 
 	function bing_C() {
 		searchMode = 1;
+
 		updateSearchMode();
 	}
 
@@ -475,18 +652,30 @@
 
 	function updateSearchMode() {
 		if(searchMode == 1) {
+			bing.style.transitionDelay = "0s";
+			baidu.style.transitionDelay = "0s";
+			google.style.transitionDelay = "0s";
+
 			bing.style.backgroundColor = "rgba(40,250,58,0.76)";
 			baidu.style.backgroundColor = "rgba(0,0,0,0.55)";
 			google.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
 		}
 
 		if(searchMode == 2) {
+			bing.style.transitionDelay = "0s";
+			baidu.style.transitionDelay = "0s";
+			google.style.transitionDelay = "0s";
+
 			bing.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
 			baidu.style.backgroundColor = "rgba(40,250,58,0.76)";
 			google.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
 		}
 
 		if(searchMode == 3) {
+			bing.style.transitionDelay = "0s";
+			baidu.style.transitionDelay = "0s";
+			google.style.transitionDelay = "0s";
+
 			bing.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
 			baidu.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
 			google.style.backgroundColor = "rgba(40,250,58,0.76)";
@@ -497,22 +686,56 @@
 	function ondClick() {
 		if(noeClickFlag == 0) {
 			noeClickFlag = 1;
+			baidu.style.transitionDelay = ".2s";
+			google.style.transitionDelay = ".4s";
 			bing.style.visibility = "inherit";
 			baidu.style.visibility = "inherit";
 			google.style.visibility = "inherit";
 			bing.style.opacity = "1";
 			baidu.style.opacity = "1";
 			google.style.opacity = "1";
+
+			Bg1.style.transition = ".2s";
+			Bg1.style.top = "86%";
+			Bg1.style.opacity = "1";
+			Bg1.style.visibility = "inherit";
+
+			Bg2.style.transition = ".4s";
+			Bg2.style.top = "86%";
+			Bg2.style.opacity = "1";
+			Bg2.style.visibility = "inherit";
+
+			Bg3.style.transition = ".6s";
+			Bg3.style.top = "86%";
+			Bg3.style.opacity = "1";
+			Bg3.style.visibility = "inherit";
 		}
 
 		else {
 			noeClickFlag = 0;
+			baidu.style.transitionDelay = ".2s";
+			google.style.transitionDelay = ".4s";
 			bing.style.visibility = "hidden";
 			baidu.style.visibility = "hidden";
 			google.style.visibility = "hidden";
 			bing.style.opacity = "0";
 			baidu.style.opacity = "0";
 			google.style.opacity = "0";
+
+			Bg1.style.transition = ".2s";
+			Bg1.style.top = "50%";
+			Bg1.style.opacity = "0";
+			Bg1.style.visibility = "hidden";
+
+			Bg2.style.transition = ".4s";
+			Bg2.style.top = "50%";
+			Bg2.style.opacity = "0";
+			Bg2.style.visibility = "hidden";
+
+			Bg3.style.transition = ".6s";
+			Bg3.style.top = "50%";
+			Bg3.style.opacity = "0";
+			Bg3.style.visibility = "hidden";
 		}
 	}
 
@@ -527,7 +750,7 @@
 			oUl.style.visibility = 'hidden';
 			searchbox.style.marginTop = "150px";
 			searchbox.style.height = "50px";
-			searchbox.style.backgroundColor = "rgba(0,0,0,0.50)";
+			searchbox.style.backgroundColor = "rgba(0,0,0,0.60)";
 			searchbox.style.color = "rgba(0, 0, 0, 0)";
 			bgImg.style.filter = "blur(0px)";
 			bgImg.style.transform = ("scale(1.0)");
@@ -539,10 +762,7 @@
 			baidu.style.opacity = "0";
 			google.style.opacity = "0";
 			isClick = 0;
-			if(winX<=winY)
-				searchbox.style.width = "40%";
-			else
-				searchbox.style.width = "17%";
+			searchbox.style.width = searchBox_width;
 		}
 
 //			changeMode = 0;
@@ -553,29 +773,15 @@
 		var winX = window.innerWidth;
 		var winY = window.innerHeight;
 
-		if(winX<=winY) {
-			searchbox.style.height = "55px";
-			searchbox.style.width = "80%";
-			searchbox.style.marginTop = "145px";
-			searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
-			searchbox.style.color = "white";
-			bgImg.style.filter = "blur(8px)";
-			bgImg.style.transform=("scale(1.2)");
-			oUl.style.width = "75%";
-			isClick = 1;
-		}
-
-		else {
-			searchbox.style.height = "55px";
-			searchbox.style.width = "35%";
-			searchbox.style.marginTop = "145px";
-			searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
-			searchbox.style.color = "white";
-			bgImg.style.filter = "blur(8px)";
-			bgImg.style.transform = ("scale(1.2)");
-			oUl.style.width = "30%";
-			isClick = 1;
-		}
+		searchbox.style.height = "55px";
+		searchbox.style.width = searchBox_clickWidth;
+		searchbox.style.marginTop = "145px";
+		searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
+		searchbox.style.color = "white";
+		bgImg.style.filter = "blur(8px)";
+		bgImg.style.transform=("scale(1.2)");
+		oUl.style.width = searchBox_clickWidth;
+		isClick = 1;
 	}
 
 	function onMouseBox() {
@@ -583,11 +789,16 @@
 			var winX = window.innerWidth;
 			var winY = window.innerHeight;
 
-			if(winX<=winY)
+			if(winX <= winY) {
+				searchBox_width = "40%";
+				searchBox_clickWidth = "80%";
 				searchbox.style.width = "60%";
-
-			else
+			}
+			else {
+				searchBox_width = "17%";
+				searchBox_clickWidth = "35%";
 				searchbox.style.width = "26%";
+			}
 		}
 	}
 
@@ -596,11 +807,16 @@
 			var winX = window.innerWidth;
 			var winY = window.innerHeight;
 
-			if(winX<=winY)
+			if(winX <= winY) {
+				searchBox_width = "40%";
+				searchBox_clickWidth = "80%";
 				searchbox.style.width = "40%";
-
-			else
+			}
+			else {
+				searchBox_width = "17%";
+				searchBox_clickWidth = "35%";
 				searchbox.style.width = "17%";
+			}
 		}
 	}
 
@@ -623,7 +839,7 @@
 		tipbox.style.backgroundColor = "rgba(255,255,255,0.8)";
 //			tipbox.style.display = "block";
 		tipbox.style.visibility = "inherit";
-		updateLogText.innerHTML = "版本号：v1.34\n更新日期：2020/5/12 8:59\n\n更新描述：\n优化：代码性能\n新增：关联词提示（注：退出搜索框需清除搜索框内容\n优化：html布局\n优化：关联词提示框会根据横竖屏自动更改大小\n优化：搜索框动画";
+		updateLogText.innerHTML = "版本号：v1.44\n更新日期：2020/5/18 11:17\n\n更新描述：\n新增：2款壁纸（注：可在“设置”中切换）\n新增：Cookie，可存储用户设置（包括壁纸，搜索方式 等）\n新增：进入“设置”界面后壁纸的动态效果\n优化：搜索方式的动画，消除延迟\n优化：“关于”界面字体不统一的问题\n优化：代码逻辑";
 		but_left.style.display = "inline";
 		but_right.style.display = "inline";
 
@@ -632,7 +848,7 @@
 
 	function changeAboutWin() {
 		var winX = window.innerWidth/2-260;
-		var winY = window.innerHeight-1060;
+		var winY = window.innerHeight/2 - 600;
 
 		tipbox.style.marginLeft = winX;
 		tipbox.style.marginTop = winY;
@@ -703,6 +919,9 @@
 
 		if(updateLog_num === 8)
 			updateLogText.innerHTML = "版本号：v1.34\n更新日期：2020/5/12 8:59\n\n更新描述：\n优化：代码性能\n新增：关联词提示（注：退出搜索框需清除搜索框内容\n优化：html布局\n优化：关联词提示框会根据横竖屏自动更改大小\n优化：搜索框动画";
+
+		if(updateLog_num === 9)
+			updateLogText.innerHTML = "版本号：v1.44\n更新日期：2020/5/18 11:17\n\n更新描述：\n新增：2款壁纸（注：可在“设置”中切换）\n新增：Cookie，可存储用户设置（包括壁纸，搜索方式 等）\n新增：进入“设置”界面后壁纸的动态效果\n优化：搜索方式的动画，消除延迟\n优化：“关于”界面字体不统一的问题\n优化：代码逻辑";
 
 	}
 
