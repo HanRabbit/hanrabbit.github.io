@@ -687,9 +687,19 @@
 	}
 
 	function ondClick() {
-		searchbox.onfocus="this.blur()";
 		if(noeClickFlag == 0) {
 			noeClickFlag = 1;
+			searchbox.blur();
+			searchbox.style.height = "55px";
+			searchbox.style.width = searchBox_clickWidth;
+			searchbox.style.marginTop = "145px";
+			searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
+			searchbox.style.color = "white";
+			bgImg.style.filter = "blur(8px)";
+			bgImg.style.transform=("scale(1.2)");
+			oUl.style.width = searchBox_clickWidth;
+			isClick = 1;
+
 			updateSearchMode();
 			baidu.style.transitionDelay = ".2s";
 			google.style.transitionDelay = ".4s";
