@@ -687,6 +687,7 @@
 	}
 
 	function ondClick() {
+		searchbox.onfocus="this.blur()";
 		if(noeClickFlag == 0) {
 			noeClickFlag = 1;
 			updateSearchMode();
