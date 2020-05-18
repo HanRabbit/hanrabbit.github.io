@@ -355,6 +355,10 @@
 			color: black;
 		}
 
+		.BgImg_box {
+			margin-left: -40px;
+		}
+
 		.BgImg1 {
 			transition: .2s;
 			position: absolute;
@@ -363,7 +367,7 @@
 			/*border: 100px;*/
 			border-radius: 5px;
 			/*margin: auto -300px;*/
-			margin-left: -220px;
+			margin-left: -185px;
 			/*top: 86%;*/
 			border-style: solid;
 			border-color: white;
@@ -399,7 +403,7 @@
 			height: 70px;
 			/*border: 100px;*/
 			border-radius: 5px;
-			margin: auto -70px;
+			margin: auto -35px;
 			/*top: 86%;*/
 			border-style: solid;
 			border-color: white;
@@ -428,7 +432,7 @@
 			/*border: 100px;*/
 			border-radius: 5px;
 			/*left: 65.3%;*/
-			margin-left: 80px;
+			margin-left: 115px;
 			/*top: 86%;*/
 			border-style: solid;
 			border-color: white;
@@ -448,6 +452,72 @@
 			transition: .2s;
 			transform: scale(1);
 		}
+
+		.--- {
+			/*position: relative;*/
+			transition: .3s;
+			opacity: 0;
+			visibility: hidden;
+			margin-top: 445px;
+			background: rgba(255, 255, 255, .5);
+			height: 1px;
+			width: 200px;
+		}
+
+		input[type='checkbox'].switch{
+			outline: none;
+			appearance: none;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			position: relative;
+			width: 40px;
+			height: 20px;
+			background: #ccc;
+			border-radius: 10px;
+			transition: border-color .3s, background-color .3s;
+		}
+
+		input[type='checkbox'].switch::after {
+			content: '';
+			display: inline-block;
+			width: 1rem;
+			height:1rem;
+			border-radius: 50%;
+			background: #fff;
+			box-shadow: #999 0 0 10px;
+			transition:.4s;
+			top: 2px;
+			position: absolute;
+			left: 2px;
+		}
+
+		input[type='checkbox'].switch:checked {
+			background: rgb(0, 163, 255);
+		}
+		/* 当input[type=checkbox]被选中时：伪元素显示下面样式 位置发生变化 */
+		input[type='checkbox'].switch:checked::after {
+			content: '';
+			position: absolute;
+			left: 55%;
+			top: 2px;
+		}
+
+		.LowMode {
+			transition: .3s;
+			transition-delay: 0.2s;
+			opacity: 0;
+			position: relative;
+			visibility: hidden;
+			top: 430px;
+			color: white;
+			right: 0;
+			font-family: "microsoft yahei light", "黑体", PingFangSC-Regular, Helvetica, sans-serif, 等线;;
+		}
+
+		.switch {
+			top: 7px;
+			left: 20px;
+		}
 	</style>
 </head>
 
@@ -456,7 +526,7 @@
 	<img class="bg" id="bg"/>
 
 	<div class="titleBox">
-		<h3 class="text-title" style="margin-left: 30px">Quick HSearch<img src="img/searchLogo.gif" style="margin-left: -10px; height: 50px; width: 50px" />  </h3>
+		<h3 class="text-title" style="margin-left: 30px">Quick HSearch<img src="./img/searchLogo.gif" style="margin-left: -10px; height: 50px; width: 50px" />  </h3>
 		<h5 class="Han-text">By Han</h5>
 	</div>
 
@@ -485,9 +555,16 @@
 	<button class="google-search-but" id="google" onClick="google_C()"><svg t="1588752380025" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2744" width="32" height="32"><path d="M680.97024 343.06048A238.26432 238.26432 0 0 0 512 273.05984c-131.93216 0-238.92992 106.97728-238.92992 238.92992S380.06784 750.94016 512 750.94016c120.29952 0 219.5968-89.05728 236.19584-204.81024H512v-68.27008h307.2v34.12992a313.1392 313.1392 0 0 1-1.9968 34.14016C800.2048 699.74016 670.12608 819.21024 512 819.21024c-169.66656 0-307.2-137.53344-307.2-307.22048 0-169.64608 137.53344-307.2 307.2-307.2 84.82816 0 161.62816 34.39616 217.23136 89.99936l-48.26112 48.27136z" p-id="2745" fill="#ffffff"></path></svg></button>
 
 	<div class="setting-box" >
-		<img class="BgImg1" id="bg1" onclick="BgChange1()" src="https://hanrabbit.github.io/img/background/BG_A.jpg"/>
-		<img class="BgImg2" id="bg2" onclick="BgChange2()" src="https://hanrabbit.github.io/img/background/BG_B.jpg"/>
-		<img class="BgImg3" id="bg3" onclick="BgChange3()" src="https://hanrabbit.github.io/img/background/BG_C.jpg"/>
+		<div class="BgImg_box" >
+			<img class="BgImg1" id="bg1" onclick="BgChange1()" src="./img/background/BG_A.jpg"/>
+			<img class="BgImg2" id="bg2" onclick="BgChange2()" src="./img/background/BG_B.jpg"/>
+			<img class="BgImg3" id="bg3" onclick="BgChange3()" src="./img/background/BG_C.jpg"/>
+		</div>
+
+		<p class="LowMode" id="LowMode_text">低配置模式
+			<input class="switch" type="checkbox" id="LowMode" onclick="LowMode_Click()" />
+			<div class="---" id="---"></div>
+		</p>
 	</div>
 </center>
 </body>
@@ -525,12 +602,39 @@
 	var Bg2 = document.getElementById("bg2");
 	var Bg3 = document.getElementById("bg3");
 
+	var LowMode = document.getElementById("LowMode");
+
 	var searchBox_width;
 	var searchBox_clickWidth;
+
+	var LowModeIsChecked = 0;
+
+	var LowModeText = document.getElementById("LowMode_text");
+	var ___ = document.getElementById("---");
 
 	searchMode = getCookie("searchMode");
 
 	updateCookieData();
+	updateLowMode();
+
+	function LowMode_Click() {
+		if(LowMode.checked)
+			setCookie("LowMode", "1", "365");
+		else
+			setCookie("LowMode", "0", "365");
+		updateLowMode()
+	}
+
+	function updateLowMode() {
+		if(getCookie("LowMode") === "1") {
+			LowModeIsChecked = 1;
+			LowMode.checked = true;
+		}
+		else {
+			LowModeIsChecked = 0;
+			LowMode.checked = false;
+		}
+	}
 
 	function setCookie(cname,cvalue,exdays)
 	{
@@ -570,11 +674,11 @@
 		var CookieBgImg = getCookie("bgNum");
 
 		if(CookieBgImg === "2")
-			bgImg.src = "https://hanrabbit.github.io/img/background/BG_B.jpg";
+			bgImg.src = "./img/background/BG_B.jpg";
 		else if(CookieBgImg === "3")
-			bgImg.src = "https://hanrabbit.github.io/img/background/BG_C.jpg";
+			bgImg.src = "./img/background/BG_C.jpg";
 		else
-			bgImg.src = "https://hanrabbit.github.io/img/background/BG_A.jpg";
+			bgImg.src = "./img/background/BG_A.jpg";
 	}
 
 	searchbox.style.width = searchBox_width;
@@ -689,7 +793,6 @@
 		if(noeClickFlag == 0) {
 			noeClickFlag = 1;
 			onClickBox();
-
 			updateSearchMode();
 			baidu.style.transitionDelay = ".2s";
 			google.style.transitionDelay = ".4s";
@@ -714,6 +817,12 @@
 			Bg3.style.top = "86%";
 			Bg3.style.opacity = "1";
 			Bg3.style.visibility = "inherit";
+
+			LowModeText.style.visibility = "inherit";
+			LowModeText.style.opacity = "1";
+			LowModeText.style.transitionDelay = "0.3s";
+			___.style.visibility = "inherit";
+			___.style.opacity = "1";
 		}
 
 		else {
@@ -742,6 +851,12 @@
 			Bg3.style.top = "50%";
 			Bg3.style.opacity = "0";
 			Bg3.style.visibility = "hidden";
+
+			LowModeText.style.transitionDelay = "0s";
+			LowModeText.style.visibility = "hidden";
+			LowModeText.style.opacity = "0";
+			___.style.visibility = "hidden";
+			___.style.opacity = "0";
 		}
 	}
 
@@ -779,15 +894,28 @@
 		var winX = window.innerWidth;
 		var winY = window.innerHeight;
 
-		searchbox.style.height = "55px";
-		searchbox.style.width = searchBox_clickWidth;
-		searchbox.style.marginTop = "145px";
-		searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
-		searchbox.style.color = "white";
-		bgImg.style.filter = "blur(8px)";
-		bgImg.style.transform=("scale(1.2)");
-		oUl.style.width = searchBox_clickWidth;
-		isClick = 1;
+		if(LowModeIsChecked == 0) {
+			searchbox.style.height = "55px";
+			searchbox.style.width = searchBox_clickWidth;
+			searchbox.style.marginTop = "145px";
+			searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
+			searchbox.style.color = "white";
+			bgImg.style.filter = "blur(8px)";
+			bgImg.style.transform = ("scale(1.2)");
+			oUl.style.width = searchBox_clickWidth;
+			isClick = 1;
+		}
+		else {
+			searchbox.style.height = "55px";
+			searchbox.style.width = searchBox_clickWidth;
+			searchbox.style.marginTop = "145px";
+			searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
+			searchbox.style.color = "white";
+			// bgImg.style.filter = "blur(8px)";
+			// bgImg.style.transform = ("scale(1.2)");
+			oUl.style.width = searchBox_clickWidth;
+			isClick = 1;
+		}
 	}
 
 	function onMouseBox() {
