@@ -149,6 +149,7 @@
 		}
 
 		.tip {
+			z-index: 1;
 			position: fixed;
 			visibility: hidden;
 			transition: 0.3s;
@@ -375,7 +376,7 @@
 
 		.BgImg1:hover {
 			/*transform: scale(1.1);*/
-			transform: scale(1.1);
+			transform: scale(1.15);
 			animation: 0.5s BgImgHover;
 			border-color: rgba(0 ,0 ,0 ,0);
 		}
@@ -388,7 +389,7 @@
 		@keyframes BgImgHover {
 			0% {transform: scale(1.0);}
 			50% {transform: scale(1.2);}
-			100% {transform: scale(1.1);}
+			100% {transform: scale(1.15);}
 		}
 
 		.BgImg2 {
@@ -409,7 +410,7 @@
 		}
 
 		.BgImg2:hover {
-			transform: scale(1.1);
+			transform: scale(1.15);
 			animation: 0.5s BgImgHover;
 			border-color: rgba(0 ,0 ,0 ,0);
 		}
@@ -438,7 +439,7 @@
 		}
 
 		.BgImg3:hover {
-			transform: scale(1.1);
+			transform: scale(1.15);
 			animation: 0.5s BgImgHover;
 			border-color: rgba(0 ,0 ,0 ,0);
 		}
@@ -526,6 +527,8 @@
 
 	var searchBox_width;
 	var searchBox_clickWidth;
+
+	searchMode = getCookie("searchMode");
 
 	updateCookieData();
 
@@ -682,18 +685,10 @@
 	}
 
 	function ondClick() {
+		searchbox.blur();
 		if(noeClickFlag == 0) {
 			noeClickFlag = 1;
-			searchbox.blur();
-			searchbox.style.height = "55px";
-			searchbox.style.width = searchBox_clickWidth;
-			searchbox.style.marginTop = "145px";
-			searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
-			searchbox.style.color = "white";
-			bgImg.style.filter = "blur(8px)";
-			bgImg.style.transform=("scale(1.2)");
-			oUl.style.width = searchBox_clickWidth;
-			isClick = 1;
+			onClickBox();
 
 			updateSearchMode();
 			baidu.style.transitionDelay = ".2s";
@@ -723,6 +718,7 @@
 
 		else {
 			noeClickFlag = 0;
+			onBlurBox();
 			baidu.style.transitionDelay = ".2s";
 			google.style.transitionDelay = ".4s";
 			bing.style.visibility = "hidden";
@@ -755,7 +751,7 @@
 		var winY = window.innerHeight;
 
 
-		if (noeClickFlag == 0 && isIn == 0) {
+		if (noeClickFlag === 0 && isIn === 0) {
 			searchbox.value = "";
 			oUl.style.visibility = 'hidden';
 			searchbox.style.marginTop = "150px";
@@ -857,11 +853,11 @@
 	}
 
 	function changeAboutWin() {
-		var winX = window.innerWidth/2-260;
-		var winY = window.innerHeight/2 - 600;
+		const winX = window.innerWidth/2-250;
+		const winY = window.innerHeight/3.8;
 
-		tipbox.style.marginLeft = winX;
-		tipbox.style.marginTop = winY;
+		tipbox.style.left = winX;
+		tipbox.style.top = winY;
 	}
 
 	//		function About_thanks() {
