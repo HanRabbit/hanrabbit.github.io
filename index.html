@@ -77,8 +77,8 @@
 			height: 100%;
 			object-fit: cover;
 			display: block;
+			filter: blur(0px);
 			/*                 filter: blur(10px); */
-			position: absolute;
 			transform: scale(1.0);
 			outline: none;
 		}
@@ -534,7 +534,7 @@
 		<h5 class="Han-text">By Han</h5>
 	</div>
 
-	<a class="myselfAbout" onClick="About()" >© 2020「田梓涵」 v1.44</a>
+	<a class="myselfAbout" onClick="About()" >© 2020「田梓涵」 v1.45</a>
 	<img src="./img/Logo3.png" width="80" height="45" class="logo" id="logo" onClick="logoClick()" />
 
 	<br />
@@ -574,7 +574,8 @@
 </body>
 <!--suppress JSValidateTypes -->
 <script>
-	var vision = 9;
+	var vision = 10;
+
 
 	var searchbox = document.getElementById("secarh-box");
 	var bgImg = document.getElementById("bg");
@@ -878,6 +879,7 @@
 			searchbox.style.backgroundColor = "rgba(0,0,0,0.60)";
 			searchbox.style.color = "rgba(0, 0, 0, 0)";
 			bgImg.style.filter = "blur(0px)";
+			// bgImg.style.filter = "opacity(1)";
 			bgImg.style.transform = ("scale(1.0)");
 
 			bing.style.visibility = "hidden";
@@ -904,7 +906,9 @@
 			searchbox.style.marginTop = "145px";
 			searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
 			searchbox.style.color = "white";
-			bgImg.style.filter = "blur(8px)";
+			bgImg.style.filter = "blur(10px)";
+			bgImg.style.transition = "0.3s";
+			// bgImg.style.filter = "opacity(0.7)";
 			bgImg.style.transform = ("scale(1.2)");
 			oUl.style.width = searchBox_clickWidth;
 			isClick = 1;
@@ -918,6 +922,7 @@
 			// bgImg.style.filter = "blur(8px)";
 			// bgImg.style.transform = ("scale(1.2)");
 			oUl.style.width = searchBox_clickWidth;
+			// bgImg.style.filter = "opacity(0.7)";
 			isClick = 1;
 		}
 	}
@@ -977,7 +982,7 @@
 		tipbox.style.backgroundColor = "rgba(255,255,255,0.8)";
 //			tipbox.style.display = "block";
 		tipbox.style.visibility = "inherit";
-		updateLogText.innerHTML = "版本号：v1.44\n更新日期：2020/5/18 11:17\n\n更新描述：\n新增：2款壁纸（注：可在“设置”中切换）\n新增：Cookie，可存储用户设置（包括壁纸，搜索方式 等）\n新增：进入“设置”界面后壁纸的动态效果\n优化：搜索方式的动画，消除延迟\n优化：“关于”界面字体不统一的问题\n优化：代码逻辑";
+		updateLogText.innerHTML = "版本号：v1.45\n更新日期：2020/5/19 8:55\n\n更新描述：\n新增：低配置模式，可在“设置”中调整\n新增：低配置模式的Cookie\n重做：“设置”界面的布局\n修复：Android无法搜索的Bug";
 		but_left.style.display = "inline";
 		but_right.style.display = "inline";
 
@@ -1061,6 +1066,8 @@
 		if(updateLog_num === 9)
 			updateLogText.innerHTML = "版本号：v1.44\n更新日期：2020/5/18 11:17\n\n更新描述：\n新增：2款壁纸（注：可在“设置”中切换）\n新增：Cookie，可存储用户设置（包括壁纸，搜索方式 等）\n新增：进入“设置”界面后壁纸的动态效果\n优化：搜索方式的动画，消除延迟\n优化：“关于”界面字体不统一的问题\n优化：代码逻辑";
 
+		if(updateLog_num === 10)
+			updateLogText.innerHTML = "版本号：v1.45\n更新日期：2020/5/19 8:55\n\n更新描述：\n新增：低配置模式，可在“设置”中调整\n新增：低配置模式的Cookie\n重做：“设置”界面的布局\n修复：Android无法搜索的Bug";
 	}
 
 	function logoClick() {
