@@ -96,10 +96,11 @@
 			transition: 0.5s;
 			color: white;
 			font-size: 10px;
-			left: 0;
+			left: 50%;
+			margin-left: -100px;
 			position: fixed;
 			bottom: 7px;
-			width: 100%;
+			width: 200px;
 			z-index: 100;
 			cursor:pointer;
 			font-family: "microsoft yahei", "黑体", PingFangSC-Regular, Helvetica, sans-serif, 等线;;
@@ -110,10 +111,10 @@
 		}
 
 		@keyframes myselfAbout_an {
-			0% {left: 0px;}
-			30% {left: 10px;}
-			60% {left: -10px;}
-			100% {left: 0px;}
+			0% {margin-left: -100px;}
+			30% {margin-left: -90px;}
+			60% {margin-left: -110px;}
+			100% {margin-left: -100px;}
 		}
 
 		.logo {
@@ -605,6 +606,27 @@
 			margin-bottom: -5px;
 			margin-left: -5px;
 		}
+
+		.time-box {
+			margin-left: 20px;
+			font-size: 70px;
+			font-family: "microsoft yahei light", "黑体", PingFangSC-Regular, Helvetica, sans-serif, 等线;
+			color: white;
+		}
+
+		.time-text {
+			transition: .5s;
+			margin-top: 610px;
+			visibility: hidden;
+			opacity: 0;
+		}
+
+		.date-box {
+			margin-top: -80px;
+			margin-left: 30px;
+			color: white;
+			/*text-align: center;*/
+		}
 	</style>
 </head>
 
@@ -618,7 +640,7 @@
 	</div>
 
 	<a class="myselfAbout" onClick="About()" >© 2020「田梓涵」 v1.46</a>
-	<img src="./img/Logo3.png" width="80" height="45" class="logo" id="logo" onClick="logoClick()" />
+	<img src="./img/Logo3.png" width="80px" height="45px" class="logo" id="logo" onClick="logoClick()" />
 
 	<br />
 		<input onpaste="pasteInput" onmousedown="input_rightClick(Event)" class="search-input" id="secarh-box" type="search" onmouseover="onMouseBox()" onmouseout="onOutBox()" placeholder="Search" onkeypress="onEnterSearch()" ondblclick="ondClick()" onclick="onClickBox()" onblur="onBlurBox()"/>
@@ -660,6 +682,12 @@
 		<li onmouseover="onMouse3()" onclick="copy_cut()" onmouseleave="outMouse3()" class="copy-3" id="copy-3"><svg t="1589860750395" class="copy-3-img" viewBox="0 0 1026 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3712" width="18" height="18"><path d="M718.899 229.145q-9.885 0-16.625-6.74t-11.233-15.727-6.74-18.422-2.246-14.827V61.999h1.797q8.088 0 15.278 2.246t17.524 8.537 25.162 18.422 37.293 31.901q24.263 21.567 38.641 36.844t22.016 25.162 9.436 17.074 1.797 12.58v14.378H718.901z m15.277 532.888q-32.35 6.291-57.512 17.074-21.567 9.885-38.641 26.959T623.645 849.2q1.797 17.973 2.695 31.901t1.797 25.612H292.05q-17.074 0-37.293-9.885t-37.743-26.061-29.205-37.293-11.682-42.685V177.924q0-18.871 8.537-39.539t23.364-37.293 33.699-27.858 39.539-11.233h344.175v112.328q0 17.973 5.392 37.293t17.074 36.395 29.655 27.858 42.236 10.783h131.2v268.69l-36.844 58.411-79.08-92.559q-15.278 17.074-26.061 34.148-9.885 15.278-17.973 32.8t-9.885 35.496H344.169q-23.364 0-39.539 16.625t-16.176 39.989 16.176 39.539 39.539 16.176h336.986q20.668 0 34.148-10.783 4.493 8.088 7.639 15.277t5.842 11.682q3.594 5.393 5.393 9.885zM344.171 398.987q-23.364 0-39.539 16.625t-16.176 39.989 16.176 39.539 39.539 16.176h336.986q23.364 0 39.989-16.176t16.625-39.539-16.625-39.989-39.989-16.625H344.171z m557.15 437.633q5.392 2.695 16.176 6.291t21.117 10.334 17.973 18.871 6.74 31.901q-0.898 24.263-14.378 38.192t-31.451 17.973-36.395-1.797-28.307-22.016q-12.58-20.668-11.233-40.887t4.942-42.685q1.797-12.58-0.449-17.973t-4.942-9.885q-1.797-1.797-4.942-5.842t-5.842-8.537q-3.594-4.493-7.19-9.885-2.695 4.493-6.291 8.088-2.695 3.594-5.842 8.088t-5.842 8.986q-6.291 8.088-6.74 13.479t1.348 12.58q0.898 3.594 2.246 13.479t0.898 22.465-4.493 26.51-13.929 26.51q-13.479 16.176-31.451 19.77t-34.597-2.246-28.307-19.77-11.682-33.699q-0.898-18.871 6.291-31.451t17.973-20.668 22.465-13.029 19.77-7.639q16.176-6.291 22.465-11.233t11.682-12.131q2.695-3.594 6.74-9.436t8.537-11.233q4.493-6.291 8.986-13.479-3.594-3.594-7.19-8.986-3.594-4.493-8.537-10.783t-10.334-14.378q-6.291-7.19-12.58-17.524t-11.682-20.668-9.436-18.871-4.942-13.029q-3.594-8.986-5.393-23.364t5.393-18.871 9.885-0.449 8.088 11.233q1.797 3.594 12.58 20.219t23.364 34.597q14.378 22.465 30.553 48.526 13.479-21.567 24.263-40.438 9.885-16.176 18.871-31.451t12.58-20.668q6.291-10.783 10.334-16.625t5.842-7.639 5.842-0.449 6.74 5.842q1.797 4.492 1.348 12.131t-2.246 22.914q-1.797 7.19-5.842 16.176t-8.537 17.973-8.986 17.074-7.19 11.682q-2.695 4.493-8.537 11.682t-11.233 14.378q-6.291 8.986-13.479 17.973 4.493 7.19 8.088 12.58t6.74 10.334 4.942 7.639q5.392 9.885 16.625 18.871t22.016 14.378z m-159.057 87.167q12.58 0 21.117-8.537t8.537-21.117-8.537-21.117-21.117-8.537-21.117 8.537-8.537 21.117 8.537 21.117 21.117 8.537z m160.854 11.683q13.479 0 22.915-9.436t9.436-22.914-9.436-22.914-22.915-9.436-22.914 9.436-9.436 22.914 9.436 22.914 22.914 9.436z" p-id="3713" fill="#ffffff"></path></svg> 剪切</li>
 	</ul>
 </center>
+	<div class="time-box">
+		<p class="time-text" id="time-text"></p>
+	</div>
+	<div class="date-box">
+		<p class="date-text" id="date-text"></p>
+	</div>
 </body>
 <!--suppress JSValidateTypes -->
 
@@ -667,7 +695,6 @@
 
 <script>
 	var vision = 11;
-
 
 	var searchbox = document.getElementById("secarh-box");
 	var bgImg = document.getElementById("bg");
@@ -714,17 +741,83 @@
 	var copy_2 = document.getElementById("copy-2");
 	var copy_3 = document.getElementById("copy-3");
 
+	var timeText = document.getElementById("time-text");
+	var dateText = document.getElementById("date-text");
+
 	if(getCookie("isFirst") !== "1") {
 		setCookie("isFirst", "1", "365");
 		logoClick()
 		titleTipbox.innerHTML = "欢迎";
 	}
 
-
 	searchMode = getCookie("searchMode");
 
 	updateCookieData();
 	updateLowMode();
+
+	showTime();
+
+	function showTime() {
+		timeText.style.visibility = "inherit";
+		timeText.style.marginTop = "510px";
+		timeText.style.opacity = "1";
+	}
+
+	function delTime() {
+		timeText.style.visibility = "hidden";
+		timeText.style.marginTop = "610px";
+		timeText.style.opacity = "0";
+	}
+
+	function time() {
+		var a = new Date();
+		var b = a.getMinutes();
+		var c = a.getHours();
+
+		if(b < 10)
+			b = "0"+b;
+
+		timeText.innerHTML = c + ":" + b;
+	}
+
+	setInterval(function () { time() }, 200);
+
+	function date() {
+		var a = new Date();
+		var b = a.getDate();
+		var c = a.getMonth() + 1;
+		var d = a.getDay();
+		switch(d) {
+			case 1 :
+				d = "星期一";
+				break;
+			case 2 :
+				d = "星期二";
+				break;
+			case 3 :
+				d = "星期三";
+				break;
+			case 4 :
+				d = "星期四";
+				break;
+			case 5 :
+				d = "星期五";
+				break;
+			case 6 :
+				d = "星期六";
+				break;
+			case 7 :
+				d = "星期日";
+				break;
+		}
+
+		if(b < 10)
+			b = "0" + b;
+
+		dateText.innerHTML = c + "/" + b +"&nbsp &nbsp" + d;
+	}
+
+	setInterval(function () { date() }, 200);
 
 	function onMouse1() {
 		if (searchbox.value !== ""){
@@ -927,6 +1020,18 @@
 // 2.cb=返回值的处理函数（aa）
 		document.body.appendChild(oScript)
 	}
+
+	setInterval(function () { updateList() }, 200);
+
+	function updateList() {
+		if(searchbox.value === "") {
+			oUl.style.visibility = 'hidden';
+			oUl.style.display = "none";
+			isIn = 0;
+		}
+		searchbox.focus();
+	}
+
 	function aa(data) {
 		oUl.style.visibility = "inherit";
 		oUl.style.display = "block";
@@ -1012,6 +1117,7 @@
 			noeClickFlag = 1;
 			onClickBox();
 			updateSearchMode();
+			delTime();
 
 			CopyUl.style.visibility = "hidden";
 			CopyUl.style.opacity = "0";
@@ -1051,6 +1157,7 @@
 		else {
 			noeClickFlag = 0;
 			onBlurBox();
+			showTime();
 
 			CopyUl.style.visibility = "hidden";
 			CopyUl.style.opacity = "0";
@@ -1219,7 +1326,7 @@
 		tipbox.style.backgroundColor = "rgba(255,255,255,0.8)";
 //			tipbox.style.display = "block";
 		tipbox.style.visibility = "inherit";
-		updateLogText.innerHTML = "版本号：v1.46\n更新日期：2020/5/20 13:00\n\n更新描述：\n新增：PC端的右键“复制粘贴”窗口\n新增：初次使用的欢迎窗口\n优化：PC端更新日志窗口的字体\n优化：搜索框和“复制”窗口的代码逻辑\n优化：“复制粘贴”窗口的动态效果";
+		updateLogText.innerHTML = "版本号：v1.46\n更新日期：2020/5/20 13:00\n\n更新描述：\n新增：PC端的右键“复制粘贴”窗口\n新增：初次使用的欢迎窗口\n新增：日期时间显示\n优化：PC端更新日志窗口的字体\n优化：搜索框和“复制”窗口的代码逻辑\n优化：“复制粘贴”窗口的动态效果";
 		but_left.style.display = "inline";
 		but_right.style.display = "inline";
 
@@ -1307,7 +1414,7 @@
 			updateLogText.innerHTML = "版本号：v1.45\n更新日期：2020/5/19 8:55\n\n更新描述：\n新增：低配置模式，可在“设置”中调整\n新增：低配置模式的Cookie\n重做：“设置”界面的布局\n修复：Android无法搜索的Bug";
 
 		if(updateLog_num === 11)
-			updateLogText.innerHTML = "版本号：v1.46\n更新日期：2020/5/20 13:00\n\n更新描述：\n新增：PC端的右键“复制粘贴”窗口\n新增：初次使用的欢迎窗口\n优化：PC端更新日志窗口的字体\n优化：搜索框和“复制”窗口的代码逻辑\n优化：“复制粘贴”窗口的动态效果";
+			updateLogText.innerHTML = "版本号：v1.46\n更新日期：2020/5/20 13:00\n\n更新描述：\n新增：PC端的右键“复制粘贴”窗口\n新增：初次使用的欢迎窗口\n新增：日期时间显示\n优化：PC端更新日志窗口的字体\n优化：搜索框和“复制”窗口的代码逻辑\n优化：“复制粘贴”窗口的动态效果";
 	}
 
 	function logoClick() {
