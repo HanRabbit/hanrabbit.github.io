@@ -608,24 +608,33 @@
 		}
 
 		.time-box {
-			margin-left: 20px;
 			font-size: 70px;
 			font-family: "microsoft yahei light", "黑体", PingFangSC-Regular, Helvetica, sans-serif, 等线;
 			color: white;
 		}
 
 		.time-text {
+			position: fixed;
+			left: 20px;
 			transition: .5s;
-			margin-top: 610px;
+			bottom: -120px;
 			visibility: hidden;
 			opacity: 0;
 		}
 
 		.date-box {
-			margin-top: -80px;
-			margin-left: 30px;
 			color: white;
 			/*text-align: center;*/
+		}
+
+		.date-text {
+			/*transition-delay: 2s;*/
+			position: fixed;
+			bottom: -60px;
+			left: 30px;
+			transition: .5s;
+			visibility: hidden;
+			opacity: 0;
 		}
 	</style>
 </head>
@@ -759,14 +768,22 @@
 
 	function showTime() {
 		timeText.style.visibility = "inherit";
-		timeText.style.marginTop = "510px";
+		timeText.style.bottom = "-60px";
 		timeText.style.opacity = "1";
+
+		dateText.style.visibility = "inherit";
+		dateText.style.bottom = "-10px";
+		dateText.style.opacity = "1";
 	}
 
 	function delTime() {
 		timeText.style.visibility = "hidden";
-		timeText.style.marginTop = "610px";
+		timeText.style.bottom = "-150px";
 		timeText.style.opacity = "0";
+
+		dateText.style.visibility = "hidden";
+		dateText.style.bottom = "-120px";
+		dateText.style.opacity = "0";
 	}
 
 	function time() {
