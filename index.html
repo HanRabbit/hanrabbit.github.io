@@ -522,6 +522,89 @@
 			left: 50%;
 			margin-left: -20px;
 		}
+
+		.CopyUl {
+			position: absolute;
+			transition: .4s;
+			visibility: hidden;
+			opacity: 0;
+			z-index: 365;
+			/*margin-top: -310px;*/
+			/*margin-right: 50%;*/
+			background: rgba(0, 0, 0, .7);
+			height: 20px;
+			width: 80px;
+			border: 100px;
+			border-radius: 5px;
+			list-style: none;
+			cursor: pointer;
+		}
+
+		.copy-1 {
+			transition: .2s;
+			color: white;
+			text-decoration: none;
+			outline: none;
+			border-radius: 5px;
+			margin-left: -40px;
+			margin-bottom: -8px;
+			height: 28px;
+		}
+
+		/*.copy-1:hover {*/
+		/*	!*animation: .5s BgImgHover;*!*/
+		/*	!*transform: scale(1.15);*!*/
+		/*	background: rgba(255, 255, 255, .4);*/
+		/*}*/
+
+		.copy-1-img {
+			margin-bottom: -5px;
+			margin-left: -10px;
+		}
+
+		.copy-2 {
+			transition: .2s;
+			color: white;
+			text-decoration: none;
+			outline: none;
+			margin-left: -40px;
+			border-radius: 5px;
+			margin-top: 10px;
+			margin-bottom: -8px;
+			height: 28px;
+		}
+
+		/*.copy-2:hover {*/
+		/*	!*animation: .5s BgImgHover;*!*/
+		/*	!*transform: scale(1.15);*!*/
+		/*	background: rgba(255, 255, 255, .4);*/
+		/*}*/
+
+		.copy-2-img {
+			margin-bottom: -5px;
+			margin-left: -5px;
+		}
+
+		.copy-3 {
+			transition: .2s;
+			color: white;
+			border-radius: 5px;
+			text-decoration: none;
+			outline: none;
+			margin-left: -41px;
+			margin-top: 8px;
+			/*width: 93px;*/
+			height: 25px;
+		}
+
+		/*.copy-3:hover {*/
+		/*	background: rgba(255, 255, 255, .4);*/
+		/*}*/
+
+		.copy-3-img {
+			margin-bottom: -5px;
+			margin-left: -5px;
+		}
 	</style>
 </head>
 
@@ -531,14 +614,14 @@
 
 	<div class="titleBox">
 		<h3 class="text-title" style="margin-left: 30px">Quick HSearch<img src="./img/searchLogo.gif" style="margin-left: -10px; height: 50px; width: 50px" />  </h3>
-		<h5 class="Han-text">By Han</h5>
+		<h5 class="Han-text"></h5>
 	</div>
 
 	<a class="myselfAbout" onClick="About()" >© 2020「田梓涵」 v1.45</a>
 	<img src="./img/Logo3.png" width="80" height="45" class="logo" id="logo" onClick="logoClick()" />
 
 	<br />
-		<input  class="search-input" id="secarh-box" type="search" onmouseover="onMouseBox()" onmouseout="onOutBox()" placeholder="Search" onkeypress="onEnterSearch()" ondblclick="ondClick()" onclick="onClickBox()" onblur="onBlurBox()"/>
+		<input onpaste="pasteInput" onmousedown="input_rightClick(Event)" class="search-input" id="secarh-box" type="search" onmouseover="onMouseBox()" onmouseout="onOutBox()" placeholder="Search" onkeypress="onEnterSearch()" ondblclick="ondClick()" onclick="onClickBox()" onblur="onBlurBox()"/>
 	<br />
 
 	<div class="tip" id="tip-box">
@@ -570,9 +653,18 @@
 			<div class="---" id="---"></div>
 		</p>
 	</div>
+
+	<ul class="CopyUl" id="CopyUl">
+		<li onmouseover="onMouse1()" onclick="copy_()" data-clipboard-text="" onmouseleave="outMouse1()" class="copy-1" id="copy-1"><svg t="1589860313276" class="copy-1-img" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1990" width="18" height="18"><path d="M661.52467916 307.78068785H286.14461667c-5.92352719 0-10.72131563-13.160415-10.72131564-29.38980563s4.79778844-29.38980656 10.72131564-29.38980656h375.38006249c5.92352719 0 10.72131563 13.160415 10.72131563 29.38980656s-4.78438688 29.38980656-10.72131563 29.38980562zM690.12378791 484.14632941H286.9487151c-6.36578156 0-11.52541406-13.160415-11.52541406-29.38980563s5.15963344-29.38980656 11.52541406-29.38980656h403.17507281c6.36578156 0 11.52541406 13.160415 11.525415 29.38980656s-5.15963344 29.38980656-11.525415 29.38980563zM661.52467916 660.51197097H286.14461667c-5.92352719 0-10.72131563-13.160415-10.72131564-29.38980562s4.79778844-29.38980656 10.72131564-29.38980657h375.38006249c5.92352719 0 10.72131563 13.160415 10.72131563 29.38980657s-4.78438688 29.38980656-10.72131563 29.38980562z" fill="#ffffff" p-id="1991"></path><path d="M761.7287751 33.42222222H211.8727026A68.737035 68.737035 0 0 0 143.13566854 102.15925722v687.3033375a68.737035 68.737035 0 0 0 68.73703406 68.737035h549.8560725a68.737035 68.737035 0 0 0 68.73703406-68.737035V102.15925722A68.737035 68.737035 0 0 0 761.7287751 33.42222222z m6.7008225 721.66515469a34.36181625 34.36181625 0 0 1-34.36181719 34.36181626H239.0244351a34.36181625 34.36181625 0 0 1-34.36181719-34.36181626V136.52107348a34.36181625 34.36181625 0 0 1 34.36181719-34.36181626h495.55260843a34.36181625 34.36181625 0 0 1 34.36181625 34.36181626z" fill="#ffffff" p-id="1992"></path><path d="M920.14961479 205.24470598a34.36181625 34.36181625 0 0 0-23.19824719 34.36181718v581.97981375A103.09885125 103.09885125 0 0 1 793.85251635 924.63158097H349.33337011a34.38861937 34.38861937 0 1 0-1.71541033 68.737035h463.93812938a154.64157562 154.64157562 0 0 0 154.64157562-154.60137094V237.38184972a34.36181625 34.36181625 0 0 0-46.04805-32.16394688z" fill="#ffffff" p-id="1993"></path></svg> 复制</li>
+		<li onmouseover="onMouse2()" onclick="paste()" onmouseleave="outMouse2()" class="copy-2" id="copy-2"><svg t="1589860641812" class="copy-2-img" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2870" width="18" height="18"><path d="M703.737752 303.508759V128.007601h63.912584c17.635251 0.060811 31.925886 14.351446 31.925886 31.986698v216.487915h191.737752v63.973395H433.553536v519.510185h308.981769v-174.163312h184.866085V440.455609h63.912584v406.88782l-185.899876 176.656571H369.640953v-86.29111H64.611913c-17.635251 0-31.865075-14.351446-31.925887-31.986697V159.994299c0-17.635251 14.290635-31.925886 31.925887-31.986698h63.912584v63.973395l-1.094602 111.710197 576.307857-0.182434z m102.710137 629.943346v-83.676228h94.500623l-94.561434 83.676228h0.060811z" p-id="2871" fill="#ffffff"></path><path d="M671.751054 128.007601H543.925886V63.973395C543.986698 28.824515 515.222994 0 480.074114 0H352.248946c-35.148881 0-63.912584 28.824515-63.912584 63.973395v64.034206H160.511194v145.764476h511.300671V128.007601h-0.060811z m-191.67694 0H352.248946V64.155829l0.121622-0.121623h127.581923s0.121622 0.060811 0.121623 0.121623v63.851772zM516.925708 577.706515h328.076489v64.338262H516.925708zM516.925708 758.376626h166.379476v64.338262H516.925708z" p-id="2872" fill="#ffffff"></path></svg> 粘贴</li>
+		<li onmouseover="onMouse3()" onclick="copy_cut()" onmouseleave="outMouse3()" class="copy-3" id="copy-3"><svg t="1589860750395" class="copy-3-img" viewBox="0 0 1026 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3712" width="18" height="18"><path d="M718.899 229.145q-9.885 0-16.625-6.74t-11.233-15.727-6.74-18.422-2.246-14.827V61.999h1.797q8.088 0 15.278 2.246t17.524 8.537 25.162 18.422 37.293 31.901q24.263 21.567 38.641 36.844t22.016 25.162 9.436 17.074 1.797 12.58v14.378H718.901z m15.277 532.888q-32.35 6.291-57.512 17.074-21.567 9.885-38.641 26.959T623.645 849.2q1.797 17.973 2.695 31.901t1.797 25.612H292.05q-17.074 0-37.293-9.885t-37.743-26.061-29.205-37.293-11.682-42.685V177.924q0-18.871 8.537-39.539t23.364-37.293 33.699-27.858 39.539-11.233h344.175v112.328q0 17.973 5.392 37.293t17.074 36.395 29.655 27.858 42.236 10.783h131.2v268.69l-36.844 58.411-79.08-92.559q-15.278 17.074-26.061 34.148-9.885 15.278-17.973 32.8t-9.885 35.496H344.169q-23.364 0-39.539 16.625t-16.176 39.989 16.176 39.539 39.539 16.176h336.986q20.668 0 34.148-10.783 4.493 8.088 7.639 15.277t5.842 11.682q3.594 5.393 5.393 9.885zM344.171 398.987q-23.364 0-39.539 16.625t-16.176 39.989 16.176 39.539 39.539 16.176h336.986q23.364 0 39.989-16.176t16.625-39.539-16.625-39.989-39.989-16.625H344.171z m557.15 437.633q5.392 2.695 16.176 6.291t21.117 10.334 17.973 18.871 6.74 31.901q-0.898 24.263-14.378 38.192t-31.451 17.973-36.395-1.797-28.307-22.016q-12.58-20.668-11.233-40.887t4.942-42.685q1.797-12.58-0.449-17.973t-4.942-9.885q-1.797-1.797-4.942-5.842t-5.842-8.537q-3.594-4.493-7.19-9.885-2.695 4.493-6.291 8.088-2.695 3.594-5.842 8.088t-5.842 8.986q-6.291 8.088-6.74 13.479t1.348 12.58q0.898 3.594 2.246 13.479t0.898 22.465-4.493 26.51-13.929 26.51q-13.479 16.176-31.451 19.77t-34.597-2.246-28.307-19.77-11.682-33.699q-0.898-18.871 6.291-31.451t17.973-20.668 22.465-13.029 19.77-7.639q16.176-6.291 22.465-11.233t11.682-12.131q2.695-3.594 6.74-9.436t8.537-11.233q4.493-6.291 8.986-13.479-3.594-3.594-7.19-8.986-3.594-4.493-8.537-10.783t-10.334-14.378q-6.291-7.19-12.58-17.524t-11.682-20.668-9.436-18.871-4.942-13.029q-3.594-8.986-5.393-23.364t5.393-18.871 9.885-0.449 8.088 11.233q1.797 3.594 12.58 20.219t23.364 34.597q14.378 22.465 30.553 48.526 13.479-21.567 24.263-40.438 9.885-16.176 18.871-31.451t12.58-20.668q6.291-10.783 10.334-16.625t5.842-7.639 5.842-0.449 6.74 5.842q1.797 4.492 1.348 12.131t-2.246 22.914q-1.797 7.19-5.842 16.176t-8.537 17.973-8.986 17.074-7.19 11.682q-2.695 4.493-8.537 11.682t-11.233 14.378q-6.291 8.986-13.479 17.973 4.493 7.19 8.088 12.58t6.74 10.334 4.942 7.639q5.392 9.885 16.625 18.871t22.016 14.378z m-159.057 87.167q12.58 0 21.117-8.537t8.537-21.117-8.537-21.117-21.117-8.537-21.117 8.537-8.537 21.117 8.537 21.117 21.117 8.537z m160.854 11.683q13.479 0 22.915-9.436t9.436-22.914-9.436-22.914-22.915-9.436-22.914 9.436-9.436 22.914 9.436 22.914 22.914 9.436z" p-id="3713" fill="#ffffff"></path></svg> 剪切</li>
+	</ul>
 </center>
 </body>
 <!--suppress JSValidateTypes -->
+
+<script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.js"></script>
+
 <script>
 	var vision = 10;
 
@@ -617,10 +709,131 @@
 	var LowModeText = document.getElementById("LowMode_text");
 	var ___ = document.getElementById("---");
 
+	var CopyUl = document.getElementById("CopyUl");
+	var copy_1 = document.getElementById("copy-1");
+	var copy_2 = document.getElementById("copy-2");
+	var copy_3 = document.getElementById("copy-3");
+
+	if(getCookie("isFirst") !== "1") {
+		setCookie("isFirst", "1", "365");
+		logoClick()
+		titleTipbox.innerHTML = "欢迎";
+	}
+
+
 	searchMode = getCookie("searchMode");
 
 	updateCookieData();
 	updateLowMode();
+
+	function onMouse1() {
+		if (searchbox.value !== ""){
+			copy_1.style.background = "rgba(255, 255, 255, .6)";
+		}
+	}
+
+	function outMouse1() {
+		copy_1.style.background = "rgba(0, 0, 0, 0)";
+	}
+
+	function onMouse2() {
+		copy_2.style.background = "rgba(255, 255, 255, .6)";
+	}
+
+	function outMouse2() {
+		copy_2.style.background = "rgba(0, 0, 0, 0)";
+	}
+
+	function onMouse3() {
+		if (searchbox.value !== ""){
+			copy_3.style.background = "rgba(255, 255, 255, .6)";
+		}
+	}
+
+	function outMouse3() {
+		copy_3.style.background = "rgba(0, 0, 0, 0)";
+	}
+
+	var copyMode = 0;
+
+	function copy_() {
+		searchbox.select();
+		if(searchbox.value !== "")
+			document.execCommand("Copy");
+		// if(selectedText !== "")
+		// 	document.execCommand('copy');
+		copyMode = 1;
+	}
+
+	function copy_cut() {
+		searchbox.select();
+		if(searchbox.value !== "")
+			document.execCommand("Copy");
+		copyMode = 1;
+		searchbox.value = "";
+	}
+
+	function paste() {
+		navigator.clipboard.readText().then(a=>searchbox.value += a)
+	}
+
+	// alert(searchbox.clipboardData.getData('text/plain'));haha
+
+	function input_rightClick(Event) {
+		var clickMode = event.button;
+		if(clickMode === 2) {
+			copyMode = 1;
+			CopyUl.style.visibility = "inherit";
+			CopyUl.style.opacity = "1";
+			CopyUl.style.height = "83px";
+
+			// alert(selectedText);
+			if (searchbox.value === ""){
+				copy_1.style.color = "rgba(255, 255, 255, .2)";
+				copy_1.style.cursor = "default";
+
+				copy_3.style.color = "rgba(255, 255, 255, .2)";
+				copy_3.style.cursor = "default";
+			}
+			else {
+				copy_1.style.color = "rgba(255, 255, 255, 1)";
+				copy_1.style.cursor = "pointer";
+
+				copy_3.style.color = "rgba(255, 255, 255, 1)";
+				copy_3.style.cursor = "pointer";
+			}
+
+			CopyUl.style.top = event.pageY + "px";
+			CopyUl.style.left = event.pageX + "px";
+
+			if(LowModeIsChecked === 0) {
+				searchbox.style.height = "55px";
+				searchbox.style.width = searchBox_clickWidth;
+				searchbox.style.marginTop = "145px";
+				searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
+				searchbox.style.color = "white";
+				bgImg.style.filter = "blur(10px)";
+				bgImg.style.transition = "0.3s";
+				// bgImg.style.filter = "opacity(0.7)";
+				bgImg.style.transform = ("scale(1.2)");
+				oUl.style.width = searchBox_clickWidth;
+				isClick = 1;
+			}
+			else {
+				searchbox.style.height = "55px";
+				searchbox.style.width = searchBox_clickWidth;
+				searchbox.style.marginTop = "145px";
+				searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
+				searchbox.style.color = "white";
+				// bgImg.style.filter = "blur(8px)";
+				// bgImg.style.transform = ("scale(1.2)");
+				oUl.style.width = searchBox_clickWidth;
+				// bgImg.style.filter = "opacity(0.7)";
+				isClick = 1;
+			}
+		}
+		// alert(btnNum);
+	}
 
 	function LowMode_Click() {
 		if(LowMode.checked)
@@ -799,6 +1012,11 @@
 			noeClickFlag = 1;
 			onClickBox();
 			updateSearchMode();
+
+			CopyUl.style.visibility = "hidden";
+			CopyUl.style.opacity = "0";
+			CopyUl.style.height = "20px";
+
 			baidu.style.transitionDelay = ".2s";
 			google.style.transitionDelay = ".4s";
 			bing.style.visibility = "inherit";
@@ -833,6 +1051,11 @@
 		else {
 			noeClickFlag = 0;
 			onBlurBox();
+
+			CopyUl.style.visibility = "hidden";
+			CopyUl.style.opacity = "0";
+			CopyUl.style.height = "20px";
+
 			baidu.style.transitionDelay = ".2s";
 			google.style.transitionDelay = ".4s";
 			bing.style.visibility = "hidden";
@@ -871,8 +1094,13 @@
 		var winY = window.innerHeight;
 
 
-		if (noeClickFlag === 0 && isIn === 0) {
+		if (noeClickFlag === 0 && isIn === 0 && copyMode === 0) {
 			searchbox.value = "";
+
+			CopyUl.style.visibility = "hidden";
+			CopyUl.style.opacity = "0";
+			CopyUl.style.height = "20px";
+
 			oUl.style.visibility = 'hidden';
 			searchbox.style.marginTop = "150px";
 			searchbox.style.height = "50px";
@@ -891,14 +1119,23 @@
 			isClick = 0;
 			searchbox.style.width = searchBox_width;
 		}
-
+		else {
+			CopyUl.style.visibility = "hidden";
+			CopyUl.style.opacity = "0";
+			CopyUl.style.height = "20px";
+		}
+		copyMode = 0;
 //			changeMode = 0;
-//			searchbox.focus();
+		searchbox.focus();
 	}
 
 	function onClickBox() {
 		var winX = window.innerWidth;
 		var winY = window.innerHeight;
+
+		CopyUl.style.visibility = "hidden";
+		CopyUl.style.opacity = "0";
+		CopyUl.style.height = "20px";
 
 		if(LowModeIsChecked == 0) {
 			searchbox.style.height = "55px";
@@ -1073,7 +1310,7 @@
 	function logoClick() {
 		About();
 		titleTipbox.innerHTML = "关于";
-		updateLogText.innerHTML = "感谢您使用此网站\n此网站为Han的快捷搜索\n为Han本人开发及维护\n如有问题，请发送至\n“Tianzihan5357@163.com”\n谢谢您的配合！";
+		updateLogText.innerHTML = "感谢您使用此网站\n此网站为Han的快捷搜索\n为Han本人开发及维护\n----- 更新日志请点击底部的版本号 -----\n如有问题，请发送至\n“Tianzihan5357@163.com”\n谢谢您的配合！";
 		but_left.style.display = "none";
 		but_right.style.display = "none";
 	}
