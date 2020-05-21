@@ -17,7 +17,7 @@
 		}
 
 		.text-title {
-			padding-top: 20px;
+			margin-top: 20px;
 			color: white;
 			font-family: Raleway,serif;
 			font-weight: 100;
@@ -33,7 +33,7 @@
 			/*z-index: 1;*/
 			color: white;
 			position: relative;
-			margin: 0;
+			/*margin: 0;*/
 			transition: 0.4s;
 			text-align: center;
 			margin-top: 150px;
@@ -121,7 +121,7 @@
 			position: fixed;
 			bottom: -7px;
 			z-index: 100;
-			left: 49.2%;
+			left: 50%;
 			margin-left: -130px;
 			cursor:pointer;
 		}
@@ -636,6 +636,19 @@
 			visibility: hidden;
 			opacity: 0;
 		}
+
+		.showDate {
+			transition: .3s;
+			transition-delay: 0.2s;
+			opacity: 0;
+			position: absolute;
+			visibility: hidden;
+			top: 72%;
+			color: white;
+			left: 50%;
+			margin-left: -80px;
+			font-family: "microsoft yahei light", "黑体", PingFangSC-Regular, Helvetica, sans-serif, 等线;
+		}
 	</style>
 </head>
 
@@ -682,6 +695,11 @@
 		<p class="LowMode" id="LowMode_text">低配置模式
 			<input class="switch" type="checkbox" id="LowMode" onclick="LowMode_Click()" />
 			<div class="---" id="---"></div>
+		</p>
+
+		<p class="showDate" id="showDate_text">不显示日期
+			<input class="switch" type="checkbox" id="showDate" onclick="showDate_Click()" />
+			<div class="---"></div>
 		</p>
 	</div>
 
@@ -736,6 +754,7 @@
 	var Bg3 = document.getElementById("bg3");
 
 	var LowMode = document.getElementById("LowMode");
+	var showDate = document.getElementById("showDate");
 
 	var searchBox_width;
 	var searchBox_clickWidth;
@@ -743,6 +762,8 @@
 	var LowModeIsChecked = 0;
 
 	var LowModeText = document.getElementById("LowMode_text");
+	var showDateText = document.getElementById("showDate_text");
+
 	var ___ = document.getElementById("---");
 
 	var CopyUl = document.getElementById("CopyUl");
@@ -752,6 +773,8 @@
 
 	var timeText = document.getElementById("time-text");
 	var dateText = document.getElementById("date-text");
+
+	var showDateIsChecked = 0;
 
 	if(getCookie("isFirst") !== "1") {
 		setCookie("isFirst", "1", "365");
@@ -765,6 +788,27 @@
 	updateLowMode();
 
 	showTime();
+
+	updateShowDate();
+	function showDate_Click() {
+		if(showDate.checked)
+			setCookie("showDate", "1", "365");
+		else
+			setCookie("showDate", "0", "365");
+		updateShowDate();
+	}
+
+	function updateShowDate() {
+		// alert(getCookie("showDate"));
+		if(getCookie("showDate") === "1") {
+			showDateIsChecked = 1;
+			showDate.checked = true;
+		}
+		else {
+			showDateIsChecked = 0;
+			showDate.checked = false;
+		}
+	}
 
 	function showTime() {
 		timeText.style.visibility = "inherit";
@@ -831,7 +875,10 @@
 		if(b < 10)
 			b = "0" + b;
 
-		dateText.innerHTML = c + "/" + b +"&nbsp &nbsp" + d;
+		if(showDateIsChecked === 0)
+			dateText.innerHTML = c + "/" + b +"&nbsp &nbsp" + d;
+		else
+			dateText.style.bottom = "-120px";
 	}
 
 	setInterval(function () { date() }, 200);
@@ -919,7 +966,7 @@
 			if(LowModeIsChecked === 0) {
 				searchbox.style.height = "55px";
 				searchbox.style.width = searchBox_clickWidth;
-				searchbox.style.marginTop = "145px";
+				searchbox.style.marginTop = "130px";
 				searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
 				searchbox.style.color = "white";
 				bgImg.style.filter = "blur(10px)";
@@ -1046,7 +1093,7 @@
 			oUl.style.display = "none";
 			isIn = 0;
 		}
-		searchbox.focus();
+		// searchbox.focus();
 	}
 
 	function aa(data) {
@@ -1135,6 +1182,7 @@
 			onClickBox();
 			updateSearchMode();
 			delTime();
+			updateShowDate();
 
 			CopyUl.style.visibility = "hidden";
 			CopyUl.style.opacity = "0";
@@ -1164,9 +1212,14 @@
 			Bg3.style.opacity = "1";
 			Bg3.style.visibility = "inherit";
 
+			showDateText.style.visibility = "inherit";
+			showDateText.style.opacity = "1";
+			showDateText.style.transitionDelay = "0.3s";
+
 			LowModeText.style.visibility = "inherit";
 			LowModeText.style.opacity = "1";
 			LowModeText.style.transitionDelay = "0.3s";
+
 			___.style.visibility = "inherit";
 			___.style.opacity = "1";
 		}
@@ -1207,6 +1260,11 @@
 			LowModeText.style.transitionDelay = "0s";
 			LowModeText.style.visibility = "hidden";
 			LowModeText.style.opacity = "0";
+
+			showDateText.style.transitionDelay = "0s";
+			showDateText.style.visibility = "hidden";
+			showDateText.style.opacity = "0";
+
 			___.style.visibility = "hidden";
 			___.style.opacity = "0";
 		}
@@ -1216,7 +1274,6 @@
 //			alert(changeMode);
 		var winX = window.innerWidth;
 		var winY = window.innerHeight;
-
 
 		if (noeClickFlag === 0 && isIn === 0 && copyMode === 0) {
 			searchbox.value = "";
@@ -1244,11 +1301,14 @@
 			searchbox.style.width = searchBox_width;
 		}
 		else {
+			copyMode = 0;
 			CopyUl.style.visibility = "hidden";
 			CopyUl.style.opacity = "0";
 			CopyUl.style.height = "20px";
+			searchbox.focus();
 		}
-		copyMode = 0;
+		// searchbox.blur();
+		// bgImg.focus();
 //			changeMode = 0;
 // 		searchbox.focus();
 	}
@@ -1261,10 +1321,12 @@
 		CopyUl.style.opacity = "0";
 		CopyUl.style.height = "20px";
 
+		copyMode = 0;
+
 		if(LowModeIsChecked == 0) {
 			searchbox.style.height = "55px";
 			searchbox.style.width = searchBox_clickWidth;
-			searchbox.style.marginTop = "145px";
+			searchbox.style.marginTop = "130px";
 			searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
 			searchbox.style.color = "white";
 			bgImg.style.filter = "blur(10px)";
@@ -1277,7 +1339,7 @@
 		else {
 			searchbox.style.height = "55px";
 			searchbox.style.width = searchBox_clickWidth;
-			searchbox.style.marginTop = "145px";
+			searchbox.style.marginTop = "130px";
 			searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
 			searchbox.style.color = "white";
 			// bgImg.style.filter = "blur(8px)";
