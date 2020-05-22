@@ -608,6 +608,7 @@
 		}
 
 		.time-box {
+			/*font-size: 70px;*/
 			font-size: 70px;
 			font-family: "microsoft yahei light", "黑体", PingFangSC-Regular, Helvetica, sans-serif, 等线;
 			color: white;
@@ -629,6 +630,7 @@
 
 		.date-text {
 			/*transition-delay: 2s;*/
+			font-size: 30px;
 			position: fixed;
 			bottom: -60px;
 			left: 15px;
@@ -837,6 +839,22 @@
 
 		if(b < 10)
 			b = "0"+b;
+
+		var winX = window.innerWidth;
+		var winY = window.innerHeight;
+
+		if(winX <= winY) {
+			timeText.style.fontSize = "50px";
+			timeText.style.bottom = "-40px"
+			dateText.style.fontSize = "8px";
+			dateText.style.bottom = "-5px";
+		}
+		else {
+			timeText.style.fontSize = "70px";
+			timeText.style.bottom = "-60px"
+			dateText.style.fontSize = "15px";
+			dateText.style.bottom = "-10px";
+		}
 
 		timeText.innerHTML = c + ":" + b;
 	}
@@ -1406,7 +1424,7 @@
 //			tipbox.style.display = "block";
 		tipbox.style.visibility = "inherit";
 		titleTipbox.innerHTML = "更新日志";
-		updateLogText.innerHTML = "版本号：v1.46\n更新日期：2020/5/20 13:00\n\n更新描述：\n新增：PC端的右键“复制粘贴”窗口\n新增：初次使用的欢迎窗口\n新增：日期时间显示\n优化：PC端更新日志窗口的字体\n优化：搜索框和“复制”窗口的代码逻辑\n优化：“复制粘贴”窗口的动态效果";
+		updateLogText.innerHTML = "版本号：v1.46\n更新日期：2020/5/20 13:00\n\n更新描述：\n新增：PC端的右键“复制粘贴”窗口\n新增：初次使用的欢迎窗口\n新增：日期时间显示\n新增：可在“设置”中打开或关闭日期显示\n优化：PC端更新日志窗口的字体\n优化：搜索框和“复制”窗口的代码逻辑\n优化：“复制粘贴”窗口的动态效果";
 		but_left.style.display = "inline";
 		but_right.style.display = "inline";
 
