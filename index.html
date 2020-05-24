@@ -651,6 +651,21 @@
 			margin-left: -80px;
 			font-family: "microsoft yahei light", "黑体", PingFangSC-Regular, Helvetica, sans-serif, 等线;
 		}
+
+		.noReserveText {
+			transition: .3s;
+			transition-delay: .2s;
+			position: absolute;
+			visibility: hidden;
+			opacity: 0;
+			top: 68%;
+			color: white;
+			left: 50%;
+			margin-left: -129px;
+			font-family: "microsoft yahei light", "黑体", PingFangSC-Regular, Helvetica, sans-serif, 等线;
+
+			/*bottom: -200px;*/
+		}
 	</style>
 </head>
 
@@ -701,7 +716,10 @@
 
 		<p class="showDate" id="showDate_text">不显示日期
 			<input class="switch" type="checkbox" id="showDate" onclick="showDate_Click()" />
-			<div class="---"></div>
+		</p>
+
+		<p class="noReserveText" id="noReserveText">不保留搜索内容
+			<input class="switch" type="checkbox" id="noReserve" onclick="noReserve_Click()" />
 		</p>
 	</div>
 
@@ -776,7 +794,11 @@
 	var timeText = document.getElementById("time-text");
 	var dateText = document.getElementById("date-text");
 
+	var noReserve = document.getElementById("noReserve");
+	var noReserveText = document.getElementById("noReserveText");
+
 	var showDateIsChecked = 0;
+	var noReserveIsChecked = 1;
 
 	if(getCookie("isFirst") !== "1") {
 		setCookie("isFirst", "1", "365");
@@ -792,6 +814,28 @@
 	showTime();
 
 	updateShowDate();
+	updateNoReserve();
+
+	function noReserve_Click() {
+		if(noReserve.checked)
+			setCookie("noReserve", "1", "365");
+		else
+			setCookie("noReserve", "0", "365");
+		updateNoReserve();
+	}
+
+	function updateNoReserve() {
+		// alert(getCookie("showDate"));
+		if(getCookie("noReserve") === "0") {
+			noReserveIsChecked = 0;
+			noReserve.checked = false;
+		}
+		else {
+			noReserveIsChecked = 1;
+			noReserve.checked = true;
+		}
+	}
+
 	function showDate_Click() {
 		if(showDate.checked)
 			setCookie("showDate", "1", "365");
@@ -1238,6 +1282,10 @@
 			LowModeText.style.opacity = "1";
 			LowModeText.style.transitionDelay = "0.3s";
 
+			noReserveText.style.visibility = "inherit";
+			noReserveText.style.opacity = "1";
+			noReserveText.style.transitionDelay = "0.3s";
+
 			___.style.visibility = "inherit";
 			___.style.opacity = "1";
 		}
@@ -1283,8 +1331,14 @@
 			showDateText.style.visibility = "hidden";
 			showDateText.style.opacity = "0";
 
+			noReserveText.style.transitionDelay = "0s";
+			noReserveText.style.visibility = "hidden";
+			noReserveText.style.opacity = "0";
+
 			___.style.visibility = "hidden";
 			___.style.opacity = "0";
+
+			searchbox.blur();
 		}
 	}
 
@@ -1405,14 +1459,15 @@
 	}
 
 	function onEnterSearch() {
-		if (event.keyCode == 13) {
-			if(searchMode == "1")
+		if (event.keyCode === 13) {
+			if(searchMode === "1")
 				window.open("https://cn.bing.com/search?q="+searchbox.value, "_blank");
-			if(searchMode == "2")
+			if(searchMode === "2")
 				window.open("https://www.baidu.com/s?wd="+searchbox.value, "_blank");
-			if(searchMode == "3")
+			if(searchMode === "3")
 				window.open("https://www.google.com/search?q="+searchbox.value, "_blank");
-			searchbox.value = "";
+			if(noReserveIsChecked === 1)
+				searchbox.value = "";
 		}
 	}
 
