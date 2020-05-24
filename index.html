@@ -816,6 +816,19 @@
 	updateShowDate();
 	updateNoReserve();
 
+	if(winX <= winY) {
+		timeText.style.fontSize = "50px";
+		timeText.style.bottom = "-40px"
+		dateText.style.fontSize = "8px";
+		dateText.style.bottom = "-5px";
+	}
+	else {
+		timeText.style.fontSize = "70px";
+		timeText.style.bottom = "-60px"
+		dateText.style.fontSize = "15px";
+		dateText.style.bottom = "-10px";
+	}
+
 	function noReserve_Click() {
 		if(noReserve.checked)
 			setCookie("noReserve", "1", "365");
@@ -883,22 +896,6 @@
 
 		if(b < 10)
 			b = "0"+b;
-
-		var winX = window.innerWidth;
-		var winY = window.innerHeight;
-
-		if(winX <= winY) {
-			timeText.style.fontSize = "50px";
-			timeText.style.bottom = "-40px"
-			dateText.style.fontSize = "8px";
-			dateText.style.bottom = "-5px";
-		}
-		else {
-			timeText.style.fontSize = "70px";
-			timeText.style.bottom = "-60px"
-			dateText.style.fontSize = "15px";
-			dateText.style.bottom = "-10px";
-		}
 
 		timeText.innerHTML = c + ":" + b;
 	}
