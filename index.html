@@ -13,7 +13,7 @@
 
 		@font-face{
 			font-family: "Raleway";
-			src:url(http://hanrabbit.github.io/raleway.ttf);
+			src:url(./raleway.ttf);
 		}
 
 		.text-title {
@@ -331,7 +331,7 @@
 			list-style-type:none;
 			text-align: -webkit-left;
 			border: 50px;
-			border-radius: 10px;
+			border-radius: 5px;
 			background: rgba(0, 0, 0, .5);
 			box-shadow: rgba(0, 0, 0, .7) 1px 1px 10px;
 			visibility: hidden;
@@ -341,13 +341,16 @@
 		.keyWord {
 			transition: .3s;
 			border: 50px;
-			border-radius: 10px;
+			border-radius: 50px;
 			display: inline-block;
 			width: 100%;
+			margin-left: -20px;
 			text-decoration: none;
 			color: #cdcdcd;
 			outline: none;
 			height: 30px;
+			text-align: -webkit-center;
+			left: -50px;
 			/*line-height: 30px;*/
 		}
 
@@ -679,7 +682,7 @@
 	</div>
 
 	<a class="myselfAbout" onClick="About()" >© 2020「田梓涵」 v1.47</a>
-	<img src="./img/Logo3.png" width="80px" height="45px" class="logo" id="logo" onClick="logoClick()" />
+	<img src="./img/logo.ico" width="45px" height="45px" class="logo" id="logo" onClick="logoClick()" />
 
 	<br />
 		<input onpaste="pasteInput" onmousedown="input_rightClick(Event)" class="search-input" id="secarh-box" type="search" onmouseover="onMouseBox()" onmouseout="onOutBox()" placeholder="Search" onkeypress="onEnterSearch()" ondblclick="ondClick()" onclick="onClickBox()" onblur="onBlurBox()"/>
@@ -737,8 +740,6 @@
 	</div>
 </body>
 <!--suppress JSValidateTypes -->
-
-<script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.js"></script>
 
 <script>
 	var vision = 12;
@@ -874,11 +875,11 @@
 
 	function showTime() {
 		timeText.style.visibility = "inherit";
-		timeText.style.bottom = "-40px";
+		timeText.style.bottom = "-60px";
 		timeText.style.opacity = "1";
 
 		dateText.style.visibility = "inherit";
-		dateText.style.bottom = "-5px";
+		dateText.style.bottom = "-10px";
 		dateText.style.opacity = "1";
 	}
 
@@ -904,6 +905,33 @@
 	}
 
 	setInterval(function () { time() }, 200);
+
+	function updateClear() {
+		var winY = window.innerHeight;
+
+		if(winY <= 650) {
+			Bg1.style.opacity = "0";
+			Bg2.style.opacity = "0";
+			Bg3.style.opacity = "0";
+
+			if(winY <= 600) {
+				___.style.opacity = "0";
+				LowModeText.style.opacity = "0";
+				showDateText.style.opacity = "0";
+				noReserveText.style.opacity = "0";
+			}
+		}
+		else {
+			Bg1.style.opacity = "1";
+			Bg2.style.opacity = "1";
+			Bg3.style.opacity = "1";
+
+			___.style.opacity = "1";
+			LowModeText.style.opacity = "1";
+			showDateText.style.opacity = "1";
+			noReserveText.style.opacity = "1";
+		}
+	}
 
 	function date() {
 		var a = new Date();
@@ -1350,6 +1378,19 @@
 		if (noeClickFlag === 0 && isIn === 0 && copyMode === 0) {
 			searchbox.value = "";
 
+			if(winX <= winY) {
+				timeText.style.fontSize = "50px";
+				timeText.style.bottom = "-40px"
+				dateText.style.fontSize = "8px";
+				dateText.style.bottom = "-5px";
+			}
+			else {
+				timeText.style.fontSize = "70px";
+				timeText.style.bottom = "-60px"
+				dateText.style.fontSize = "15px";
+				dateText.style.bottom = "-10px";
+			}
+
 			CopyUl.style.visibility = "hidden";
 			CopyUl.style.opacity = "0";
 			CopyUl.style.height = "20px";
@@ -1478,8 +1519,9 @@
 		tipbox.style.backgroundColor = "rgba(255,255,255,0.8)";
 //			tipbox.style.display = "block";
 		tipbox.style.visibility = "inherit";
-		titleTipbox.innerHTML = "更新日志";
-		updateLogText.innerHTML = "版本号：v1.47\n更新日期：2020/5/24 17:58\n\n更新描述：\n新增：可在“设置”中打开或关闭“不保留搜索内容”\n新增：可在“设置”中打开或关闭日期显示\n新增：日期的动画效果\n优化：代码性能\n优化：时间和日期的布局\n重做：“欢迎”和“关于”窗口内容\n修复：时间和日期重叠bug\n修复：“星期日”日期显示为“0”的问题";
+		// titleTipbox.innerHTML = "更新日志";
+		update_list();
+		// updateLogText.innerHTML = "版本号：v1.47\n更新日期：2020/5/24 17:58\n\n更新描述：\n新增：可在“设置”中打开或关闭“不保留搜索内容”\n新增：可在“设置”中打开或关闭日期显示\n新增：日期的动画效果\n优化：代码性能\n优化：时间和日期的布局\n重做：“欢迎”和“关于”窗口内容\n修复：时间和日期重叠bug\n修复：“星期日”日期显示为“0”的问题";
 		but_left.style.display = "inline";
 		but_right.style.display = "inline";
 
@@ -1539,40 +1581,22 @@
 
 	function update_list() {
 		titleTipbox.innerHTML = "更新日志";
+		const visions = new Array(vision);
 
-		if(updateLog_num === 1)
-			updateLogText.innerHTML = "版本号：v1.0\n更新日期：2020/5/5 13:21\n\n更新描述：\n新增：添加毛玻璃效果以及一些动画效果\n新增：百度搜索引擎\n新增：黑色主题\n新增：Logo及版权声明\n优化：搜索框动画Bug";
-		if(updateLog_num === 2)
-			updateLogText.innerHTML = "版本号：v1.1\n更新日期：2020/5/6 7:55\n\n更新描述：\n新增：一些动画效果\n新增：“关于”窗口\n新增：“历史”更新日志\n优化：动画Bug";
-		if(updateLog_num === 3)
-			updateLogText.innerHTML = "版本号：v1.11\n更新日期：2020/5/6 15:52\n\n更新描述：\n新增：一些图标效果\n本网站更名为“Quick HSearch”";
+		visions[1] = "版本号：v1.0\n更新日期：2020/5/5 13:21\n\n更新描述：\n新增：添加毛玻璃效果以及一些动画效果\n新增：百度搜索引擎\n新增：黑色主题\n新增：Logo及版权声明\n优化：搜索框动画Bug";
+		visions[2] = "版本号：v1.1\n更新日期：2020/5/6 7:55\n\n更新描述：\n新增：一些动画效果\n新增：“关于”窗口\n新增：“历史”更新日志\n优化：动画Bug";
+		visions[3] = "版本号：v1.11\n更新日期：2020/5/6 15:52\n\n更新描述：\n新增：一些图标效果\n本网站更名为“Quick HSearch”";
+		visions[4] = "版本号：v1.21\n更新日期：2020/5/6 17:07\n\n更新描述：\n新增：“Google”和“Bing”两种搜索方式\n新增：设置\n进入设置：双击搜索框，可选择搜索方式\n\n\n此网站正式发布在“Github”上!!!";
+		visions[5] = "版本号：v1.22\n更新日期：2020/5/7 9:09\n\n更新描述：\n优化：进入“设置”的算法\n优化：信息提示框，由“p”更改为“texarea”，控件位置重新排版\n更改：进入“设置”：双击搜索框，进入设置\n更改：退出“设置”：再次双击搜索框，退出设置";
+		visions[6] = "版本号：v1.23\n更新日期：2020/5/10 21:36\n\n更新描述：\n优化：“关于”界面的关闭图标\n优化：页面加载速度\n新增：“关于”界面的关闭图标的动态效果\n新增：“关于”界面的左右箭头的动态效果\n修复：“关于”界面在PC上显示位置错误的bug\n修复：更新日志显示错误的bug";
+		visions[7] = "版本号：v1.24\n更新日期：2020/5/11 16:02\n\n更新描述：\n修复：客户端字体缺失而导致显示错误的问题\n修复：搜索框在PC上显示的大小\n重做：Quick HSearch的图标，将其更改为动态图标\n新增：响应式demo，同时适应PC和Android";
+		visions[8] = "版本号：v1.34\n更新日期：2020/5/12 8:59\n\n更新描述：\n优化：代码性能\n新增：关联词提示（注：退出搜索框需清除搜索框内容\n优化：html布局\n优化：关联词提示框会根据横竖屏自动更改大小\n优化：搜索框动画";
+		visions[9] = "版本号：v1.44\n更新日期：2020/5/18 11:17\n\n更新描述：\n新增：2款壁纸（注：可在“设置”中切换）\n新增：Cookie，可存储用户设置（包括壁纸，搜索方式 等）\n新增：进入“设置”界面后壁纸的动态效果\n优化：搜索方式的动画，消除延迟\n优化：“关于”界面字体不统一的问题\n优化：代码逻辑";
+		visions[10] = "版本号：v1.45\n更新日期：2020/5/19 8:55\n\n更新描述：\n新增：低配置模式，可在“设置”中调整\n新增：低配置模式的Cookie\n重做：“设置”界面的布局\n修复：Android无法搜索的Bug";
+		visions[11] = "版本号：v1.46\n更新日期：2020/5/20 13:00\n\n更新描述：\n新增：PC端的右键“复制粘贴”窗口\n新增：初次使用的欢迎窗口\n新增：日期时间显示\n优化：PC端更新日志窗口的字体\n优化：搜索框和“复制”窗口的代码逻辑\n优化：“复制粘贴”窗口的动态效果";
+		visions[12] = "版本号：v1.47\n更新日期：2020/5/24 17:58\n\n更新描述：\n新增：可在“设置”中打开或关闭“不保留搜索内容”\n新增：可在“设置”中打开或关闭日期显示\n新增：日期的动画效果\n优化：代码性能\n优化：时间和日期的布局\n重做：“欢迎”和“关于”窗口内容\n修复：时间和日期重叠bug\n修复：“星期日”日期显示为“0”的问题";
 
-		if(updateLog_num === 4)
-			updateLogText.innerHTML = "版本号：v1.21\n更新日期：2020/5/6 17:07\n\n更新描述：\n新增：“Google”和“Bing”两种搜索方式\n新增：设置\n进入设置：双击搜索框，可选择搜索方式\n\n\n此网站正式发布在“Github”上!!!";
-
-		if(updateLog_num === 5)
-			updateLogText.innerHTML = "版本号：v1.22\n更新日期：2020/5/7 9:09\n\n更新描述：\n优化：进入“设置”的算法\n优化：信息提示框，由“p”更改为“texarea”，控件位置重新排版\n更改：进入“设置”：双击搜索框，进入设置\n更改：退出“设置”：再次双击搜索框，退出设置";
-
-		if(updateLog_num === 6)
-			updateLogText.innerHTML = "版本号：v1.23\n更新日期：2020/5/10 21:36\n\n更新描述：\n优化：“关于”界面的关闭图标\n优化：页面加载速度\n新增：“关于”界面的关闭图标的动态效果\n新增：“关于”界面的左右箭头的动态效果\n修复：“关于”界面在PC上显示位置错误的bug\n修复：更新日志显示错误的bug";
-
-		if(updateLog_num === 7)
-			updateLogText.innerHTML = "版本号：v1.24\n更新日期：2020/5/11 16:02\n\n更新描述：\n修复：客户端字体缺失而导致显示错误的问题\n修复：搜索框在PC上显示的大小\n重做：Quick HSearch的图标，将其更改为动态图标\n新增：响应式demo，同时适应PC和Android";
-
-		if(updateLog_num === 8)
-			updateLogText.innerHTML = "版本号：v1.34\n更新日期：2020/5/12 8:59\n\n更新描述：\n优化：代码性能\n新增：关联词提示（注：退出搜索框需清除搜索框内容\n优化：html布局\n优化：关联词提示框会根据横竖屏自动更改大小\n优化：搜索框动画";
-
-		if(updateLog_num === 9)
-			updateLogText.innerHTML = "版本号：v1.44\n更新日期：2020/5/18 11:17\n\n更新描述：\n新增：2款壁纸（注：可在“设置”中切换）\n新增：Cookie，可存储用户设置（包括壁纸，搜索方式 等）\n新增：进入“设置”界面后壁纸的动态效果\n优化：搜索方式的动画，消除延迟\n优化：“关于”界面字体不统一的问题\n优化：代码逻辑";
-
-		if(updateLog_num === 10)
-			updateLogText.innerHTML = "版本号：v1.45\n更新日期：2020/5/19 8:55\n\n更新描述：\n新增：低配置模式，可在“设置”中调整\n新增：低配置模式的Cookie\n重做：“设置”界面的布局\n修复：Android无法搜索的Bug";
-
-		if(updateLog_num === 11)
-			updateLogText.innerHTML = "版本号：v1.46\n更新日期：2020/5/20 13:00\n\n更新描述：\n新增：PC端的右键“复制粘贴”窗口\n新增：初次使用的欢迎窗口\n新增：日期时间显示\n优化：PC端更新日志窗口的字体\n优化：搜索框和“复制”窗口的代码逻辑\n优化：“复制粘贴”窗口的动态效果";
-
-		if(updateLog_num === 12)
-			updateLogText.innerHTML = "版本号：v1.47\n更新日期：2020/5/24 17:58\n\n更新描述：\n新增：可在“设置”中打开或关闭“不保留搜索内容”\n新增：可在“设置”中打开或关闭日期显示\n新增：日期的动画效果\n优化：代码性能\n优化：时间和日期的布局\n重做：“欢迎”和“关于”窗口内容\n修复：时间和日期重叠bug\n修复：“星期日”日期显示为“0”的问题";
+		updateLogText.innerHTML = visions[updateLog_num];
 	}
 
 	function logoClick() {
