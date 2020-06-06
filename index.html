@@ -45,7 +45,7 @@
 			border: 3px rgba(255, 255, 255, 0.30);
 			background-color: rgba(0,0,0,0.6);
 			color: rgba(0,0,0,0.00);
-			box-shadow: rgba(0,0,0,.8) 1px 1px 10px;
+			box-shadow: rgba(0,0,0,.6) 2px 5px 10px;
 			background-position: center top;
 			background-size: cover;
 			word-break: break-all;
@@ -613,8 +613,7 @@
 		.time-box {
 			/*font-size: 70px;*/
 			font-size: 70px;
-			font-family: "microsoft yahei light", "黑体", PingFangSC-Regular, Helvetica, sans-serif, 等线;
-			color: white;
+			font-family: "microsoft yahei light", "microsoft yahei", PingFangSC-Regular, Helvetica, sans-serif, 等线;			color: white;
 		}
 
 		.time-text {
@@ -652,8 +651,7 @@
 			color: white;
 			left: 50%;
 			margin-left: -80px;
-			font-family: "microsoft yahei light", "黑体", PingFangSC-Regular, Helvetica, sans-serif, 等线;
-		}
+			font-family: "microsoft yahei light", "microsoft yahei", PingFangSC-Regular, Helvetica, sans-serif, 等线;		}
 
 		.noReserveText {
 			transition: .3s;
@@ -665,10 +663,47 @@
 			color: white;
 			left: 50%;
 			margin-left: -129px;
-			font-family: "microsoft yahei light", "黑体", PingFangSC-Regular, Helvetica, sans-serif, 等线;
-
-			/*bottom: -200px;*/
+			font-family: "microsoft yahei light", "microsoft yahei", PingFangSC-Regular, Helvetica, sans-serif, 等线;			/*bottom: -200px;*/
 		}
+
+		.updateMseBox {
+			transition: 0.5s;
+			/*animation: ShowMseBoxAn 1.5s;*/
+			position: absolute;
+			left: 50%;
+			margin-left: -150px;
+			top: -60px;
+			background: rgba(0, 0, 0, .5);
+			height: 40px;
+			text-align: center;
+			border: 50px;
+			border-radius: 15px;
+			width: 310px;
+			box-shadow: rgba(0, 0, 0, .5) 2px 5px 10px;
+		}
+
+		@keyframes ShowMseBoxAn {
+			0% {top: -30px;}
+			10% {top: 60px;}
+			25% {top: 40px;}
+			45% {top: 50px;}
+			70% {top: 50px;}
+			100% {top: 50px;}
+		}
+
+		.updateMseText {
+			text-align: center;
+			color: #dedede;
+			font-family: "microsoft yahei light", "黑体", PingFangSC-Regular, Helvetica, sans-serif, 等线;
+			margin-top: 12px;
+			cursor: default;
+		}
+
+		.updateMseA {
+			color: #54b400;
+			cursor: pointer;
+		}
+
 	</style>
 </head>
 
@@ -681,7 +716,7 @@
 		<h5 class="Han-text"></h5>
 	</div>
 
-	<a class="myselfAbout" onClick="About()" >© 2020「田梓涵」 v1.47</a>
+	<a class="myselfAbout" onClick="About()" >© 2020「田梓涵」 v1.49</a>
 	<img src="./img/logo.ico" width="45px" height="45px" class="logo" id="logo" onClick="logoClick()" />
 
 	<br />
@@ -738,11 +773,18 @@
 	<div class="date-box">
 		<p class="date-text" id="date-text"></p>
 	</div>
+
+	<div class="updateMseBox" id="updateMseBox">
+		<h5 class="updateMseText">
+			你的“Quick HSearch”已更新到
+			<a class="updateMseA" onclick="newVersion()">最新版本</a>
+		</h5>
+	</div>
 </body>
 <!--suppress JSValidateTypes -->
 
 <script>
-	var vision = 12;
+	var version = 13;
 
 	var searchbox = document.getElementById("secarh-box");
 	var bgImg = document.getElementById("bg");
@@ -755,7 +797,7 @@
 
 	var isClick = 0;
 	var changeMode = 0;
-	var updateLog_num = vision;
+	var updateLog_num = version;
 
 	var but_left = document.getElementById("but-left");
 	var but_right = document.getElementById("but-right");
@@ -801,11 +843,19 @@
 	var showDateIsChecked = 0;
 	var noReserveIsChecked = 1;
 
+	var updateMseBox = document.getElementById("updateMseBox");
+
 	if(getCookie("isFirst") !== "1") {
 		setCookie("isFirst", "1", "365");
-		logoClick()
+		logoClick();
 		titleTipbox.innerHTML = "欢迎来到 Quick HSearch";
-		setCookie("searchMode", "2", "365")
+		setCookie("searchMode", "2", "365");
+		setCookie("version", version.toString(), "365");
+	}
+
+	else if(getCookie("version") !== version.toString()) {
+		showNewMse();
+		setCookie("version", version.toString(), "365");
 	}
 
 	searchMode = getCookie("searchMode");
@@ -817,6 +867,25 @@
 
 	updateShowDate();
 	updateNoReserve();
+
+	// showNewMse();
+
+	function newVersion() {
+		About();
+	}
+
+	function showNewMse() {
+		updateMseBox.style.animation = "ShowMseBoxAn 1.5s";
+		updateMseBox.style.top = "50px";
+
+		setTimeout(closeNewMse, 3000);
+	}
+
+	function closeNewMse() {
+		updateMseBox.style.top = "-60px";
+	}
+
+	// showNewMse();
 
 	var winX = window.innerWidth;
 	var winY = window.innerHeight;
@@ -1265,7 +1334,7 @@
 
 	function ondClick() {
 		searchbox.blur();
-		if(noeClickFlag == 0) {
+		if(noeClickFlag === 0) {
 			noeClickFlag = 1;
 			onClickBox();
 			updateSearchMode();
@@ -1511,7 +1580,7 @@
 	}
 
 	function About() {
-		updateLog_num = vision;
+		updateLog_num = version;
 		changeAboutWin();
 		tipbox.style.filter = "blur(0px)";
 		tipbox.style.backgroundColor = "rgba(255,255,255,0.8)";
@@ -1564,7 +1633,7 @@
 	}
 
 	function add() {
-		if(updateLog_num < vision)
+		if(updateLog_num < version)
 			updateLog_num ++;
 //			if(updateLog_num == 2) {
 //				but_right.setAttribute("disabled", true);
@@ -1579,22 +1648,23 @@
 
 	function update_list() {
 		titleTipbox.innerHTML = "更新日志";
-		const visions = new Array(vision);
+		const versions = new Array(version);
 
-		visions[1] = "版本号：v1.0\n更新日期：2020/5/5 13:21\n\n更新描述：\n新增：添加毛玻璃效果以及一些动画效果\n新增：百度搜索引擎\n新增：黑色主题\n新增：Logo及版权声明\n优化：搜索框动画Bug";
-		visions[2] = "版本号：v1.1\n更新日期：2020/5/6 7:55\n\n更新描述：\n新增：一些动画效果\n新增：“关于”窗口\n新增：“历史”更新日志\n优化：动画Bug";
-		visions[3] = "版本号：v1.11\n更新日期：2020/5/6 15:52\n\n更新描述：\n新增：一些图标效果\n本网站更名为“Quick HSearch”";
-		visions[4] = "版本号：v1.21\n更新日期：2020/5/6 17:07\n\n更新描述：\n新增：“Google”和“Bing”两种搜索方式\n新增：设置\n进入设置：双击搜索框，可选择搜索方式\n\n\n此网站正式发布在“Github”上!!!";
-		visions[5] = "版本号：v1.22\n更新日期：2020/5/7 9:09\n\n更新描述：\n优化：进入“设置”的算法\n优化：信息提示框，由“p”更改为“texarea”，控件位置重新排版\n更改：进入“设置”：双击搜索框，进入设置\n更改：退出“设置”：再次双击搜索框，退出设置";
-		visions[6] = "版本号：v1.23\n更新日期：2020/5/10 21:36\n\n更新描述：\n优化：“关于”界面的关闭图标\n优化：页面加载速度\n新增：“关于”界面的关闭图标的动态效果\n新增：“关于”界面的左右箭头的动态效果\n修复：“关于”界面在PC上显示位置错误的bug\n修复：更新日志显示错误的bug";
-		visions[7] = "版本号：v1.24\n更新日期：2020/5/11 16:02\n\n更新描述：\n修复：客户端字体缺失而导致显示错误的问题\n修复：搜索框在PC上显示的大小\n重做：Quick HSearch的图标，将其更改为动态图标\n新增：响应式demo，同时适应PC和Android";
-		visions[8] = "版本号：v1.34\n更新日期：2020/5/12 8:59\n\n更新描述：\n优化：代码性能\n新增：关联词提示（注：退出搜索框需清除搜索框内容\n优化：html布局\n优化：关联词提示框会根据横竖屏自动更改大小\n优化：搜索框动画";
-		visions[9] = "版本号：v1.44\n更新日期：2020/5/18 11:17\n\n更新描述：\n新增：2款壁纸（注：可在“设置”中切换）\n新增：Cookie，可存储用户设置（包括壁纸，搜索方式 等）\n新增：进入“设置”界面后壁纸的动态效果\n优化：搜索方式的动画，消除延迟\n优化：“关于”界面字体不统一的问题\n优化：代码逻辑";
-		visions[10] = "版本号：v1.45\n更新日期：2020/5/19 8:55\n\n更新描述：\n新增：低配置模式，可在“设置”中调整\n新增：低配置模式的Cookie\n重做：“设置”界面的布局\n修复：Android无法搜索的Bug";
-		visions[11] = "版本号：v1.46\n更新日期：2020/5/20 13:00\n\n更新描述：\n新增：PC端的右键“复制粘贴”窗口\n新增：初次使用的欢迎窗口\n新增：日期时间显示\n优化：PC端更新日志窗口的字体\n优化：搜索框和“复制”窗口的代码逻辑\n优化：“复制粘贴”窗口的动态效果";
-		visions[12] = "版本号：v1.47\n更新日期：2020/5/24 17:58\n\n更新描述：\n新增：可在“设置”中打开或关闭“不保留搜索内容”\n新增：可在“设置”中打开或关闭日期显示\n新增：日期的动画效果\n优化：代码性能\n优化：时间和日期的布局\n重做：“欢迎”和“关于”窗口内容\n修复：时间和日期重叠bug\n修复：“星期日”日期显示为“0”的问题";
+		versions[1] = "版本号：v1.0\n更新日期：2020/5/5 13:21\n\n更新描述：\n新增：添加毛玻璃效果以及一些动画效果\n新增：百度搜索引擎\n新增：黑色主题\n新增：Logo及版权声明\n优化：搜索框动画Bug";
+		versions[2] = "版本号：v1.1\n更新日期：2020/5/6 7:55\n\n更新描述：\n新增：一些动画效果\n新增：“关于”窗口\n新增：“历史”更新日志\n优化：动画Bug";
+		versions[3] = "版本号：v1.11\n更新日期：2020/5/6 15:52\n\n更新描述：\n新增：一些图标效果\n本网站更名为“Quick HSearch”";
+		versions[4] = "版本号：v1.21\n更新日期：2020/5/6 17:07\n\n更新描述：\n新增：“Google”和“Bing”两种搜索方式\n新增：设置\n进入设置：双击搜索框，可选择搜索方式\n\n\n此网站正式发布在“Github”上!!!";
+		versions[5] = "版本号：v1.22\n更新日期：2020/5/7 9:09\n\n更新描述：\n优化：进入“设置”的算法\n优化：信息提示框，由“p”更改为“texarea”，控件位置重新排版\n更改：进入“设置”：双击搜索框，进入设置\n更改：退出“设置”：再次双击搜索框，退出设置";
+		versions[6] = "版本号：v1.23\n更新日期：2020/5/10 21:36\n\n更新描述：\n优化：“关于”界面的关闭图标\n优化：页面加载速度\n新增：“关于”界面的关闭图标的动态效果\n新增：“关于”界面的左右箭头的动态效果\n修复：“关于”界面在PC上显示位置错误的bug\n修复：更新日志显示错误的bug";
+		versions[7] = "版本号：v1.24\n更新日期：2020/5/11 16:02\n\n更新描述：\n修复：客户端字体缺失而导致显示错误的问题\n修复：搜索框在PC上显示的大小\n重做：Quick HSearch的图标，将其更改为动态图标\n新增：响应式demo，同时适应PC和Android";
+		versions[8] = "版本号：v1.34\n更新日期：2020/5/12 8:59\n\n更新描述：\n优化：代码性能\n新增：关联词提示（注：退出搜索框需清除搜索框内容\n优化：html布局\n优化：关联词提示框会根据横竖屏自动更改大小\n优化：搜索框动画";
+		versions[9] = "版本号：v1.44\n更新日期：2020/5/18 11:17\n\n更新描述：\n新增：2款壁纸（注：可在“设置”中切换）\n新增：Cookie，可存储用户设置（包括壁纸，搜索方式 等）\n新增：进入“设置”界面后壁纸的动态效果\n优化：搜索方式的动画，消除延迟\n优化：“关于”界面字体不统一的问题\n优化：代码逻辑";
+		versions[10] = "版本号：v1.45\n更新日期：2020/5/19 8:55\n\n更新描述：\n新增：低配置模式，可在“设置”中调整\n新增：低配置模式的Cookie\n重做：“设置”界面的布局\n修复：Android无法搜索的Bug";
+		versions[11] = "版本号：v1.46\n更新日期：2020/5/20 13:00\n\n更新描述：\n新增：PC端的右键“复制粘贴”窗口\n新增：初次使用的欢迎窗口\n新增：日期时间显示\n优化：PC端更新日志窗口的字体\n优化：搜索框和“复制”窗口的代码逻辑\n优化：“复制粘贴”窗口的动态效果";
+		versions[12] = "版本号：v1.47\n更新日期：2020/5/24 17:58\n\n更新描述：\n新增：可在“设置”中打开或关闭“不保留搜索内容”\n新增：可在“设置”中打开或关闭日期显示\n新增：日期的动画效果\n优化：代码性能\n优化：时间和日期的布局\n重做：“欢迎”和“关于”窗口内容\n修复：时间和日期重叠bug\n修复：“星期日”日期显示为“0”的问题";
+		versions[13] = "版本号：v1.49\n更新日期：2020/6/6 22:32\n\n！由于本人是一名初中生，开学了\n所以网站的更新次数减少，但不影响使用，望大家谅解 ！\n\n更新描述：\n新增：“Quick HSearch”更新到最新版本时的消息框\n新增：更新版本消息框的动画效果及阴影效果\n重做：搜索框的阴影效果\n修复：首次使用不能搜索的bug\n删减：冗余代码，化繁为简";
 
-		updateLogText.innerHTML = visions[updateLog_num];
+		updateLogText.innerHTML = versions[updateLog_num];
 	}
 
 	function logoClick() {
