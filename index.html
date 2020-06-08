@@ -743,7 +743,7 @@
 	<div class="setting-box" >
 		<div class="BgImg_box" >
 			<img class="BgImg1" id="bg1" onclick="BgChange1()" src="./img/background/BG_A.jpg"/>
-			<img class="BgImg2" id="bg2" onclick="BgChange2()" src="https://bing.rthe.net/wallpaper"/>
+			<img class="BgImg2" id="bg2" onclick="BgChange2()" src="https://cn.bing.com/th?id=OHR.LionSurfing_ZH-CN7369892268_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"/>
 			<img class="BgImg3" id="bg3" onclick="BgChange3()" src="./img/background/BG_C.jpg"/>
 		</div>
 
@@ -853,7 +853,7 @@
 		setCookie("version", version.toString(), "365");
 	}
 
-	else if(getCookie("version") !== version.toString()) {
+	if(getCookie("version") !== version.toString()) {
 		showNewMse();
 		setCookie("version", version.toString(), "365");
 	}
@@ -1209,7 +1209,7 @@
 		var CookieBgImg = getCookie("bgNum");
 
 		if(CookieBgImg === "2")
-			bgImg.src = "https://bing.rthe.net/wallpaper";
+			bgImg.src = "https://cn.bing.com/th?id=OHR.LionSurfing_ZH-CN7369892268_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp";
 		else if(CookieBgImg === "3")
 			bgImg.src = "./img/background/BG_C.jpg";
 		else
