@@ -17,6 +17,7 @@
 		}
 
 		.text-title {
+			position: relative;
 			margin-top: 20px;
 			color: white;
 			font-family: Raleway,serif;
@@ -42,7 +43,7 @@
 			border-radius: 50px;
 			font-size: 18px;
 			outline: none;
-			border: 3px rgba(255, 255, 255, 0.30);
+			border: 50px;
 			background-color: rgba(0,0,0,0.6);
 			color: rgba(0,0,0,0.00);
 			box-shadow: rgba(0,0,0,.6) 2px 5px 10px;
@@ -69,7 +70,7 @@
 
 		.bg {
 			transition: 0.3s;
-			z-index: -3;
+			z-index: -5;
 			position: fixed;
 			left: 0;
 			top: 0;
@@ -81,6 +82,17 @@
 			/*                 filter: blur(10px); */
 			transform: scale(1.0);
 			outline: none;
+		}
+
+		.bgBox {
+			z-index: -4;
+			transition: .3s;
+			position: absolute;
+			background: rgba(0, 0, 0, .0);
+			width: 100%;
+			top: 0;
+			left: 0;
+			height: 100%;
 		}
 
 		::-webkit-scrollbar {
@@ -709,6 +721,7 @@
 
 <body bgcolor="black" oncontextmenu = "return false">
 <center>
+	<div class="bgBox" id="bgBox"></div>
 	<img class="bg" id="bg"/>
 
 	<div class="titleBox">
@@ -743,7 +756,7 @@
 	<div class="setting-box" >
 		<div class="BgImg_box" >
 			<img class="BgImg1" id="bg1" onclick="BgChange1()" src="./img/background/BG_A.jpg"/>
-			<img class="BgImg2" id="bg2" onclick="BgChange2()" src="https://cn.bing.com/th?id=OHR.LionSurfing_ZH-CN7369892268_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"/>
+			<img class="BgImg2" id="bg2" onclick="BgChange2()" src="https://bing.rthe.xyz/wallpaper"/>
 			<img class="BgImg3" id="bg3" onclick="BgChange3()" src="./img/background/BG_C.jpg"/>
 		</div>
 
@@ -844,6 +857,8 @@
 	var noReserveIsChecked = 1;
 
 	var updateMseBox = document.getElementById("updateMseBox");
+
+	var bgBox = document.getElementById("bgBox");
 
 	if(getCookie("isFirst") !== "1") {
 		setCookie("isFirst", "1", "365");
@@ -1209,7 +1224,7 @@
 		var CookieBgImg = getCookie("bgNum");
 
 		if(CookieBgImg === "2")
-			bgImg.src = "https://cn.bing.com/th?id=OHR.LionSurfing_ZH-CN7369892268_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp";
+			bgImg.src = "https://bing.rthe.xyz/wallpaper";
 		else if(CookieBgImg === "3")
 			bgImg.src = "./img/background/BG_C.jpg";
 		else
@@ -1444,6 +1459,7 @@
 
 		if (noeClickFlag === 0 && isIn === 0 && copyMode === 0) {
 			searchbox.value = "";
+			bgBox.style.background = "rgba(0, 0, 0, 0)";
 
 			if(winX <= winY) {
 				timeText.style.fontSize = "50px";
@@ -1502,6 +1518,8 @@
 		CopyUl.style.height = "20px";
 
 		copyMode = 0;
+
+		bgBox.style.background = "rgba(0, 0, 0, .3)";
 
 		if(LowModeIsChecked == 0) {
 			searchbox.style.height = "55px";
