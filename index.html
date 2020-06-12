@@ -102,12 +102,12 @@
 			font-family: Raleway,serif;
 			margin-left: 300px;
 			margin-top: -50px;
-			font-size: 8px;
+			font-size: 5px;
 		}
 		.myselfAbout {
 			transition: 0.5s;
 			color: white;
-			font-size: 10px;
+			font-size: 8px;
 			left: 50%;
 			margin-left: -100px;
 			position: fixed;
@@ -215,7 +215,8 @@
 
 		.ok_button:hover {
 			transform: rotate(90deg);
-			/*box-shadow: rgba(0, 0, 0, .1) -1px -1px 5px;*/
+			background: rgba(0, 0, 10, 0.2);
+			/*box-shadow: rgba(0, 0, 0, .1) 3px 3px 10px;*/
 		}
 
 		.ok_button:active {
@@ -341,34 +342,41 @@
 
 		.ul {
 			list-style-type:none;
-			text-align: -webkit-left;
 			border: 50px;
 			border-radius: 5px;
-			background: rgba(0, 0, 0, .5);
-			box-shadow: rgba(0, 0, 0, .7) 1px 1px 10px;
+			background: rgba(0, 0, 0, .3);
+			box-shadow: rgba(0, 0, 0, .7) 5px 5px 10px;
 			visibility: hidden;
 			display: none;
+			/*width: 50%;*/
 		}
 
 		.keyWord {
 			transition: .3s;
 			border: 50px;
-			border-radius: 50px;
-			display: inline-block;
-			width: 100%;
-			margin-left: -20px;
+			border-radius: 6px;
+			display: block;
+			margin-left: -41px;
 			text-decoration: none;
+			text-indent: 2em;
 			color: #cdcdcd;
 			outline: none;
 			height: 30px;
-			text-align: -webkit-center;
+			text-align: start;
 			left: -50px;
+			letter-spacing: 0;
+			font-weight: 400;
 			/*line-height: 30px;*/
 		}
 
 		.keyWord:hover {
-			background: rgba(255, 255, 255, .3);
-			color: black;
+			/*font-style: italic;*/
+			/*text-decoration-line: underline;*/
+			background: rgba(255, 255, 255, .2);
+			font-weight: 500;
+			text-indent: 3em;
+			/*letter-spacing: 3px;*/
+			color: #54b400;
 		}
 
 		.BgImg_box {
@@ -725,11 +733,11 @@
 	<img class="bg" id="bg"/>
 
 	<div class="titleBox">
-		<h3 class="text-title" style="margin-left: 30px">Quick HSearch<img src="./img/searchLogo.gif" style="margin-left: -10px; height: 50px; width: 50px" />  </h3>
+		<h3 class="text-title" style="margin-left: 30px">Quick HSearch<img src="./img/searchLogo.gif" style="margin-left: -10px; height: 20px; width: 20px" /></h3>
 		<h5 class="Han-text"></h5>
 	</div>
 
-	<a class="myselfAbout" onClick="About()" >© 2020「田梓涵」 v1.49</a>
+	<a class="myselfAbout" onClick="About()" >© 2020「田梓涵」 v1.50</a>
 	<img src="./img/logo.ico" width="45px" height="45px" class="logo" id="logo" onClick="logoClick()" />
 
 	<br />
@@ -797,7 +805,7 @@
 <!--suppress JSValidateTypes -->
 
 <script>
-	var version = 13;
+	var version = 14;
 
 	var searchbox = document.getElementById("secarh-box");
 	var bgImg = document.getElementById("bg");
@@ -860,6 +868,10 @@
 
 	var bgBox = document.getElementById("bgBox");
 
+	var searchModeWord = "";
+
+	var AllEle = "";
+
 	if(getCookie("isFirst") !== "1") {
 		setCookie("isFirst", "1", "365");
 		logoClick();
@@ -882,6 +894,8 @@
 
 	updateShowDate();
 	updateNoReserve();
+
+	onUpdateSearchMode();
 
 	// showNewMse();
 
@@ -1275,8 +1289,9 @@
 		var str = '';
 
 		if (list.length > 0 && searchbox.value !== "") {
+			onUpdateSearchMode();
 			list.forEach(function (ele, index) {
-				str += '<li><a class="keyWord" onclick="clearSearch()" target="_blank" href ="https://www.baidu.com/s?wd=' + ele + '">' + ele + '</li>';
+				str += '<li><a class="keyWord" onclick="clearSearch()" href="'+ searchModeWord +' '+ ele +'" target="_blank">' + ele + '</li>';
 			})
 			oUl.innerHTML = str;
 		} else {
@@ -1584,14 +1599,19 @@
 		}
 	}
 
+	function onUpdateSearchMode() {
+		if(searchMode === "1")
+			searchModeWord = "https://cn.bing.com/search?q=";
+		if(searchMode === "2")
+			searchModeWord = "https://www.baidu.com/s?wd=";
+		if(searchMode === "3")
+			searchModeWord = "https://www.google.com/search?q=";
+	}
+
 	function onEnterSearch() {
 		if (event.keyCode === 13) {
-			if(searchMode === "1")
-				window.open("https://cn.bing.com/search?q="+searchbox.value, "_blank");
-			if(searchMode === "2")
-				window.open("https://www.baidu.com/s?wd="+searchbox.value, "_blank");
-			if(searchMode === "3")
-				window.open("https://www.google.com/search?q="+searchbox.value, "_blank");
+			onUpdateSearchMode();
+			window.open(searchModeWord + searchbox.value, "_blank");
 			if(noReserveIsChecked === 1)
 				searchbox.value = "";
 		}
@@ -1681,6 +1701,7 @@
 		versions[11] = "版本号：v1.46\n更新日期：2020/5/20 13:00\n\n更新描述：\n新增：PC端的右键“复制粘贴”窗口\n新增：初次使用的欢迎窗口\n新增：日期时间显示\n优化：PC端更新日志窗口的字体\n优化：搜索框和“复制”窗口的代码逻辑\n优化：“复制粘贴”窗口的动态效果";
 		versions[12] = "版本号：v1.47\n更新日期：2020/5/24 17:58\n\n更新描述：\n新增：可在“设置”中打开或关闭“不保留搜索内容”\n新增：可在“设置”中打开或关闭日期显示\n新增：日期的动画效果\n优化：代码性能\n优化：时间和日期的布局\n重做：“欢迎”和“关于”窗口内容\n修复：时间和日期重叠bug\n修复：“星期日”日期显示为“0”的问题";
 		versions[13] = "版本号：v1.49\n更新日期：2020/6/6 22:32\n\n！由于本人是一名初中生，开学了\n所以网站的更新次数减少，但不影响使用，望大家谅解 ！\n\n更新描述：\n新增：“Quick HSearch”更新到最新版本时的消息框\n修改：将背景二修改为bing每日壁纸\n新增：更新版本消息框的动画效果及阴影效果\n重做：搜索框的阴影效果\n修复：首次使用不能搜索的bug\n删减：冗余代码，化繁为简";
+		versions[14] = "版本号：v1.50\n更新日期：2020/6/12 22:32\n\n更新描述：\n新增：壁纸的阴影动画效果\n修复：bing壁纸无法更新的问题\n修复：搜索框关联词的搜索方式\n重做：搜索框关联词的动画效果及排版\n优化：bing壁纸的加载速度\n增加：代码行数🐶";
 
 		updateLogText.innerHTML = versions[updateLog_num];
 	}
