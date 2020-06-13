@@ -294,13 +294,13 @@
 			transition: 0.3s;
 			margin-left: -100px;
 			margin-top: 5px;
-			background: rgba(0,0,0,0.55);
+			background: rgba(113, 110, 110, 0.55);
 			border: 50px;
 			border-radius: 3px;
 			height: 3px;
 			width: 50px;
 			outline: none;
-			box-shadow: rgba(255, 255, 255,.8) 1px 1px 10px;
+			box-shadow: rgba(0, 0, 0,.8) 3px 3px 10px;
 			visibility: hidden;
 			opacity: 0;
 		}
@@ -311,13 +311,13 @@
 			transition-delay: 0.2s;
 			margin-left: -30px;
 			margin-top: 5px;
-			background: rgba(0,0,0,0.55);
+			background: rgba(113, 110, 110, 0.55);
 			border: 50px;
-			border-radius: 3px;
+			border-radius: 20px;
 			height: 3px;
 			width: 50px;
 			outline: none;
-			box-shadow: rgba(255, 255, 255,.8) 1px 1px 10px;
+			box-shadow: rgba(0, 0, 0,.8) 3px 3px 10px;
 			visibility: hidden;
 			opacity: 0;
 		}
@@ -328,14 +328,14 @@
 			transition-delay: 0.4s;
 			margin-top: 5px;
 			margin-left: 40px;
-			background: rgba(0,0,0,0.55);
+			background: rgba(113, 110, 110, 0.55);
 			border: 50px;
 			border-radius: 3px;
 			height: 3px;
 			width: 50px;
 			text-align: center;
 			outline: none;
-			box-shadow: rgba(255, 255, 255,.8) 1px 1px 10px;
+			box-shadow: rgba(0, 0, 0,.8) 3px 3px 10px;
 			visibility: hidden;
 			opacity: 0;
 		}
@@ -407,6 +407,7 @@
 			transform: scale(1.15);
 			animation: 0.5s BgImgHover;
 			border-color: rgba(0 ,0 ,0 ,0);
+			box-shadow: rgba(0, 0, 0, .5) 3px 3px 10px;
 		}
 
 		.BgImg1:active {
@@ -441,6 +442,7 @@
 			transform: scale(1.15);
 			animation: 0.5s BgImgHover;
 			border-color: rgba(0 ,0 ,0 ,0);
+			box-shadow: rgba(0, 0, 0, .5) 3px 3px 10px;
 		}
 
 		.BgImg2:active {
@@ -470,6 +472,7 @@
 			transform: scale(1.15);
 			animation: 0.5s BgImgHover;
 			border-color: rgba(0 ,0 ,0 ,0);
+			box-shadow: rgba(0, 0, 0, .5) 3px 3px 10px;
 		}
 
 		.BgImg3:active {
@@ -733,7 +736,7 @@
 	<img class="bg" id="bg"/>
 
 	<div class="titleBox">
-		<h3 class="text-title" style="margin-left: 30px">Quick HSearch<img src="./img/searchLogo.gif" style="margin-left: -10px; height: 20px; width: 20px" /></h3>
+		<h3 class="text-title" style="margin-left: 30px">Quick HSearch<img src="./img/searchLogo.gif" style="margin-left: -15px; height: 50px; width: 50px" /></h3>
 		<h5 class="Han-text"></h5>
 	</div>
 
@@ -1336,8 +1339,8 @@
 			google.style.transitionDelay = "0s";
 
 			bing.style.backgroundColor = "rgba(40,250,58,0.76)";
-			baidu.style.backgroundColor = "rgba(0,0,0,0.55)";
-			google.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
+			baidu.style.backgroundColor = "rgba(113, 110, 110, 0.55)";
+			google.style.backgroundColor = "rgba(113, 110, 110, 0.55)";
 		}
 
 		else if(searchMode == "3") {
@@ -1345,8 +1348,8 @@
 			baidu.style.transitionDelay = "0s";
 			google.style.transitionDelay = "0s";
 
-			bing.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
-			baidu.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
+			bing.style.backgroundColor = "rgba(113, 110, 110, 0.55)";
+			baidu.style.backgroundColor = "rgba(113, 110, 110, 0.55)";
 			google.style.backgroundColor = "rgba(40,250,58,0.76)";
 		}
 
@@ -1355,9 +1358,9 @@
 			baidu.style.transitionDelay = "0s";
 			google.style.transitionDelay = "0s";
 
-			bing.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
+			bing.style.backgroundColor = "rgba(113, 110, 110, 0.55)";
 			baidu.style.backgroundColor = "rgba(40,250,58,0.76)";
-			google.style.backgroundColor = "rgba(0, 0, 0, 0.55)";
+			google.style.backgroundColor = "rgba(113, 110, 110, 0.55)";
 		}
 //			searchbox.focus();
 	}
