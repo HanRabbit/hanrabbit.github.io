@@ -131,7 +131,7 @@
 
 		.logo {
 			position: fixed;
-			bottom: -7px;
+			bottom: -1px;
 			z-index: 100;
 			left: 50%;
 			margin-left: -115px;
@@ -805,8 +805,8 @@
 		<h5 class="Han-text"></h5>
 	</div>
 
-	<a class="myselfAbout" onClick="About()" >© 2020「田梓涵」 v1.60</a>
-	<img src="./img/logo.ico" width="45px" height="45px" class="logo" id="logo" onClick="logoClick()" />
+	<a class="myselfAbout" onClick="About()" >© 2020「田梓涵」 v1.61</a>
+	<img src="./img/logo.ico" width="35px" height="35px" class="logo" id="logo" onClick="logoClick()" />
 
 	<br />
 		<input onpaste="pasteInput" onmousedown="input_rightClick(Event)" class="search-input" id="secarh-box" type="search" onmouseover="onMouseBox()" onmouseout="onOutBox()" placeholder="Search" onkeypress="onEnterSearch()" ondblclick="ondClick()" onclick="onClickBox()" onblur="onBlurBox()"/>
@@ -897,7 +897,7 @@
 <!--suppress JSValidateTypes -->
 
 <script>
-	var version = 15;
+	var version = 16;
 
 	var searchbox = document.getElementById("secarh-box");
 	var bgImg = document.getElementById("bg");
@@ -1847,6 +1847,7 @@
 		versions[13] = "版本号：v1.49\n更新日期：2020/6/6 22:32\n\n！由于本人是一名初中生，开学了\n所以网站的更新次数减少，但不影响使用，望大家谅解 ！\n\n更新描述：\n新增：“Quick HSearch”更新到最新版本时的消息框\n修改：将背景二修改为bing每日壁纸\n新增：更新版本消息框的动画效果及阴影效果\n重做：搜索框的阴影效果\n修复：首次使用不能搜索的bug\n删减：冗余代码，化繁为简";
 		versions[14] = "版本号：v1.50\n更新日期：2020/6/12 22:32\n\n更新描述：\n新增：壁纸的阴影动画效果\n修复：bing壁纸无法更新的问题\n修复：搜索框关联词的搜索方式\n重做：搜索框关联词的动画效果及排版\n优化：bing壁纸的加载速度\n增加：代码行数🐶";
 		versions[15] = "版本号：v1.60\n更新日期：2020/6/14 12:15\n\n更新描述：\n新增：热门网站的快捷搜索方式\n新增：快捷搜索方式动画特效\n新增：“更多”按钮\n优化：网站稳定性\n优化：快捷搜索方式的代码逻辑\n修复：搜索图标动画变小的bug";
+		versions[16] = "版本号：v1.61\n更新日期：2020/6/21 16:31\n\n更新描述：\n新增：其他一些网站的快捷方式\n新增：在“欢迎菜单”中本人的B站账号\n修复：快捷方式入口需要点击两次的bug\n优化：对于快捷方式隐藏的判定\n\n\n\n\n\n\n\n\n\n\n\n\n啊~~~，今天又是咕咕咕的一天呢";
 
 		updateLogText.innerHTML = versions[updateLog_num];
 	}
@@ -1854,7 +1855,7 @@
 	function logoClick() {
 		About();
 		titleTipbox.innerHTML = "Quick HSearch";
-		updateLogText.innerHTML = "网站上线日期：2020/5/5\n\n感谢您使用此网站=￣ω￣=\n此网站为Han的Quick HSearch快捷搜索，\n由Han本人开发及维护。\n服务器由Github提供\n更新日志请点击底部的版本号\n如有问题，请发送至“Tianzihan5357@163.com”\n谢谢您的配合！\n\n（注：双击搜索框以进入“设置”）";
+		updateLogText.innerHTML = "网站上线日期：2020/5/5\n\n感谢您使用此网站=￣ω￣=\n此网站为Han的Quick HSearch快捷搜索，\n由Han本人开发及维护。\n服务器由Github提供\n更新日志请点击底部的版本号\n\n本人B站账号：Han官方频道\n\n如有问题，请发送至“Tianzihan5357@163.com”\n谢谢您的配合！\n\n（注：双击搜索框以进入“设置”）";
 		but_left.style.display = "none";
 		but_right.style.display = "none";
 	}
