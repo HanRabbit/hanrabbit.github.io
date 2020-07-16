@@ -166,14 +166,14 @@
 			position: fixed;
 			visibility: hidden;
 			transition: 0.3s;
-			border: 1px solid white;
+			/*border: 1px solid white;*/
 			width: 500px;
 			margin-left: 0;
 			filter: blur(100px);
 			background-color: rgba(0,0,0,0.00);
 			border-radius: 15px;
 			height: 350px;
-			box-shadow: 5px 5px 20px 5px rgba(0, 0, 0,.4);
+			box-shadow: 5px 5px 20px 5px rgba(0, 0, 0,.5);
 			text-align: center;
 			outline: none;
 			/*transform: matrix3d(1, 0, 0, 0, 0,  1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);*/
@@ -214,9 +214,9 @@
 
 		.ok_button:hover {
 			transform: rotate(90deg);
-			/*background: rgba(0, 0, 0, 0.1);*/
-			background: #31C135;
-			box-shadow: rgba(0, 0, 0, .3) 3px 3px 10px;
+			background: rgba(200, 200, 200, 0.8);
+			/*background: white;*/
+			box-shadow: rgba(0, 0, 0, .2) 5px -5px 20px;
 		}
 
 		.ok_button:active {
@@ -447,7 +447,7 @@
 
 		.BgImg2:active {
 			transition: .2s;
-			transform: scale(1);
+			transform: rotateY(10deg);
 		}
 
 		.BgImg3 {
@@ -1614,8 +1614,6 @@
 			searchbox.value = "";
 			bgBox.style.background = "rgba(0, 0, 0, 0)";
 
-			//
-
 			if(winX <= winY) {
 				timeText.style.fontSize = "50px";
 				timeText.style.bottom = "-40px"
@@ -1680,7 +1678,7 @@
 		if(quickBoxisShow === 1)
 			quickBoxHide();
 
-		if(LowModeIsChecked == 0) {
+		if(LowModeIsChecked === 0) {
 			searchbox.style.height = "55px";
 			searchbox.style.width = searchBox_clickWidth;
 			searchbox.style.marginTop = "130px";
@@ -1708,7 +1706,7 @@
 	}
 
 	function onMouseBox() {
-		if (isClick == 0) {
+		if (isClick === 0) {
 			var winX = window.innerWidth;
 			var winY = window.innerHeight;
 
@@ -1726,7 +1724,7 @@
 	}
 
 	function onOutBox() {
-		if (isClick == 0) {
+		if (isClick === 0) {
 			var winX = window.innerWidth;
 			var winY = window.innerHeight;
 
@@ -1765,7 +1763,14 @@
 		updateLog_num = version;
 		changeAboutWin();
 		tipbox.style.filter = "blur(0px)";
-		tipbox.style.backgroundColor = "rgba(255,255,255,0.8)";
+		if(LowModeIsChecked === 0) {
+			bgImg.style.filter = "blur(10px)";
+			tipbox.style.backgroundColor = "rgba(255,255,255,0.4)";
+		}
+		else {
+			tipbox.style.backgroundColor = "rgba(255,255,255,0.8)";
+		}
+		searchbox.style.opacity = "0";
 //			tipbox.style.display = "block";
 		tipbox.style.visibility = "inherit";
 		// titleTipbox.innerHTML = "更新日志";
@@ -1794,7 +1799,9 @@
 
 	function AboutExit() {
 		tipbox.style.filter = "blur(200px)";
+		bgImg.style.filter = "blur(0px)";
 		tipbox.style.backgroundColor = "rgba(0, 0, 0, 0)";
+		searchbox.style.opacity = "1";
 //			tipbox.style.display = "none";
 		tipbox.style.visibility = "hidden";
 	}
