@@ -31,7 +31,7 @@
 		}
 
 		.search-input {
-			/*z-index: 1;*/
+			z-index: 1;
 			color: white;
 			position: relative;
 			/*margin: 0;*/
@@ -39,34 +39,31 @@
 			text-align: center;
 			margin-top: 150px;
 			height: 50px;
-			width: 30%;
+			width: 100px;
 			border-radius: 50px;
 			font-size: 18px;
 			outline: none;
 			border: 50px;
-			background-color: rgba(0,0,0,0.6);
+			background-color: rgba(0,0,0,.4);
 			color: rgba(0,0,0,0.00);
 			box-shadow: rgba(0,0,0,.6) 2px 5px 10px;
-			background-position: center top;
-			background-size: cover;
-			word-break: break-all;
 			overflow: hidden;
 		}
 
-		/*
-            .search-input:before {
-                content: '';
-                background: url("img/background/BG_A.jpg") center center / cover no-repeat fixed;
-                filter: blur(10px);
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                z-index: -1;
-                margin: -30px;
-            }
-        */
+		.input_blur {
+			transition: .4s;
+			position: relative;
+			text-align: center;
+			margin-top: -56px;
+			left: 0;
+			height: 65px;
+			width: 100px;
+			border-radius: 50px;
+			background: white fixed center top;
+			background-size: cover;
+			filter: blur(10px);
+		}
+
 
 		.bg {
 			transition: 0.3s;
@@ -202,8 +199,8 @@
 			transition: 0.5s;
 			background-color: rgba(0, 0, 0, 0);
 			border-radius: 50px;
-			height: 40px;
-			width: 40px;
+			height: 35px;
+			width: 35px;
 			margin-top: 240px;
 			left: 45%;
 			outline: none;
@@ -214,9 +211,9 @@
 
 		.ok_button:hover {
 			transform: rotate(90deg);
-			background: rgba(200, 200, 200, 0.8);
+			/*background: rgba(200, 200, 200, 0.8);*/
 			/*background: white;*/
-			box-shadow: rgba(0, 0, 0, .2) 5px -5px 20px;
+			/*box-shadow: rgba(0, 0, 0, .2) 5px -5px 20px;*/
 		}
 
 		.ok_button:active {
@@ -293,7 +290,7 @@
 			position: absolute;
 			transition: 0.3s;
 			margin-left: -100px;
-			margin-top: 5px;
+			margin-top: -10px;
 			background: rgba(113, 110, 110, 0.55);
 			border: 50px;
 			border-radius: 3px;
@@ -310,7 +307,7 @@
 			transition: 0.3s;
 			transition-delay: 0.2s;
 			margin-left: -30px;
-			margin-top: 5px;
+			margin-top: -10px;
 			background: rgba(113, 110, 110, 0.55);
 			border: 50px;
 			border-radius: 20px;
@@ -326,7 +323,7 @@
 			position: absolute;
 			transition: 0.3s;
 			transition-delay: 0.4s;
-			margin-top: 5px;
+			margin-top: -10px;
 			margin-left: 40px;
 			background: rgba(113, 110, 110, 0.55);
 			border: 50px;
@@ -810,6 +807,7 @@
 
 	<br />
 		<input onpaste="pasteInput" onmousedown="input_rightClick(Event)" class="search-input" id="secarh-box" type="search" onmouseover="onMouseBox()" onmouseout="onOutBox()" placeholder="Search" onkeypress="onEnterSearch()" ondblclick="ondClick()" onclick="onClickBox()" onblur="onBlurBox()"/>
+		<div class="input_blur" id="inputBlur"></div>
 	<br />
 
 	<div class="tip" id="tip-box">
@@ -817,7 +815,8 @@
 		<textarea class="box-textupdateLog" id="updateLogText" readonly="readonly"></textarea>
 		<br/>
 		<button class="but-left" id="but-left" onClick="reduce()"><svg t="1588749508035" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3188" width="40" height="40"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#000" p-id="3189"></path></svg></button>
-		<svg t="1592134956658" class="ok_button" onClick="AboutExit()" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4113" width="200" height="200"><path d="M512 992A480.512 480.512 0 0 1 32 512 480.512 480.512 0 0 1 512 32a480.512 480.512 0 0 1 480 480 480.512 480.512 0 0 1-480 480z m0-434.624l135.68 135.68a32 32 0 0 0 22.72 9.344 32 32 0 0 0 22.528-9.344 32 32 0 0 0 9.344-22.592 32 32 0 0 0-9.344-22.656L557.184 511.936l135.744-135.68a32 32 0 0 0 9.472-22.784 31.488 31.488 0 0 0-9.472-22.464 31.552 31.552 0 0 0-22.656-9.472 31.552 31.552 0 0 0-22.656 9.472L511.936 466.88 376.064 331.008a31.552 31.552 0 0 0-22.656-9.472 31.488 31.488 0 0 0-22.592 9.472 32 32 0 0 0 0 45.248l135.872 135.68-135.872 135.872a31.168 31.168 0 0 0-9.344 22.464 31.616 31.616 0 0 0 9.344 22.72 32 32 0 0 0 22.656 9.344A32 32 0 0 0 376 692.992l135.872-135.68z" p-id="4114" fill="#515151"></path></svg>
+		<svg t="1607352893601" class="ok_button" onClick="AboutExit()" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1158" width="100" height="100"><path d="M561 512.7l388.1-388.1c13.6-13.6 13.6-35.6 0-49.2-13.6-13.6-35.6-13.6-49.2 0l-388.1 388L123.7 75.3c-13.6-13.6-35.6-13.6-49.2 0-13.6 13.6-13.6 35.6 0 49.2l388.1 388.1L74.4 900.8c-13.6 13.6-13.6 35.6 0 49.2 6.8 6.8 15.7 10.2 24.6 10.2s17.8-3.4 24.6-10.2l388.1-388.1L899.9 950c6.8 6.8 15.7 10.2 24.6 10.2s17.8-3.4 24.6-10.2c13.6-13.6 13.6-35.6 0-49.2L561 512.7z" p-id="1159"></path></svg>
+		<!--		<svg t="1592134956658" class="ok_button" onClick="AboutExit()" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4113" width="200" height="200"><path d="M512 992A480.512 480.512 0 0 1 32 512 480.512 480.512 0 0 1 512 32a480.512 480.512 0 0 1 480 480 480.512 480.512 0 0 1-480 480z m0-434.624l135.68 135.68a32 32 0 0 0 22.72 9.344 32 32 0 0 0 22.528-9.344 32 32 0 0 0 9.344-22.592 32 32 0 0 0-9.344-22.656L557.184 511.936l135.744-135.68a32 32 0 0 0 9.472-22.784 31.488 31.488 0 0 0-9.472-22.464 31.552 31.552 0 0 0-22.656-9.472 31.552 31.552 0 0 0-22.656 9.472L511.936 466.88 376.064 331.008a31.552 31.552 0 0 0-22.656-9.472 31.488 31.488 0 0 0-22.592 9.472 32 32 0 0 0 0 45.248l135.872 135.68-135.872 135.872a31.168 31.168 0 0 0-9.344 22.464 31.616 31.616 0 0 0 9.344 22.72 32 32 0 0 0 22.656 9.344A32 32 0 0 0 376 692.992l135.872-135.68z" p-id="4114" fill="#515151"></path></svg>-->
 <!--		<svg t="1592134853839"  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2664" width="64" height="64"><path d="M509.866667 32C245.333333 32 32 247.466667 32 512s213.333333 480 477.866667 480S987.733333 776.533333 987.733333 512 774.4 32 509.866667 32z m0 896C281.6 928 96 742.4 96 512S281.6 96 509.866667 96 923.733333 281.6 923.733333 512s-185.6 416-413.866666 416z" fill="#515151" p-id="2665"></path><path d="M693.333333 330.666667c-12.8-12.8-32-12.8-44.8 0L512 467.2l-136.533333-136.533333c-12.8-12.8-32-12.8-44.8 0-12.8 12.8-12.8 32 0 44.8l136.533333 136.533333-136.533333 136.533333c-12.8 12.8-12.8 32 0 44.8 6.4 6.4 14.933333 8.533333 23.466666 8.533334s17.066667-2.133333 23.466667-8.533334l136.533333-136.533333 136.533334 136.533333c6.4 6.4 14.933333 8.533333 23.466666 8.533334s17.066667-2.133333 23.466667-8.533334c12.8-12.8 12.8-32 0-44.8L556.8 512l136.533333-136.533333c12.8-12.8 12.8-32 0-44.8z" fill="#515151" p-id="2666"></path></svg>-->
 <!--		<svg t="1592131860289" class="" onClick="AboutExit()" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4368" data-spm-anchor-id="a313x.7781069.0.i1" width="120" height="120"><path d="M512 896C299.936 896 128 724.064 128 512S299.936 128 512 128s384 171.936 384 384-171.936 384-384 384m0-832C264.96 64 64 264.96 64 512s200.96 448 448 448 448-200.96 448-448S759.04 64 512 64" fill="#ffffff" p-id="4369" data-spm-anchor-id="a313x.7781069.0.i2" class="selected"></path><path d="M665.376 313.376L512 466.752l-153.376-153.376-45.248 45.248L466.752 512l-153.376 153.376 45.248 45.248L512 557.248l153.376 153.376 45.248-45.248L557.248 512l153.376-153.376z" fill="#1afa29" p-id="4370" data-spm-anchor-id="a313x.7781069.0.i0" class="selected"></path></svg>-->
 <!--		<svg t="1589275643612" class="ok_button" onClick="AboutExit()" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4300" width="32" height="32"><path d="M1007.67938 1007.616358a56.313464 56.313464 0 0 1-79.107008 0L646.111189 725.155175l-39.553504-39.553504a55.866531 55.866531 0 0 1 0-79.107009 55.866531 55.866531 0 0 1 79.107009 0l39.553504 39.553505 282.461182 282.461182a56.313464 56.313464 0 0 1 0 79.107009z" fill="#00C569" p-id="4301"></path><path d="M1007.67938 16.320625a56.313464 56.313464 0 0 0-79.107008 0L512.031514 432.861483 95.490656 16.320625a56.089997 56.089997 0 0 0-79.107008 0 56.313464 56.313464 0 0 0 0 79.107008l416.540858 416.540858L16.383648 928.509349a55.866531 55.866531 0 0 0 79.107008 79.107009L1007.67938 95.427633a56.089997 56.089997 0 0 0 0-79.107008z" fill="#111111" p-id="4302"></path></svg>-->
@@ -835,7 +834,7 @@
 	<div class="setting-box" >
 		<div class="BgImg_box" >
 			<img class="BgImg1" id="bg1" onclick="BgChange1()" src="./img/background/BG_A.jpg"/>
-			<img class="BgImg2" id="bg2" onclick="BgChange2()" src="https://bing.rthe.xyz/wallpaper"/>
+			<img class="BgImg2" id="bg2" onclick="BgChange2()" src="https://api.sunweihu.com/api/bing1/api.php"/>
 			<img class="BgImg3" id="bg3" onclick="BgChange3()" src="./img/background/BG_C.jpg"/>
 		</div>
 
@@ -897,9 +896,11 @@
 <!--suppress JSValidateTypes -->
 
 <script>
-	var version = 16;
+	var version = 17;
 
 	var searchbox = document.getElementById("secarh-box");
+	var inputBlur = document.getElementById("inputBlur");
+
 	var bgImg = document.getElementById("bg");
 
 	var tipbox = document.getElementById("tip-box");
@@ -1270,7 +1271,7 @@
 			CopyUl.style.visibility = "inherit";
 			CopyUl.style.opacity = "1";
 			CopyUl.style.height = "83px";
-
+			bgBox.style.background = "rgba(0, 0, 0, .3)";
 			// alert(selectedText);
 			if (searchbox.value === ""){
 				copy_1.style.color = "rgba(255, 255, 255, .2)";
@@ -1294,8 +1295,11 @@
 				searchbox.style.height = "55px";
 				searchbox.style.width = searchBox_clickWidth;
 				searchbox.style.marginTop = "130px";
-				searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
+				searchbox.style.backgroundColor = "rgba(0,0,0,.9)";
 				searchbox.style.color = "white";
+				inputBlur.style.height = "56px";
+				inputBlur.style.width = searchBox_clickWidth;
+				inputBlur.style.marginTop = "-65px";
 				bgImg.style.filter = "blur(10px)";
 				bgImg.style.transition = "0.3s";
 				// bgImg.style.filter = "opacity(0.7)";
@@ -1309,6 +1313,9 @@
 				searchbox.style.marginTop = "145px";
 				searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
 				searchbox.style.color = "white";
+				inputBlur.style.height = "56px";
+				inputBlur.style.width = searchBox_clickWidth;
+				inputBlur.style.marginTop = "-65px";
 				// bgImg.style.filter = "blur(8px)";
 				// bgImg.style.transform = ("scale(1.2)");
 				oUl.style.width = searchBox_clickWidth;
@@ -1375,15 +1382,22 @@
 	function updateCookieData() {
 		var CookieBgImg = getCookie("bgNum");
 
-		if(CookieBgImg === "2")
-			bgImg.src = "https://bing.rthe.xyz/wallpaper";
-		else if(CookieBgImg === "3")
+		if(CookieBgImg === "2") {
+			bgImg.src = "https://api.sunweihu.com/api/bing1/api.php";
+			inputBlur.style.background = "url(https://api.sunweihu.com/api/bing1/api.php) fixed center top";
+		}
+		else if(CookieBgImg === "3") {
 			bgImg.src = "./img/background/BG_C.jpg";
-		else
+			inputBlur.style.background = "url(./img/background/BG_C.jpg) fixed center top";
+		}
+		else {
 			bgImg.src = "./img/background/BG_A.jpg";
+			inputBlur.style.background = "url(./img/background/BG_A.jpg) fixed center top";
+		}
 	}
 
 	searchbox.style.width = searchBox_width;
+	inputBlur.style.width = searchBox_width;
 
 	function BgChange1() {
 		setCookie("bgNum", "1", "365");
@@ -1601,14 +1615,16 @@
 			___.style.visibility = "hidden";
 			___.style.opacity = "0";
 
+			onOutBox();
+
 			searchbox.blur();
 		}
 	}
 
 	function onBlurBox() {
 //			alert(changeMode);
-		var winX = window.innerWidth;
-		var winY = window.innerHeight;
+// 		var winX = window.innerWidth;
+// 		var winY = window.innerHeight;
 
 		if (noeClickFlag === 0 && isIn === 0 && copyMode === 0) {
 			searchbox.value = "";
@@ -1634,8 +1650,10 @@
 			oUl.style.visibility = 'hidden';
 			searchbox.style.marginTop = "150px";
 			searchbox.style.height = "50px";
-			searchbox.style.backgroundColor = "rgba(0,0,0,0.60)";
+			searchbox.style.backgroundColor = "rgba(0,0,0,0.40)";
 			searchbox.style.color = "rgba(0, 0, 0, 0)";
+			inputBlur.style.marginTop = "-56px";
+			inputBlur.style.height = "65px";
 			bgImg.style.filter = "blur(0px)";
 			// bgImg.style.filter = "opacity(1)";
 			bgImg.style.transform = ("scale(1.0)");
@@ -1648,6 +1666,8 @@
 			google.style.opacity = "0";
 			isClick = 0;
 			searchbox.style.width = searchBox_width;
+			inputBlur.style.width = searchBox_width;
+			onOutBox();
 		}
 		else {
 			copyMode = 0;
@@ -1684,6 +1704,9 @@
 			searchbox.style.marginTop = "130px";
 			searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
 			searchbox.style.color = "white";
+			inputBlur.style.height = "56px";
+			inputBlur.style.width = searchBox_clickWidth;
+			inputBlur.style.marginTop = "-56px";
 			bgImg.style.filter = "blur(10px)";
 			bgImg.style.transition = "0.3s";
 			// bgImg.style.filter = "opacity(0.7)";
@@ -1697,6 +1720,9 @@
 			searchbox.style.marginTop = "130px";
 			searchbox.style.backgroundColor = "rgba(0,0,0,0.90)";
 			searchbox.style.color = "white";
+			inputBlur.style.height = "56px";
+			inputBlur.style.width = searchBox_clickWidth;
+			inputBlur.style.marginTop = "-56px";
 			// bgImg.style.filter = "blur(8px)";
 			// bgImg.style.transform = ("scale(1.2)");
 			oUl.style.width = searchBox_clickWidth;
@@ -1714,11 +1740,13 @@
 				searchBox_width = "40%";
 				searchBox_clickWidth = "80%";
 				searchbox.style.width = "60%";
+				inputBlur.style.width = "60%";
 			}
 			else {
 				searchBox_width = "17%";
 				searchBox_clickWidth = "35%";
 				searchbox.style.width = "26%";
+				inputBlur.style.width = "26%";
 			}
 		}
 	}
@@ -1732,11 +1760,13 @@
 				searchBox_width = "40%";
 				searchBox_clickWidth = "80%";
 				searchbox.style.width = "40%";
+				inputBlur.style.width = "40%";
 			}
 			else {
 				searchBox_width = "17%";
 				searchBox_clickWidth = "35%";
 				searchbox.style.width = "17%";
+				inputBlur.style.width = "17%";
 			}
 		}
 	}
@@ -1855,7 +1885,7 @@
 		versions[14] = "版本号：v1.50\n更新日期：2020/6/12 22:32\n\n更新描述：\n新增：壁纸的阴影动画效果\n修复：bing壁纸无法更新的问题\n修复：搜索框关联词的搜索方式\n重做：搜索框关联词的动画效果及排版\n优化：bing壁纸的加载速度\n增加：代码行数🐶";
 		versions[15] = "版本号：v1.60\n更新日期：2020/6/14 12:15\n\n更新描述：\n新增：热门网站的快捷搜索方式\n新增：快捷搜索方式动画特效\n新增：“更多”按钮\n优化：网站稳定性\n优化：快捷搜索方式的代码逻辑\n修复：搜索图标动画变小的bug";
 		versions[16] = "版本号：v1.61\n更新日期：2020/6/21 16:31\n\n更新描述：\n新增：其他一些网站的快捷方式\n新增：在“欢迎菜单”中本人的B站账号\n修复：快捷方式入口需要点击两次的bug\n优化：对于快捷方式隐藏的判定\n\n\n\n\n\n\n\n\n\n\n\n\n啊~~~，今天又是咕咕咕的一天呢";
-
+		versions[17] = "版本号：v1.62\n更新日期：2020/12/7 14:23\n\n更新描述： \n" + "优化：搜索框毛玻璃效果\n修复：bing壁纸API接口调用失败的问题\n重做：“about”窗口“取消”按键图标";
 		updateLogText.innerHTML = versions[updateLog_num];
 	}
 
