@@ -192,6 +192,8 @@
 			font-size: 15px;
 			resize: none;
 			outline: none;
+			overflow: -moz-scrollbars-none;
+			ms-overflow-style: none;
 		}
 
 		.ok_button {
@@ -802,7 +804,7 @@
 		<h5 class="Han-text"></h5>
 	</div>
 
-	<a class="myselfAbout" onClick="About()" >© 2020「田梓涵」 v1.62</a>
+	<a class="myselfAbout" onClick="About()" >© 2020「田梓涵」 v--.--</a>
 	<img src="./img/logo.ico" width="35px" height="35px" class="logo" id="logo" onClick="logoClick()" />
 
 	<br />
@@ -867,8 +869,8 @@
 
 	<div class="updateMseBox" id="updateMseBox">
 		<h5 class="updateMseText">
-			你的“Quick HSearch”已更新到
-			<a class="updateMseA" onclick="newVersion()">最新版本</a>
+			信息：Han已经正在开发“Quick HSearch II”, Quick HSearch将不会再
+			<a class="updateMseA" onclick="newVersion()">更新</a>
 		</h5>
 	</div>
 	<div class="quickBox" onclick="quickBoxCtrl()" id="quickBtn">
@@ -896,7 +898,7 @@
 <!--suppress JSValidateTypes -->
 
 <script>
-	var version = 17;
+	var version = 18;
 
 	var searchbox = document.getElementById("secarh-box");
 	var inputBlur = document.getElementById("inputBlur");
@@ -1886,6 +1888,7 @@
 		versions[15] = "版本号：v1.60\n更新日期：2020/6/14 12:15\n\n更新描述：\n新增：热门网站的快捷搜索方式\n新增：快捷搜索方式动画特效\n新增：“更多”按钮\n优化：网站稳定性\n优化：快捷搜索方式的代码逻辑\n修复：搜索图标动画变小的bug";
 		versions[16] = "版本号：v1.61\n更新日期：2020/6/21 16:31\n\n更新描述：\n新增：其他一些网站的快捷方式\n新增：在“欢迎菜单”中本人的B站账号\n修复：快捷方式入口需要点击两次的bug\n优化：对于快捷方式隐藏的判定\n\n\n\n\n\n\n\n\n\n\n\n\n啊~~~，今天又是咕咕咕的一天呢";
 		versions[17] = "版本号：v1.62\n更新日期：2020/12/7 14:23\n\n更新描述： \n" + "优化：搜索框毛玻璃效果\n修复：bing壁纸API接口调用失败的问题\n重做：“about”窗口“取消”按键图标";
+		versions[18] = "版本号：v--.--\n\n信息：Han已经正在开发“Quick HSearch II”\nQuick HSearch将不会再更新\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuick Hsearch II 是一次大版本更新，UI会和好看\n敬请期待.....";
 		updateLogText.innerHTML = versions[updateLog_num];
 	}
 
