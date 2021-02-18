@@ -250,6 +250,70 @@
         .msg-right-arrow:active {
             margin-left: 42%;
         }
+
+        .input_ul {
+            transition: all .3s ease-in-out;
+            position: absolute;
+            color: #bfbfbf;
+            background-color: rgba(0, 0, 0, .5);
+            backdrop-filter: blur(10px);
+            left: 50%;
+            top: 36%;
+            width: 60%;
+            margin-left: -32%;
+            border: 20px;
+            border-radius: 8px 8px 8px 8px;
+            box-shadow: rgba(0, 0, 0, .4) 3px 6px 8px;
+            list-style-type: none;
+            font-family: "microsoft yahei light", PingFangSC-Regular, Helvetica, "黑体", sans-serif, 等线;
+
+            /**********HIDE**********/
+
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        @keyframes ULShowAnim {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .keyWord {
+            transition: .3s;
+            border: 50px;
+            border-radius: 8px;
+            display: block;
+            margin-left: -40px;
+            text-decoration: none;
+            text-indent: 1.5em;
+            color: #cdcdcd;
+            outline: none;
+            height: 30px;
+            text-align: start;
+            left: -50px;
+            letter-spacing: 0;
+            font-weight: 400;
+            padding-top: 5px;
+        }
+
+        .keyWord:hover {
+            /*font-style: italic;*/
+            /*text-decoration-line: underline;*/
+            background: rgba(255, 255, 255, .2);
+            font-weight: 500;
+            text-indent: 2.5em;
+            /*letter-spacing: 3px;*/
+            color: #54b400;
+        }
     </style>
 </head>
 <body style="overflow: hidden">
@@ -259,6 +323,7 @@
     <div class="input-box">
         <svg t="1611649625367" id="search-icon" onclick="onSearch()" class="input-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1383" width="40" height="40"><path d="M446.112323 177.545051c137.567677 0.219798 252.612525 104.59798 266.162424 241.493333 13.562828 136.895354-78.778182 261.818182-213.617777 289.008485-134.852525 27.203232-268.386263-52.156768-308.945455-183.608889s25.018182-272.252121 151.738182-325.779394A267.235556 267.235556 0 0 1 446.112323 177.545051m0-62.060607c-182.794343 0-330.989899 148.195556-330.989899 330.989899s148.195556 330.989899 330.989899 330.989899 330.989899-148.195556 330.989899-330.989899-148.195556-330.989899-330.989899-330.989899z m431.321212 793.341415a30.849293 30.849293 0 0 1-21.94101-9.102223l-157.220202-157.220202c-11.752727-12.179394-11.584646-31.534545 0.37495-43.50707 11.972525-11.972525 31.327677-12.140606 43.494141-0.37495l157.220202 157.220202a31.036768 31.036768 0 0 1 6.723232 33.810101 31.004444 31.004444 0 0 1-28.651313 19.174142z m0 0" p-id="1384" fill="#ffffff"></path></svg>
         <input placeholder="Search" onmouseover="input_bar_onMouse()" onmouseleave="input_bar_onMouseLeave()" id="input-bar" onclick="click_input_bar()" class="input-text">
+        <ul class="input_ul" id="input_ul"></ul>        <!---联想词提示框--->
     </div>
     <div class="bottom_text">
         <button class="han-title" onclick="msgWindowShow()">© 2021「Han」v2.0</button>
@@ -288,6 +353,7 @@
     const msg_pp_box = document.getElementById("msg-pp");
     const msg_text = document.getElementById("msg-Text");
     const msg_title = document.getElementById("msg-title");
+    const input_ul = document.getElementById("input_ul");
 
     const winX = window.innerWidth;         //Get Screen Width and Height
     const winY = window.innerHeight;
@@ -345,6 +411,9 @@
     input_bar.style.width = String(input_bar_width)+"px";
     input_bar.style.marginLeft = String(input_bar_width / -2)+"px";
     search_icon.style.marginLeft = String(input_bar_width / -2 + 10)+"px";
+
+    input_ul.style.width = String(input_bar_str_width)+"px";
+    input_ul.style.marginLeft = String(input_bar_str_width / -2 - 20)+"px";
 
     if(winX < 600 || winY < 500) {
         msg_box.style.width = String(winX - 20) + "px";
@@ -442,6 +511,8 @@
     }
 
     function msgWindowShow() {
+        msg_text.innerHTML = "";
+        update_text_num = 19;
         hide_click_inputBar();
         msg_pp_box.style.opacity = "1";
         msg_pp_box.style.top = "20%";
@@ -456,7 +527,7 @@
         if(update_text_num > update_text_num_max)
             update_text_num = update_text_num_max;
         setTimeout(function () {msg_text.innerHTML = update_versions_text[update_text_num]},190)
-        setTimeout(function () {msg_text.style.animation = "none"}, 300)
+        setTimeout(function () {msg_text.style.animation = "none"}, 301)
     }
 
     function left_arrow_click() {
@@ -469,6 +540,45 @@
         update_text_num ++;
         msg_text.style.animation = "msgTextAnRight .3s";
         update_text_update();
+    }
+
+    input_bar.onkeyup = function () {
+        const value = this.value;
+        if (value !== "") {
+            const getScript = document.createElement("script");
+            getScript.src = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=" + value + "&cb=out_text";
+            document.body.appendChild(getScript);
+        } else {
+            hide_keyWord();
+            //input_ul.innerHTML = "";
+        }
+    }
+
+    let searchModeKey = "https://www.baidu.com/s?wd=";
+
+    function out_text(data) {
+        const list = data.s;
+        let str = "";
+
+        if (list.length > 0 && input_bar.value !== "") {
+            list.forEach(function (ele, index) {
+                str += '<li><a class="keyWord" onclick="" href="'+ searchModeKey +' '+ ele +'" target="_blank">' + ele + '</li>';
+            })
+            show_keyWord();
+        }
+        input_ul.innerHTML = str;
+    }
+
+    function show_keyWord() {
+        input_ul.style.animation = "ULShowAnim .3s";
+        input_ul.style.transform = "scale(1)";
+        input_ul.style.opacity = "1";
+    }
+
+    function hide_keyWord() {
+        input_ul.style.animation = "";
+        input_ul.style.transform = "scale(0)";
+        input_ul.style.opacity = "0";
     }
 </script>
 
