@@ -313,11 +313,72 @@
         .keyWord:hover {
             /*font-style: italic;*/
             /*text-decoration-line: underline;*/
-            background: rgba(255, 255, 255, .2);
+            background-color: rgba(255, 255, 255, .2);
             font-weight: 500;
             text-indent: 2.5em;
             /*letter-spacing: 3px;*/
             color: #54b400;
+        }
+
+        .bing-icon {
+            transition: .3s;
+            /*position: absolute;*/
+            background-color: rgba(0, 0, 0, .6);
+            height: 25px;
+            width: 50px;
+            transform: scale(1, 1) perspective(.5em) rotateX(5deg);
+            border-radius: 5px 5px 0 0;
+            fill: #e6e6e6;
+            z-index: 5;
+            box-shadow: rgba(0, 0, 0, .3) 3px 8px 10px;
+        }
+
+        .baidu-icon {
+            transition: .3s;
+            /*position: absolute;*/
+            background-color: rgba(0, 0, 0, .6);
+            height: 25px;
+            width: 50px;
+            transform: scale(1, 1) perspective(.5em) rotateX(5deg);
+            border-radius: 5px 5px 0 0;
+            fill: #e6e6e6;
+            z-index: 6;
+            box-shadow: rgba(0, 0, 0, .3) 3px 8px 10px;
+        }
+
+        .google-icon {
+            transition: .3s;
+            /*position: absolute;*/
+            background-color: rgba(0, 0, 0, .6);
+            height: 25px;
+            width: 50px;
+            transform: scale(1, 1) perspective(.5em) rotateX(5deg);
+            border-radius: 5px 5px 0 0;
+            fill: #e6e6e6;
+            z-index: 7;
+            box-shadow: rgba(0, 0, 0, .3) 3px 8px 10px;
+        }
+
+        .search-mode-icon {
+            transition: .2s;
+
+            transition-delay: .3s;
+            -moz-transition-delay: .3s;
+            -webkit-transition-delay: .3s;
+            -o-transition-delay: .3s;
+
+            position: absolute;
+            left: 50%;
+            top: 32%;
+            margin-left: -260px;
+
+            display: flex;
+
+            /****   Animation    ****/
+
+            visibility: hidden;
+            opacity: 0;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -328,10 +389,21 @@
     <div class="input-box">
         <svg t="1611649625367" id="search-icon" onclick="onSearch()" class="input-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1383" width="40" height="40"><path d="M446.112323 177.545051c137.567677 0.219798 252.612525 104.59798 266.162424 241.493333 13.562828 136.895354-78.778182 261.818182-213.617777 289.008485-134.852525 27.203232-268.386263-52.156768-308.945455-183.608889s25.018182-272.252121 151.738182-325.779394A267.235556 267.235556 0 0 1 446.112323 177.545051m0-62.060607c-182.794343 0-330.989899 148.195556-330.989899 330.989899s148.195556 330.989899 330.989899 330.989899 330.989899-148.195556 330.989899-330.989899-148.195556-330.989899-330.989899-330.989899z m431.321212 793.341415a30.849293 30.849293 0 0 1-21.94101-9.102223l-157.220202-157.220202c-11.752727-12.179394-11.584646-31.534545 0.37495-43.50707 11.972525-11.972525 31.327677-12.140606 43.494141-0.37495l157.220202 157.220202a31.036768 31.036768 0 0 1 6.723232 33.810101 31.004444 31.004444 0 0 1-28.651313 19.174142z m0 0" p-id="1384" fill="#ffffff"></path></svg>
         <input placeholder="Search" onkeyup="input_bar_onkeyup()" onmouseover="input_bar_onMouse()" onmouseleave="input_bar_onMouseLeave()" id="input-bar" onclick="click_input_bar()" class="input-text">
+        <div class="search-mode-icon" id="search-mode-icon">
+            <div class="search-bing">
+                <svg t="1613694424564" class="bing-icon" id="bing-icon" onclick="setBing()" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3844" width="80" height="80"><path d="M153.813333 0L358.4 71.936V791.893333l288.128-166.186666-141.226667-66.346667-89.173333-221.866667 453.973333 159.488v231.893334L358.528 1024l-204.672-113.92V0z" p-id="3845"></path></svg>
+            </div>
+            <div class="search-baidu">
+                <svg t="1613694692053" class="baidu-icon" id="baidu-icon" onclick="setBaidu()" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4745" width="80" height="80"><path d="M226.522 536.053c96.993-20.839 83.792-136.761 80.878-162.089-4.758-39.065-50.691-107.346-113.075-101.952-78.499 7.036-89.957 120.445-89.957 120.445C93.748 444.857 129.764 556.857 226.522 536.053zM329.512 737.61c-2.848 8.175-9.18 29.014-3.686 47.173 10.822 40.707 46.168 42.55 46.168 42.55l50.792 0L422.786 703.169 368.41 703.169C343.952 710.473 332.159 729.468 329.512 737.61zM406.537 341.666c53.572 0 96.859-61.646 96.859-137.9 0-76.12-43.287-137.767-96.859-137.767-53.472 0-96.892 61.646-96.892 137.767C309.645 280.019 353.065 341.666 406.537 341.666zM637.241 350.779c71.598 9.281 117.632-67.141 126.777-125.035 9.349-57.827-36.854-125.036-87.544-136.561-50.791-11.659-114.213 69.688-119.976 122.757C549.597 276.803 565.779 341.566 637.241 350.779zM812.666 691.174c0 0-110.761-85.701-175.425-178.305-87.645-136.593-212.177-81.011-253.822-11.558-41.478 69.452-106.106 113.375-115.286 125-9.314 11.458-133.813 78.666-106.173 201.423 27.64 122.69 124.7 120.345 124.7 120.345s71.53 7.036 154.519-11.524c83.021-18.428 154.484 4.59 154.484 4.59s193.919 64.929 246.988-60.072C895.655 756.037 812.666 691.174 812.666 691.174zM480.881 877.253 354.807 877.253c-54.443-10.855-76.12-48.044-78.867-54.343-2.68-6.433-18.125-36.317-9.951-87.109 23.52-76.12 90.627-81.614 90.627-81.614l67.107 0 0-82.485 57.157 0.871L480.88 877.253zM715.674 876.382l-145.07 0c-56.219-14.508-58.866-54.444-58.866-54.444L511.738 661.49l58.866-0.938 0 144.199c3.586 15.345 22.682 18.159 22.682 18.159l59.771 0L653.057 661.49l62.618 0L715.675 876.382zM921.051 448.006c0-27.708-23.018-111.13-108.385-111.13-85.501 0-96.925 78.732-96.925 134.382 0 53.136 4.489 127.313 110.695 124.935C932.677 593.846 921.051 475.881 921.051 448.006z" p-id="4746"></path></svg>
+            </div>
+            <div class="search-google">
+                <svg t="1613694946323" class="google-icon" id="google-icon" onclick="setGoogle()" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5799" width="80" height="80"><path d="M746.666667 597.333333a235.093333 235.093333 0 0 1-192 167.68 262.4 262.4 0 0 1-298.666667-232.533333A256 256 0 0 1 512 256a261.12 261.12 0 0 1 96.853333 18.773333 21.333333 21.333333 0 0 0 27.306667-8.96l61.44-113.066666a22.186667 22.186667 0 0 0-9.813333-29.866667A426.666667 426.666667 0 0 0 85.333333 524.373333 431.786667 431.786667 0 0 0 493.653333 938.666667 426.666667 426.666667 0 0 0 938.666667 534.186667v-85.333334a21.76 21.76 0 0 0-21.333334-21.333333h-384a21.333333 21.333333 0 0 0-21.333333 21.333333v128a21.333333 21.333333 0 0 0 21.333333 21.333334h213.333334" p-id="5800"></path></svg>
+            </div>
+        </div>
         <ul class="input_ul" id="input_ul"></ul>        <!---联想词提示框--->
     </div>
     <div class="bottom_text">
-        <button class="han-title" onclick="msgWindowShow()">© 2021「Han」v2.0</button>
+        <button class="han-title" onclick="msgWindowShow()">© 2021「 Han 」v2.0</button>
     </div>
 
 <!--msgWindow--->
@@ -360,11 +432,16 @@
     const msg_title = document.getElementById("msg-title");
     const input_ul = document.getElementById("input_ul");
 
+    const search_mode_box = document.getElementById("search-mode-icon");
+    const bing_icon = document.getElementById("bing-icon");
+    const baidu_icon = document.getElementById("baidu-icon");
+    const google_icon = document.getElementById("google-icon");
+
     const winX = window.innerWidth;         //Get Screen Width and Height
     const winY = window.innerHeight;
 
     let isClick = false;        //当前是否点击了搜索框
-    const openUrl = "https://www.baidu.com/s?wd=";          //当前搜索的网址
+    let searchModeKey = "";          //当前搜索的网址
 
     let input_bar_width = winX * 0.5;
     let input_bar_str_width = winX * 0.9;
@@ -429,9 +506,12 @@
         msg_box.style.marginLeft = String((winX - 20) / -2) + "px";
     }
 
+    CookieDataUpdate();
+
     function click_input_bar() {
         show_click_inputBar();
         input_bar_onkeyup();
+        show_search_mode();
         isClick = true;
     }
 
@@ -470,11 +550,13 @@
         /////////////////Background////////////////////
         img_box.style.backgroundColor = "rgba(0, 0, 0, 0)";
         img_bg.style.transform = "scale(1)";
+
+        hide_keyWord();
+        hide_search_mode();
     }
 
     function click_bg() {
         hide_click_inputBar();
-        hide_keyWord();
         isClick = false;
     }
 
@@ -490,7 +572,7 @@
     function onSearch() {
         // alert(input_bar.value);
         if (isClick && input_bar.value !== "") {
-            window.open(openUrl + input_bar.value);
+            window.open(searchModeKey + input_bar.value);
         }
     }
 
@@ -562,8 +644,6 @@
         }
     }
 
-    let searchModeKey = "https://www.baidu.com/s?wd=";
-
     function out_text(data) {
         const list = data.s;
         let str = "";
@@ -587,6 +667,106 @@
         input_ul.style.animation = "";
         input_ul.style.transform = "scale(0)";
         input_ul.style.opacity = "0";
+    }
+
+    function show_search_mode() {
+        search_mode_box.style.transitionDelay = ".3s";
+        search_mode_box.style.visibility = "inherit";
+        search_mode_box.style.opacity = "1";
+        search_mode_box.style.marginTop = "-27px";
+    }
+
+    function hide_search_mode() {
+        search_mode_box.style.transitionDelay = "0s";
+        search_mode_box.style.visibility = "hidden";
+        search_mode_box.style.opacity = "0";
+        search_mode_box.style.marginTop = "10px";
+    }
+
+    function setCookie(cname,cvalue,exdays)
+    {
+        var d = new Date();
+        d.setTime(d.getTime()+(exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires="+d.toGMTString();
+        document.cookie = cname + "=" + cvalue + "; " + expires;
+    }
+
+    function getCookie(cname)
+    {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0; i<ca.length; i++)
+        {
+            var c = ca[i].trim();
+            if (c.indexOf(name)===0) return c.substring(name.length,c.length);
+        }
+        return "";
+    }
+
+    function CookieDataUpdate() {
+        /*
+        Search Mode(searchMode):
+        1:Bing
+        2:Baidu
+        3:Google
+        */
+        const search_mode = getCookie("searchMode");
+        switch (search_mode) {
+            case "1":
+                setBing();
+                break;
+            case "2":
+                setBaidu();
+                break;
+            case "3":
+                setGoogle();
+                break;
+            default:
+                setBaidu();
+                break;
+        }
+    }
+
+    function setBing() {
+        bing_icon.style.backgroundColor = "rgba(255, 255, 255, .2)";
+        baidu_icon.style.backgroundColor = "rgba(0, 0, 0, .6)";
+        google_icon.style.backgroundColor = "rgba(0, 0, 0, .6)";
+
+        bing_icon.style.fill = "#54b400";
+        baidu_icon.style.fill = "#FFFFFF";
+        google_icon.style.fill = "#FFFFFF";
+
+        searchModeKey = "https://cn.bing.com/search?q=";
+
+        setCookie("searchMode", 1, 200);
+    }
+
+    function setBaidu() {
+        bing_icon.style.backgroundColor = "rgba(0, 0, 0, .6)";
+        baidu_icon.style.backgroundColor = "rgba(255, 255, 255, .2)";
+        google_icon.style.backgroundColor = "rgba(0, 0, 0, .6)";
+
+        bing_icon.style.fill = "#FFFFFF";
+        baidu_icon.style.fill = "#54b400";
+        google_icon.style.fill = "#FFFFFF";
+
+        searchModeKey = "https://www.baidu.com/s?wd=";
+
+        setCookie("searchMode", 2, 200);
+    }
+
+    function setGoogle() {
+        bing_icon.style.backgroundColor = "rgba(0, 0, 0, .6)";
+        baidu_icon.style.backgroundColor = "rgba(0, 0, 0, .6)";
+        google_icon.style.backgroundColor = "rgba(255, 255, 255, .2)";
+
+        bing_icon.style.fill = "#FFFFFF";
+        baidu_icon.style.fill = "#FFFFFF";
+        google_icon.style.fill = "#54b400";
+
+        searchModeKey = "https://www.google.com/search?q=";
+
+        setCookie("searchMode", 3, 200);
     }
 </script>
 
