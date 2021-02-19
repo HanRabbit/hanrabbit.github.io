@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="./img/logo.ico" sizes="64x64" type="image/x-icon"/>
 
     <title>Quick HSearch II</title>
+
     <style>
         .bg-box {
             transition: .3s;
@@ -384,7 +385,7 @@
     </style>
 </head>
 <body style="overflow: hidden">
-    <img class="bg-box" id="bg-box" src="https://api.sunweihu.com/api/bing1/api.php"/>
+    <img class="bg-box" id="bg-box" onkeyup="input_bar_onkeyup()" src="https://api.sunweihu.com/api/bing1/api.php"/>
     <div class="click-detect-box" id="click-detect-box" onclick="click_bg()"></div>
     <img class="title-text" onclick="click_bg()" src="img/searchText.png"/>
     <div class="input-box">
@@ -498,6 +499,8 @@
     input_ul.style.width = String(input_bar_str_width)+"px";
     input_ul.style.marginLeft = String(input_bar_str_width / -2 - 20)+"px";
 
+    search_mode_box.style.marginLeft = String(input_bar_str_width / -2 + 20)+"px";
+
     if(winX < 600 || winY < 500) {
         msg_box.style.width = String(winX - 20) + "px";
         if(screen_to_body >= 0.52)
@@ -580,6 +583,9 @@
     document.onkeydown = function (event) {
         if(event.keyCode === 13)
             onSearch();
+        else if(event.keyCode === 13 && !isClick) {
+            show_click_inputBar();
+        }
     }
 
     function msgWindowOver() {
