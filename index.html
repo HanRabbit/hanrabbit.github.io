@@ -382,6 +382,42 @@
             opacity: 0;
             margin-top: 10px;
         }
+
+        .update-text {
+            position: absolute;
+            z-index: 9999;
+            background-color: rgba(0, 0, 0, .5);
+            width: 320px;
+            text-align: center;
+            height: 50px;
+            left: 50%;
+            margin-left: -160px;
+            top: -55px;
+            border: 50px;
+            border-radius: 0 0 15px 15px;
+            backdrop-filter: blur(4px);
+            box-shadow: rgba(0, 0, 0, .4) 3px 4px 15px;
+        }
+
+        @keyframes newUpdateAnim {
+            5% {top: -5px;}
+            8% {top: -10px;}
+            90% {top: -10px;}
+            95% {top: -55px;}
+        }
+
+        .update-msg-text {
+            font-family: "microsoft yahei light", PingFangSC-Regular, Helvetica, "黑体", sans-serif, 等线;
+            position: relative;
+            margin-top: 18px;
+            color: #FFFFFF;
+        }
+
+        .a-can-click {
+            color: #54b400;
+            cursor: pointer;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body style="overflow: hidden">
@@ -422,9 +458,17 @@
             <svg t="1611710424258" class="msg-right-arrow" onclick="right_arrow_click()" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3054" width="40" height="40"><path d="M731.733333 480l-384-341.333333c-17.066667-14.933333-44.8-14.933333-59.733333 4.266666-14.933333 17.066667-14.933333 44.8 4.266667 59.733334L640 512 292.266667 821.333333c-17.066667 14.933333-19.2 42.666667-4.266667 59.733334 8.533333 8.533333 19.2 14.933333 32 14.933333 10.666667 0 19.2-4.266667 27.733333-10.666667l384-341.333333c8.533333-8.533333 14.933333-19.2 14.933334-32s-4.266667-23.466667-14.933334-32z" p-id="3055"></path></svg>
         </div>
     </div>
+
+    <div class="update-text" id="update-text">
+        <p class="update-msg-text">
+            Quick HSearch II已更新到
+            <a class="a-can-click" onclick="msgWindowShow()">最新版本</a>
+        </p>
+    </div>
 </body>
 
 <script>
+    let cur_version = 20;
     const input_bar = document.getElementById("input-bar");
     const search_icon = document.getElementById("search-icon");
     const img_bg = document.getElementById("bg-box");
@@ -439,6 +483,8 @@
     const bing_icon = document.getElementById("bing-icon");
     const baidu_icon = document.getElementById("baidu-icon");
     const google_icon = document.getElementById("google-icon");
+
+    const newUpdateMsg = document.getElementById("update-text");
 
     let winX = window.innerWidth;
     let winY = window.innerHeight;
@@ -700,6 +746,12 @@
             default:
                 setBaidu();
                 break;
+        }
+
+        const version = getCookie("version");
+        if (version !== String(cur_version)) {
+            newUpdateMsg.style.animation = "newUpdateAnim 5s";
+            setCookie("version", String(cur_version));
         }
     }
 
