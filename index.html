@@ -468,7 +468,7 @@
 </body>
 
 <script>
-    let cur_version = 20;
+    let cur_version = "20";
     const input_bar = document.getElementById("input-bar");
     const search_icon = document.getElementById("search-icon");
     const img_bg = document.getElementById("bg-box");
@@ -749,9 +749,9 @@
         }
 
         const version = getCookie("version");
-        if (version !== String(cur_version)) {
+        if (version !== cur_version) {
             newUpdateMsg.style.animation = "newUpdateAnim 5s";
-            setCookie("version", String(cur_version));
+            setCookie("version", cur_version);
         }
     }
 
