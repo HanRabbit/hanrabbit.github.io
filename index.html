@@ -418,9 +418,44 @@
             cursor: pointer;
             font-weight: bold;
         }
+
+        .clock-box {
+            position: absolute;
+            display: flex;
+            font-family: "microsoft yahei light", PingFangSC-Regular, Helvetica, "黑体", sans-serif, 等线;
+            font-size: 6vh;
+            color: #e6e6e6;
+            background-color: rgba(0, 0, 0, .3);
+            height: 8%;
+            width: 15vh;
+            padding-left: 20px;
+            align-items: center;
+            bottom: -10vh;
+            left: 0;
+            border: 50px;
+            border-radius: 0 10px 0 0;
+            backdrop-filter: blur(4px);
+            box-shadow: rgba(0, 0, 0, .5) 6px 3px 10px;
+        }
+
+        @keyframes clockShowAnim {
+            0% {
+                bottom: -10vh;
+            }
+            50% {
+                bottom: 1vh;
+            }
+            100% {
+                bottom: 0;
+            }
+        }
+
+        .min-text {
+            color: #54b400;
+        }
     </style>
 </head>
-<body style="overflow: hidden">
+<body style="overflow: hidden" oncontextmenu = "return false">
     <img class="bg-box" id="bg-box" onkeyup="input_bar_onkeyup()" src="https://api.sunweihu.com/api/bing1/api.php"/>
     <div class="click-detect-box" id="click-detect-box" onclick="click_bg()"></div>
     <img class="title-text" onclick="click_bg()" src="img/searchText.png"/>
@@ -465,6 +500,12 @@
             <a class="a-can-click" onclick="msgWindowShow()">最新版本</a>
         </p>
     </div>
+
+    <div class="clock-box" id="clock-box">
+        <p class="hour-text" id="hour-text">--</p>
+        <p class="tick-text">:</p>
+        <p class="min-text" id="min-text">--</p>
+    </div>
 </body>
 
 <script>
@@ -486,6 +527,10 @@
 
     const newUpdateMsg = document.getElementById("update-text");
 
+    const clock_box = document.getElementById("clock-box");
+    const clock_hour = document.getElementById("hour-text");
+    const clock_min = document.getElementById("min-text");
+
     let winX = window.innerWidth;
     let winY = window.innerHeight;
 
@@ -496,6 +541,9 @@
     let input_bar_str_width = winX * 0.9;
 
     let screen_to_body =  winX / winY;
+
+    let hour = "00";
+    let min = "00";
 
     /*------------------------------更新日志------------------------------*/
     let update_text_num;
@@ -526,6 +574,8 @@
 
     resizeObject();
     CookieDataUpdate();
+    setTimeout(function () {showClock()}, 500);
+    setInterval(function () {updateTime()}, 500);
 
     function click_input_bar() {
         show_click_inputBar();
@@ -842,6 +892,27 @@
                 msg_box.style.top = "-100px";
             msg_box.style.marginLeft = String((winX - 20) / -2) + "px";
         }
+    }
+
+    function updateTime() {
+        const date = new Date();
+        hour = date.getHours();
+        min  = date.getMinutes();
+
+        if (min < 10) {
+            min = "0" + min;
+        }
+        if (hour < 10) {
+            hour = "0" + hour;
+        }
+
+        clock_hour.innerHTML = hour;
+        clock_min.innerHTML  = min;
+    }
+
+    function showClock() {
+        clock_box.style.animation = "clockShowAnim .4s";
+        clock_box.style.bottom = "0";
     }
 </script>
 
