@@ -790,9 +790,6 @@
         switch_start_spread.checked = true;
         setTimeout(function () {
             click_input_bar();
-            setTimeout(function () {
-                input_bar.focus();
-            }, 400);
         }, 400);
     } else {
         switch_start_spread.checked = false;
@@ -803,6 +800,7 @@
         input_bar_onkeyup();
         show_search_mode();
         isClick = true;
+        input_bar.focus();
 
         if(isSittingOpening) {
             hide_sittings_win();
