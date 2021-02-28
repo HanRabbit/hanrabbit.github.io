@@ -790,7 +790,9 @@
         switch_start_spread.checked = true;
         setTimeout(function () {
             click_input_bar();
-            input_bar.focus();
+            setTimeout(function () {
+                input_bar.focus();
+            }, 100);
         }, 400);
     } else {
         switch_start_spread.checked = false;
