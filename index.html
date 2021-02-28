@@ -281,7 +281,7 @@
             transition: all .3s ease-in-out;
             position: absolute;
             color: #bfbfbf;
-            background-color: rgba(0, 0, 0, .5);
+            background-color: rgba(0, 0, 0, .7);
             backdrop-filter: blur(10px);
             left: 50%;
             top: 36%;
@@ -343,33 +343,33 @@
         .bing-icon {
             transition: .3s;
             backdrop-filter: blur(10px);
-            background-color: rgba(0, 0, 0, .6);
+            background-color: rgba(0, 0, 0, .8);
             height: 25px;
             width: 50px;
             transform: scale(1, 1) perspective(.5em) rotateX(5deg);
             border-radius: 5px 5px 0 0;
             fill: #e6e6e6;
             z-index: 5;
-            box-shadow: rgba(0, 0, 0, .3) 3px 8px 10px;
+            box-shadow: rgba(0, 0, 0, .6) 3px 8px 10px;
         }
 
         .baidu-icon {
             transition: .3s;
             backdrop-filter: blur(10px);
-            background-color: rgba(0, 0, 0, .6);
+            background-color: rgba(0, 0, 0, .8);
             height: 25px;
             width: 50px;
             transform: scale(1, 1) perspective(.5em) rotateX(5deg);
             border-radius: 5px 5px 0 0;
             fill: #e6e6e6;
             z-index: 6;
-            box-shadow: rgba(0, 0, 0, .3) 3px 8px 10px;
+            box-shadow: rgba(0, 0, 0, .6) 3px 8px 10px;
         }
 
         .google-icon {
             transition: .3s;
             /*position: absolute;*/
-            background-color: rgba(0, 0, 0, .6);
+            background-color: rgba(0, 0, 0, .8);
             height: 25px;
             width: 50px;
             backdrop-filter: blur(10px);
@@ -377,7 +377,7 @@
             border-radius: 5px 5px 0 0;
             fill: #e6e6e6;
             z-index: 7;
-            box-shadow: rgba(0, 0, 0, .3) 3px 8px 10px;
+            box-shadow: rgba(0, 0, 0, .6) 3px 8px 10px;
         }
 
         .search-mode-icon {
@@ -508,7 +508,7 @@
             transition: .2s;
             position: absolute;
             width: 350px;
-            height: 45vh;
+            height: 40vh;
             background-color: rgba(0, 0, 0, .8);
             backdrop-filter: blur(10px);
             border: 50px;
@@ -518,7 +518,7 @@
             z-index: 10;
             top: 50%;
             margin-left: -175px;
-            margin-top: 40vh;
+            margin-top: 20vh;
             padding-top: 70px;
             display: flex;
             justify-content: center;
@@ -528,6 +528,7 @@
         }
 
         .sittings-window-pp {
+            z-index: 10;
             perspective:2000px;
             perspective-origin: 50% 50%;
             -webkit-perspective:2000px; /* Safari and Chrome */
@@ -849,7 +850,9 @@
     function click_bg() {
         if(isSittingOpening) {
             hide_sittings_win();
-            input_bar.focus();
+            if(isClick) {
+                input_bar.focus();
+            }
         } else {
             hide_click_inputBar();
             isClick = false;
@@ -1044,9 +1047,9 @@
     }
 
     function setBing() {
-        bing_icon.style.backgroundColor = "rgba(255, 255, 255, .2)";
-        baidu_icon.style.backgroundColor = "rgba(0, 0, 0, .6)";
-        google_icon.style.backgroundColor = "rgba(0, 0, 0, .6)";
+        bing_icon.style.backgroundColor = "rgba(255, 255, 255, .6)";
+        baidu_icon.style.backgroundColor = "rgba(0, 0, 0, .8)";
+        google_icon.style.backgroundColor = "rgba(0, 0, 0, .8)";
 
         bing_icon.style.fill = "#54b400";
         baidu_icon.style.fill = "#FFFFFF";
@@ -1061,9 +1064,9 @@
     }
 
     function setBaidu() {
-        bing_icon.style.backgroundColor = "rgba(0, 0, 0, .6)";
-        baidu_icon.style.backgroundColor = "rgba(255, 255, 255, .2)";
-        google_icon.style.backgroundColor = "rgba(0, 0, 0, .6)";
+        bing_icon.style.backgroundColor = "rgba(0, 0, 0, .8)";
+        baidu_icon.style.backgroundColor = "rgba(255, 255, 255, .6)";
+        google_icon.style.backgroundColor = "rgba(0, 0, 0, .8)";
 
         bing_icon.style.fill = "#FFFFFF";
         baidu_icon.style.fill = "#54b400";
@@ -1078,9 +1081,9 @@
     }
 
     function setGoogle() {
-        bing_icon.style.backgroundColor = "rgba(0, 0, 0, .6)";
-        baidu_icon.style.backgroundColor = "rgba(0, 0, 0, .6)";
-        google_icon.style.backgroundColor = "rgba(255, 255, 255, .2)";
+        bing_icon.style.backgroundColor = "rgba(0, 0, 0, .8)";
+        baidu_icon.style.backgroundColor = "rgba(0, 0, 0, .8)";
+        google_icon.style.backgroundColor = "rgba(255, 255, 255, .6)";
 
         bing_icon.style.fill = "#FFFFFF";
         baidu_icon.style.fill = "#FFFFFF";
@@ -1124,11 +1127,17 @@
 
         if(winX < 600 || winY < 500) {
             msg_box.style.width = String(winX - 20) + "px";
-            if(screen_to_body >= 0.52)
+            sittings_window.style.width = String(winX - 80) + "px";
+            if(screen_to_body >= 0.52) {
                 msg_box.style.top = String(winY / -100) + "px";
-            if(winY <= 550)
+                sittings_window.style.top = String(winY / -100) + "px";
+            }
+            if(winY <= 550) {
                 msg_box.style.top = "-100px";
+                sittings_window.style.top = "-100px";
+            }
             msg_box.style.marginLeft = String((winX - 20) / -2) + "px";
+            sittings_window.style.marginLeft = String((winX - 80) / -2) + "px";
         }
     }
 
@@ -1166,6 +1175,8 @@
         sittings_window.style.animation = "sittings-show-Anim .5s";
         sittings_window.style.visibility = "inherit";
         sittings_window.style.opacity = "1";
+
+        search_icon.style.opacity = "0";
         isSittingOpening = true;
     }
 
@@ -1173,6 +1184,8 @@
         sittings_window.style.animation = "sittings-hide-Anim .5s";
         sittings_window.style.visibility = "hidden";
         sittings_window.style.opacity = "0";
+
+        search_icon.style.opacity = "1";
         isSittingOpening = false;
     }
 </script>
