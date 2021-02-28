@@ -11,7 +11,7 @@
 
     <style>
         .bg-box {
-            transition: .3s;
+            transition: .2s;
             z-index: -5;
             position: fixed;
             left: 0;
@@ -36,7 +36,7 @@
         }
 
         .input-text {
-            transition: .3s;
+            transition: .2s;
             position: absolute;
             width: 50%;
             height: 50px;
@@ -53,12 +53,12 @@
             background-color: rgba(0, 0, 0, .5);
             box-shadow: rgba(0, 0, 0, .6) 3px 6px 8px;
             font-size: 18px;
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(8px);
         }
 
         .input-icon {
-            transition: .3s;
-            z-index: 2;
+            transition: .2s;
+            z-index: 1;
             position: absolute;
             top: 32%;
             left: 50%;
@@ -100,16 +100,25 @@
         }
 
         .han-title {
-            transition: .2s;
+            position: absolute;
+            transition: .15s;
+            font-family: "microsoft yahei light", "黑体", PingFangSC-Regular, Helvetica, sans-serif, 等线;
+            font-size: 110%;
             background-color: rgba(0, 0, 0, 0);
             color: white;
             border: 40px;
             outline: none;
+            bottom: 0;
+            width: 200px;
+            margin-left: -40px;
         }
 
         .han-title:hover {
-            padding-left: 13px;
-            cursor: pointer;
+            padding-left: 15px;
+        }
+
+        .han-title:active {
+            color: #54b400;
         }
 
         .msgWindow-box {
@@ -119,10 +128,10 @@
             margin-left: -300px;
             width: 600px;
             height: 500px;
-            background-color: rgba(0, 0, 0, .6);
+            background-color: rgba(0, 0, 0, .85);
             /*border: 40px;*/
-            border-radius: 3px 30px 3px 30px;
-            backdrop-filter: blur(25px);
+            border-radius: 15px 15px 15px 15px;
+            backdrop-filter: blur(20px);
             /*border: 1px solid black;*/
             box-shadow: rgba(0, 0, 0, .5) 5px 8px 10px;
         }
@@ -130,7 +139,7 @@
         .msgWin-title {
             text-align: center;
             color: white;
-            margin-left: 20px;
+            margin-left: 30px;
             font-family: "microsoft yahei light", PingFangSC-Regular, Helvetica, "黑体", sans-serif, 等线;
             font-size: 140%;
         }
@@ -139,7 +148,7 @@
             text-align: center;
             font-size: 18px;
             background-color: rgba(0, 0, 0, 0);
-            color: #a3a3a3;
+            color: #e0e0e0;
             outline: none;
             width: 95%;
             height: 60%;
@@ -147,18 +156,18 @@
             margin-top: 30px;
             resize: none;
             border: 10px;
-            font-family: Helvetica, sans-serif, 等线;
+            font-family: "microsoft yahei light", PingFangSC-Regular, Helvetica, "黑体", sans-serif, 等线;
         }
 
         @keyframes msgTextAnLeft {
             0% {margin-left: 12px;}
-            60% {margin-left: 2px;}
+            60% {margin-left: 8px;}
             100% {margin-left: 12px;}
         }
 
         @keyframes msgTextAnRight {
             0% {margin-left: 12px;}
-            60% {margin-left: 22px;}
+            60% {margin-left: 16px;}
             100% {margin-left: 12px;}
         }
 
@@ -173,8 +182,8 @@
         }
 
         .msgWin-iconClose:hover {
-            transform: rotate(90deg);
-            fill: white;
+            /*transform: rotate(10deg);*/
+            fill: #54b400;
         }
 
         .msgWin-pp {
@@ -184,9 +193,9 @@
             top: 15%;
             left: 50%;
 
-            perspective:200px;
+            perspective:2000px;
             perspective-origin: 50% 50%;
-            -webkit-perspective:200px; /* Safari and Chrome */
+            -webkit-perspective:2000px; /* Safari and Chrome */
             -webkit-perspective-origin: 50% 50%; /* Safari and Chrome */
 
             -moz-user-select:none;
@@ -196,6 +205,18 @@
 
             visibility: hidden;
             opacity: 0;
+        }
+
+        @keyframes MsgWindowShowAnim {
+            0% {transform: rotate3d(1, 0, 0, 60deg); opacity: 0;}
+            40% {transform: rotate3d(1, 0, 0, -5deg); opacity: 1;}
+            100% {transform: rotate3d(1, 0, 0, 0deg);}
+        }
+
+        @keyframes MsgWindowHideAnim {
+            0% {transform: rotate3d(1, 0, 0, -5deg); opacity: 1;}
+            90% {transform: rotate3d(1, 0, 0, -45deg);}
+            100% {opacity: 0;}
         }
 
         ::-webkit-scrollbar {
@@ -220,7 +241,7 @@
 
         .msg-left-arrow {
             fill: #a3a3a3;
-            transition: .15s;
+            transition: .1s;
             position: absolute;
             left: 50%;
             margin-left: -48%;
@@ -234,12 +255,12 @@
         }
 
         .msg-left-arrow:active {
-            margin-left: -49%;
+            margin-left: -48.5%;
         }
 
         .msg-right-arrow {
             fill: #a3a3a3;
-            transition: .15s;
+            transition: .1s;
             position: absolute;
             left: 50%;
             margin-left: 41%;
@@ -253,7 +274,7 @@
         }
 
         .msg-right-arrow:active {
-            margin-left: 42%;
+            margin-left: 41.5%;
         }
 
         .input_ul {
@@ -272,8 +293,6 @@
             box-shadow: rgba(0, 0, 0, .4) 3px 6px 8px;
             list-style-type: none;
             font-family: "microsoft yahei light", PingFangSC-Regular, Helvetica, "黑体", sans-serif, 等线;
-
-            /**********HIDE**********/
 
             opacity: 0;
             transform: scale(0);
@@ -383,6 +402,18 @@
             margin-top: 10px;
         }
 
+        .---updateMsg {
+            position: absolute;
+            height: 1px;
+            width: 400px;
+            border: 10px;
+            border-radius: 10px;
+            background-color: #54b400;
+            top: 80px;
+            left: 50%;
+            margin-left: -200px;
+        }
+
         .update-text {
             position: absolute;
             z-index: 9999;
@@ -425,7 +456,7 @@
             font-family: "microsoft yahei light", PingFangSC-Regular, Helvetica, "黑体", sans-serif, 等线;
             font-size: 6vh;
             color: #e6e6e6;
-            background-color: rgba(0, 0, 0, .6);
+            background-color: rgba(0, 0, 0, .8);
             height: 6.5vh;
             width: 15vh;
             padding-left: 0;
@@ -442,8 +473,8 @@
             0% {
                 bottom: -10vh;
             }
-            50% {
-                bottom: 1vh;
+            60% {
+                bottom: 0.5vh;
             }
             100% {
                 bottom: 0;
@@ -452,6 +483,148 @@
 
         .min-text {
             color: #54b400;
+        }
+
+        .sittings-icon {
+            transition: .2s;
+            position: absolute;
+            fill: #e6e6e6;
+            bottom: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            z-index: 2;
+        }
+
+        .sittings-icon:hover {
+            transform: rotateZ(20deg);
+        }
+
+        .sittings-icon:active {
+            fill: #54b400;
+        }
+
+        .sittings-window-box {
+            transition: .2s;
+            position: absolute;
+            width: 350px;
+            height: 45vh;
+            background-color: rgba(0, 0, 0, .8);
+            backdrop-filter: blur(10px);
+            border: 50px;
+            border-radius: 15px;
+            box-shadow: rgba(0, 0, 0, .5) 4px 8px 10px;
+            left: 50%;
+            z-index: 10;
+            top: 50%;
+            margin-left: -175px;
+            margin-top: 40vh;
+            padding-top: 70px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .sittings-window-pp {
+            perspective:2000px;
+            perspective-origin: 50% 50%;
+            -webkit-perspective:2000px; /* Safari and Chrome */
+            -webkit-perspective-origin: 50% 50%; /* Safari and Chrome */
+        }
+
+        @keyframes sittings-show-Anim {
+            0% {transform: rotate3d(1, 0, 0, 60deg);visibility: inherit;opacity: 0}
+            40% {transform: rotate3d(1, 0, 0, -5deg);opacity: 1;}
+            100% {transform: rotate3d(1, 0, 0, 0deg);}
+        }
+
+        @keyframes sittings-hide-Anim {
+            0% {transform: rotate3d(1, 0, 0, 0deg);opacity: 1;}
+            100% {transform: rotate3d(1, 0, 0, -45deg);opacity: 0;}
+        }
+
+        .sittings-text {
+            position: relative;
+            color: #e6e6e6;
+            font-family: "microsoft yahei light", PingFangSC-Regular, Helvetica, "黑体", sans-serif, 等线;
+            /*background-color: white;*/
+            height: 20px;
+            width: 200px;
+            margin-left: 18px;
+            text-align: start;
+        }
+
+        input[type='checkbox'].switch{
+            outline: none;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            position: relative;
+            width: 40px;
+            height: 20px;
+            background: #ccc;
+            border-radius: 10px;
+            transition: border-color .2s, background-color .2s;
+        }
+
+        input[type='checkbox'].switch::after {
+            content: '';
+            display: inline-block;
+            width: 1rem;
+            height:1rem;
+            border-radius: 50%;
+            background: #FFFFFF;
+            box-shadow: #999 0 0 10px;
+            transition:.2s;
+            top: 2px;
+            position: absolute;
+            left: 2px;
+        }
+
+        input[type='checkbox'].switch:checked {
+            background: #54b400;
+        }
+
+        input[type='checkbox'].switch:checked::after {
+            content: '';
+            position: absolute;
+            left: 55%;
+            top: 2px;
+        }
+
+        .switch {
+            top: 12px;
+            margin-left: 10px;
+        }
+
+        .sittings-title-icon {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            left: 50%;
+            top: 14px;
+            margin-left: -55px;
+        }
+
+        .sittings-title {
+            position: absolute;
+            color: #e6e6e6;
+            top: -10px;
+            font-family: "microsoft yahei light", PingFangSC-Regular, Helvetica, "黑体", sans-serif, 等线;
+            font-size: 140%;
+            margin-left: 15px;
+        }
+
+        .--- {
+            position: absolute;
+            height: 1px;
+            width: 300px;
+            border: 10px;
+            border-radius: 10px;
+            background-color: #5f5f5f;
+            top: 60px;
         }
     </style>
 </head>
@@ -474,22 +647,23 @@
                 <svg t="1613694946323" class="google-icon" id="google-icon" onclick="setGoogle()" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5799" width="80" height="80"><path d="M746.666667 597.333333a235.093333 235.093333 0 0 1-192 167.68 262.4 262.4 0 0 1-298.666667-232.533333A256 256 0 0 1 512 256a261.12 261.12 0 0 1 96.853333 18.773333 21.333333 21.333333 0 0 0 27.306667-8.96l61.44-113.066666a22.186667 22.186667 0 0 0-9.813333-29.866667A426.666667 426.666667 0 0 0 85.333333 524.373333 431.786667 431.786667 0 0 0 493.653333 938.666667 426.666667 426.666667 0 0 0 938.666667 534.186667v-85.333334a21.76 21.76 0 0 0-21.333334-21.333333h-384a21.333333 21.333333 0 0 0-21.333333 21.333333v128a21.333333 21.333333 0 0 0 21.333333 21.333334h213.333334" p-id="5800"></path></svg>
             </div>
         </div>
-        <ul class="input_ul" id="input_ul"></ul>        <!---联想词提示框--->
+        <ul class="input_ul" id="input_ul"></ul>
     </div>
     <div class="bottom_text">
-        <button class="han-title" onclick="msgWindowShow()">© 2021「 Han 」v2.0</button>
+        <button class="han-title" onclick="msgWindowShow()" id="han-title"></button>
     </div>
 
-<!--msgWindow--->
+<!--msgWindowUpdateBox--->
     <div class="msgWin-pp" id="msg-pp">
         <div class="msgWindow-box" id="msgWin-box" >
             <p class="msgWin-title" id="msg-title"></p>
-            <svg t="1611709339887" class="update-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6490" width="40" height="40"><path d="M353.813333 332.032l-45.248 45.248L146.752 215.466667l154.026667-154.048L346.069333 106.666667 268.16 184.533333l253.546667 0.042667c185.344 0 336.042667 148.437333 339.626666 332.949333l0.085334 6.762667c0 187.605333-152.106667 339.712-339.712 339.712-187.626667 0-339.733333-152.106667-339.733334-339.712h64c0 152.277333 123.456 275.712 275.733334 275.712 152.256 0 275.712-123.434667 275.712-275.712s-123.456-275.712-275.712-275.712l-251.370667-0.021333 83.477333 83.477333z m189.866667 5.418667v153.856h153.856v65.941333H477.738667V337.450667h65.92z" p-id="6491" fill="#ffffff"></path></svg>
+            <svg t="1614400193162" class="update-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7702" data-spm-anchor-id="a313x.7781069.0.i19" width="40" height="40"><path d="M768 810.7H512c-23.6 0-42.7-19.1-42.7-42.7s19.1-42.7 42.7-42.7h256c94.1 0 170.7-76.6 170.7-170.7 0-89.6-70.1-164.3-159.5-170.1L754 383l-10.7-22.7c-42.2-89.3-133-147-231.3-147s-189.1 57.7-231.3 147L270 383l-25.1 1.6c-89.5 5.8-159.5 80.5-159.5 170.1 0 94.1 76.6 170.7 170.7 170.7 23.6 0 42.7 19.1 42.7 42.7s-19.1 42.7-42.7 42.7c-141.2 0-256-114.8-256-256 0-126.1 92.5-232.5 214.7-252.4C274.8 195.7 388.9 128 512 128s237.2 67.7 297.3 174.2C931.5 322.1 1024 428.6 1024 554.7c0 141.1-114.8 256-256 256z" fill="#e6e6e6" p-id="7703" data-spm-anchor-id="a313x.7781069.0.i16" class="selected"></path><path d="M554.7 938.7c-10.9 0-21.8-4.2-30.2-12.5l-128-128c-16.7-16.7-16.7-43.7 0-60.3l128-128c16.6-16.7 43.7-16.7 60.3 0 16.7 16.7 16.7 43.7 0 60.3L487 768l97.8 97.8c16.7 16.7 16.7 43.7 0 60.3-8.3 8.4-19.2 12.6-30.1 12.6z" fill="#54b400" p-id="7704" data-spm-anchor-id="a313x.7781069.0.i18" class=""></path></svg>
+
+            <div class="---updateMsg"></div>
+
             <textarea readonly="readonly" id="msg-Text" class="msgWin-mainText"></textarea>
             <svg t="1611669869207" onclick="msgWindowHide()" onmouseover="msgWindowOver()" onmouseleave="msgWindowLeave()" id="msgWin-icon" class="msgWin-iconClose" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2528"><path d="M566.97558594 521.09667969L856.8828125 231.18945312c14.63378906-14.63378906 14.63378906-38.75976563 0-53.39355468l-1.58203125-1.58203125c-14.63378906-14.63378906-38.75976563-14.63378906-53.39355469 0L512 466.51660156 222.09277344 176.21386719c-14.63378906-14.63378906-38.75976563-14.63378906-53.39355469 0l-1.58203125 1.58203125c-15.02929688 14.63378906-15.02929688 38.75976563 0 53.39355469l289.90722656 289.90722656L167.1171875 811.00390625c-14.63378906 14.63378906-14.63378906 38.75976563 0 53.39355469l1.58203125 1.58203125c14.63378906 14.63378906 38.75976563 14.63378906 53.39355469 0L512 576.07226563 801.90722656 865.97949219c14.63378906 14.63378906 38.75976563 14.63378906 53.39355469 0l1.58203125-1.58203125c14.63378906-14.63378906 14.63378906-38.75976563 0-53.39355469L566.97558594 521.09667969z" p-id="2529"></path></svg>
-<!--            <svg t="1611710180986" class="msg-left-arrow" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6663" width="48" height="48"><path d="M641.28 278.613333l-45.226667-45.226666-278.634666 278.762666 278.613333 278.485334 45.248-45.269334-233.365333-233.237333z" p-id="6664" fill="#ffffff"></path></svg>-->
             <svg t="1611710384011" class="msg-left-arrow" onclick="left_arrow_click()" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2881" width="40" height="40"><path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="2882"></path></svg>
-<!--            <svg t="1611710277018" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6836" width="200" height="200"><path d="M593.450667 512.128L360.064 278.613333l45.290667-45.226666 278.613333 278.762666L405.333333 790.613333l-45.226666-45.269333z" p-id="6837" fill="#ffffff"></path></svg>-->
             <svg t="1611710424258" class="msg-right-arrow" onclick="right_arrow_click()" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3054" width="40" height="40"><path d="M731.733333 480l-384-341.333333c-17.066667-14.933333-44.8-14.933333-59.733333 4.266666-14.933333 17.066667-14.933333 44.8 4.266667 59.733334L640 512 292.266667 821.333333c-17.066667 14.933333-19.2 42.666667-4.266667 59.733334 8.533333 8.533333 19.2 14.933333 32 14.933333 10.666667 0 19.2-4.266667 27.733333-10.666667l384-341.333333c8.533333-8.533333 14.933333-19.2 14.933334-32s-4.266667-23.466667-14.933334-32z" p-id="3055"></path></svg>
         </div>
     </div>
@@ -506,10 +680,35 @@
         <p class="tick-text">:</p>
         <p class="min-text" id="min-text">--</p>
     </div>
+
+<!--Sittings-->
+    <div class="sittings-box">
+        <svg t="1614398346724" class="sittings-icon" onclick="show_sittings_win()" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3144" data-spm-anchor-id="a313x.7781069.0.i7"><path d="M512 401.066667a110.933333 110.933333 0 1 1-110.933333 110.933333 111.104 111.104 0 0 1 110.933333-110.933333m0-76.8a187.733333 187.733333 0 1 0 187.733333 187.733333 187.733333 187.733333 0 0 0-187.733333-187.733333z" fill="#54b400" p-id="3145" data-spm-anchor-id="a313x.7781069.0.i4" class=""></path><path d="M537.6 103.424L853.333333 285.525333a51.2 51.2 0 0 1 25.6 44.373334v364.202666a51.2 51.2 0 0 1-25.6 44.373334L537.6 920.576a51.2 51.2 0 0 1-51.2 0L170.666667 738.474667a51.2 51.2 0 0 1-25.6-44.373334V329.898667a51.2 51.2 0 0 1 25.6-44.373334L486.4 103.424a51.2 51.2 0 0 1 51.2 0z m-443.733333 137.728a51.2 51.2 0 0 0-25.6 44.373333v452.949334a51.2 51.2 0 0 0 25.6 44.373333l392.533333 226.474667a51.2 51.2 0 0 0 51.2 0l392.533333-226.474667a51.2 51.2 0 0 0 25.6-44.373333V285.525333a51.2 51.2 0 0 0-25.6-44.373333L537.6 14.848a51.2 51.2 0 0 0-51.2 0z" fill="#e6e6e6" p-id="3146" data-spm-anchor-id="a313x.7781069.0.i8" class="selected"></path></svg>
+        <div>
+            <div class="sittings-window-pp">
+                <div class="sittings-window-box" id="sittings-win">
+                    <svg t="1614398346724" class="sittings-title-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3144" data-spm-anchor-id="a313x.7781069.0.i7"><path d="M512 401.066667a110.933333 110.933333 0 1 1-110.933333 110.933333 111.104 111.104 0 0 1 110.933333-110.933333m0-76.8a187.733333 187.733333 0 1 0 187.733333 187.733333 187.733333 187.733333 0 0 0-187.733333-187.733333z" fill="#54b400" p-id="3145" data-spm-anchor-id="a313x.7781069.0.i4" class=""></path><path d="M537.6 103.424L853.333333 285.525333a51.2 51.2 0 0 1 25.6 44.373334v364.202666a51.2 51.2 0 0 1-25.6 44.373334L537.6 920.576a51.2 51.2 0 0 1-51.2 0L170.666667 738.474667a51.2 51.2 0 0 1-25.6-44.373334V329.898667a51.2 51.2 0 0 1 25.6-44.373334L486.4 103.424a51.2 51.2 0 0 1 51.2 0z m-443.733333 137.728a51.2 51.2 0 0 0-25.6 44.373333v452.949334a51.2 51.2 0 0 0 25.6 44.373333l392.533333 226.474667a51.2 51.2 0 0 0 51.2 0l392.533333-226.474667a51.2 51.2 0 0 0 25.6-44.373333V285.525333a51.2 51.2 0 0 0-25.6-44.373333L537.6 14.848a51.2 51.2 0 0 0-51.2 0z" fill="#e6e6e6" p-id="3146" data-spm-anchor-id="a313x.7781069.0.i8" class="selected"></path></svg>
+                    <p class="sittings-title">设置</p>
+                    <div class="---"></div>
+                    <p class="sittings-text">启动时自动展开搜索框</p>
+                    <input class="switch" id="switch-start-spread" onclick="onClick_switch_start_spread()" type="checkbox" />
+
+                    <p class="sittings-text" style="margin-top: -80px">显示时间</p>
+                    <input class="switch" style="margin-top: -90px" type="checkbox" />
+
+                    <p class="sittings-text" style="margin-top: -120px">显示日期</p>
+                    <input class="switch" style="margin-top: -130px" type="checkbox" />
+
+                    <p class="sittings-text" style="margin-top: -160px">低配置模式</p>
+                    <input class="switch" style="margin-top: -170px" type="checkbox" />
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 <script>
-    let cur_version = 20;
+    let cur_version = 2.1;
     const input_bar = document.getElementById("input-bar");
     const search_icon = document.getElementById("search-icon");
     const img_bg = document.getElementById("bg-box");
@@ -531,6 +730,11 @@
     const clock_hour = document.getElementById("hour-text");
     const clock_min = document.getElementById("min-text");
 
+    const switch_start_spread = document.getElementById("switch-start-spread");
+    const sittings_window = document.getElementById("sittings-win");
+
+    const han_title = document.getElementById("han-title");
+
     let winX = window.innerWidth;
     let winY = window.innerHeight;
 
@@ -542,46 +746,64 @@
 
     let screen_to_body =  winX / winY;
 
+    let is_start_spread;
+
+    let isSittingOpening = false;
+
     let hour = "00";
     let min = "00";
 
     /*------------------------------更新日志------------------------------*/
-    let update_text_num;
-    let update_text_num_max = 19;
+    let update_text_num_max = 20;
+    let update_text_num = update_text_num_max;
     const update_versions_text = new Array(update_text_num_max);
     update_versions_text[1] = "注：以下为Quick HSearch I 的更新日志\n版本号：v1.0\n更新日期：2020/5/5\n\n更新描述：\n新增：添加毛玻璃效果以及一些动画效果\n新增：百度搜索引擎\n新增：黑色主题\n新增：Logo及版权声明\n优化：搜索框动画Bug";
     update_versions_text[2] = "版本号：v1.1\n更新日期：2020/5/6\n\n更新描述：\n新增：一些动画效果\n新增：“关于”窗口\n新增：“历史”更新日志\n优化：动画Bug";
-    update_versions_text[3] = "版本号：v1.11\n更新日期：2020/5/6\n\n更新描述：\n新增：一些图标效果\n本网站更名为“Quick HSearch”";
-    update_versions_text[4] = "版本号：v1.21\n更新日期：2020/5/6\n\n更新描述：\n新增：“Google”和“Bing”两种搜索方式\n新增：设置\n进入设置：双击搜索框，可选择搜索方式\n\n\n此网站正式发布在“Github”上!!!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n彩蛋：好眼力 （这个网站本来是给我自己做的，后来才发布，这样更有更新的动力!）";
-    update_versions_text[5] = "版本号：v1.22\n更新日期：2020/5/7\n\n更新描述：\n优化：进入“设置”的算法\n优化：信息提示框，由“p”更改为“textarea”，控件位置重新排版\n更改：进入“设置”：双击搜索框，进入设置\n更改：退出“设置”：再次双击搜索框，退出设置";
-    update_versions_text[6] = "版本号：v1.23\n更新日期：2020/5/10\n\n更新描述：\n优化：“关于”界面的关闭图标\n优化：页面加载速度\n新增：“关于”界面的关闭图标的动态效果\n新增：“关于”界面的左右箭头的动态效果\n修复：“关于”界面在PC上显示位置错误的bug\n修复：更新日志显示错误的bug";
-    update_versions_text[7] = "版本号：v1.24\n更新日期：2020/5/11\n\n更新描述：\n修复：客户端字体缺失而导致显示错误的问题\n修复：搜索框在PC上显示的大小\n重做：Quick HSearch的图标，将其更改为动态图标\n新增：响应式demo，同时适应PC和Android";
-    update_versions_text[8] = "版本号：v1.34\n更新日期：2020/5/12\n\n更新描述：\n优化：代码性能\n新增：关联词提示（注：退出搜索框需清除搜索框内容\n优化：html布局\n优化：关联词提示框会根据横竖屏自动更改大小\n优化：搜索框动画";
-    update_versions_text[9] = "版本号：v1.44\n更新日期：2020/5/18\n\n更新描述：\n新增：2款壁纸（注：可在“设置”中切换）\n新增：Cookie，可存储用户设置（包括壁纸，搜索方式 等）\n新增：进入“设置”界面后壁纸的动态效果\n优化：搜索方式的动画，消除延迟\n优化：“关于”界面字体不统一的问题\n优化：代码逻辑";
-    update_versions_text[10] = "版本号：v1.45\n更新日期：2020/5/19\n\n更新描述：\n新增：低配置模式，可在“设置”中调整\n新增：低配置模式的Cookie\n重做：“设置”界面的布局\n修复：Android无法搜索的Bug";
-    update_versions_text[11] = "版本号：v1.46\n更新日期：2020/5/20\n\n更新描述：\n新增：PC端的右键“复制粘贴”窗口\n新增：初次使用的欢迎窗口\n新增：日期时间显示\n优化：PC端更新日志窗口的字体\n优化：搜索框和“复制”窗口的代码逻辑\n优化：“复制粘贴”窗口的动态效果";
-    update_versions_text[12] = "版本号：v1.47\n更新日期：2020/5/24\n\n更新描述：\n新增：可在“设置”中打开或关闭“不保留搜索内容”\n新增：可在“设置”中打开或关闭日期显示\n新增：日期的动画效果\n优化：代码性能\n优化：时间和日期的布局\n重做：“欢迎”和“关于”窗口内容\n修复：时间和日期重叠bug\n修复：“星期日”日期显示为“0”的问题";
-    update_versions_text[13] = "版本号：v1.49\n更新日期：2020/6/6\n\n！由于本人是一名初中生，开学了\n所以网站的更新次数减少，但不影响使用，望大家谅解 ！\n\n更新描述：\n新增：“Quick HSearch”更新到最新版本时的消息框\n修改：将背景二修改为bing每日壁纸\n新增：更新版本消息框的动画效果及阴影效果\n重做：搜索框的阴影效果\n修复：首次使用不能搜索的bug\n删减：冗余代码，化繁为简";
-    update_versions_text[14] = "版本号：v1.50\n更新日期：2020/6/12\n\n更新描述：\n新增：壁纸的阴影动画效果\n修复：bing壁纸无法更新的问题\n修复：搜索框关联词的搜索方式\n重做：搜索框关联词的动画效果及排版\n优化：bing壁纸的加载速度\n增加：代码行数🐶";
-    update_versions_text[15] = "版本号：v1.60\n更新日期：2020/6/14\n\n更新描述：\n新增：热门网站的快捷搜索方式\n新增：快捷搜索方式动画特效\n新增：“更多”按钮\n优化：网站稳定性\n优化：快捷搜索方式的代码逻辑\n修复：搜索图标动画变小的bug";
-    update_versions_text[16] = "版本号：v1.61\n更新日期：2020/6/21\n\n更新描述：\n新增：其他一些网站的快捷方式\n新增：在“欢迎菜单”中本人的B站账号\n修复：快捷方式入口需要点击两次的bug\n优化：对于快捷方式隐藏的判定\n\n\n\n\n\n\n\n\n\n\n\n\n啊~~~，今天又是咕咕咕的一天呢";
-    update_versions_text[17] = "版本号：v1.62\n更新日期：2020/12/7\n\n更新描述： \n" + "优化：搜索框毛玻璃效果\n修复：bing壁纸API接口调用失败的问题\n重做：“about”窗口“取消”按键图标";
-    update_versions_text[18] = "版本号：v--.--\n\n信息：Han已经正在开发“Quick HSearch II”\nQuick HSearch将不会再更新\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuick HSearch II 是一次大版本更新，UI会很好看\n敬请期待.....";
-    update_versions_text[19] = "注：以下为Quick HSearch II 的更新日志\n版本号：v2.00\n\n更新日期：2021/1/27\n\n更新描述：\n大版本更新，GUI全部重做\n全部代码重写\n优化使用体验，优化自适应代码\n优化毛玻璃效果，所有动效全部重做\n此网站重新命名为'Quick HSearch II'"
-
-    //for(update_text_num_max = 1; update_versions_text[update_text_num_max] !== '\0'; update_text_num_max++);
-    update_text_num = update_text_num_max;
+    update_versions_text[3] = "版本号：v1.2\n更新日期：2020/5/6\n\n更新描述：\n新增：一些图标效果\n本网站更名为“Quick HSearch”";
+    update_versions_text[4] = "版本号：v1.3\n更新日期：2020/5/6\n\n更新描述：\n新增：“Google”和“Bing”两种搜索方式\n新增：设置\n进入设置：双击搜索框，可选择搜索方式\n\n\n此网站正式发布在“Github”上!!!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n彩蛋：好眼力 （这个网站本来是给我自己做的，后来才发布，这样更有更新的动力!）";
+    update_versions_text[5] = "版本号：v1.4\n更新日期：2020/5/7\n\n更新描述：\n优化：进入“设置”的算法\n优化：信息提示框，由“p”更改为“textarea”，控件位置重新排版\n更改：进入“设置”：双击搜索框，进入设置\n更改：退出“设置”：再次双击搜索框，退出设置";
+    update_versions_text[6] = "版本号：v1.5\n更新日期：2020/5/10\n\n更新描述：\n优化：“关于”界面的关闭图标\n优化：页面加载速度\n新增：“关于”界面的关闭图标的动态效果\n新增：“关于”界面的左右箭头的动态效果\n修复：“关于”界面在PC上显示位置错误的bug\n修复：更新日志显示错误的bug";
+    update_versions_text[7] = "版本号：v1.6\n更新日期：2020/5/11\n\n更新描述：\n修复：客户端字体缺失而导致显示错误的问题\n修复：搜索框在PC上显示的大小\n重做：Quick HSearch的图标，将其更改为动态图标\n新增：响应式demo，同时适应PC和Android";
+    update_versions_text[8] = "版本号：v1.7\n更新日期：2020/5/12\n\n更新描述：\n优化：代码性能\n新增：关联词提示（注：退出搜索框需清除搜索框内容\n优化：html布局\n优化：关联词提示框会根据横竖屏自动更改大小\n优化：搜索框动画";
+    update_versions_text[9] = "版本号：v1.8\n更新日期：2020/5/18\n\n更新描述：\n新增：2款壁纸（注：可在“设置”中切换）\n新增：Cookie，可存储用户设置（包括壁纸，搜索方式 等）\n新增：进入“设置”界面后壁纸的动态效果\n优化：搜索方式的动画，消除延迟\n优化：“关于”界面字体不统一的问题\n优化：代码逻辑";
+    update_versions_text[10] = "版本号：v1.9\n更新日期：2020/5/19\n\n更新描述：\n新增：低配置模式，可在“设置”中调整\n新增：低配置模式的Cookie\n重做：“设置”界面的布局\n修复：Android无法搜索的Bug";
+    update_versions_text[11] = "版本号：v1.10\n更新日期：2020/5/20\n\n更新描述：\n新增：PC端的右键“复制粘贴”窗口\n新增：初次使用的欢迎窗口\n新增：日期时间显示\n优化：PC端更新日志窗口的字体\n优化：搜索框和“复制”窗口的代码逻辑\n优化：“复制粘贴”窗口的动态效果";
+    update_versions_text[12] = "版本号：v1.11\n更新日期：2020/5/24\n\n更新描述：\n新增：可在“设置”中打开或关闭“不保留搜索内容”\n新增：可在“设置”中打开或关闭日期显示\n新增：日期的动画效果\n优化：代码性能\n优化：时间和日期的布局\n重做：“欢迎”和“关于”窗口内容\n修复：时间和日期重叠bug\n修复：“星期日”日期显示为“0”的问题";
+    update_versions_text[13] = "版本号：v1.12\n更新日期：2020/6/6\n\n！由于本人是一名初中生，开学了\n所以网站的更新次数减少，但不影响使用，望大家谅解 ！\n\n更新描述：\n新增：“Quick HSearch”更新到最新版本时的消息框\n修改：将背景二修改为bing每日壁纸\n新增：更新版本消息框的动画效果及阴影效果\n重做：搜索框的阴影效果\n修复：首次使用不能搜索的bug\n删减：冗余代码，化繁为简";
+    update_versions_text[14] = "版本号：v1.13\n更新日期：2020/6/12\n\n更新描述：\n新增：壁纸的阴影动画效果\n修复：bing壁纸无法更新的问题\n修复：搜索框关联词的搜索方式\n重做：搜索框关联词的动画效果及排版\n优化：bing壁纸的加载速度\n增加：代码行数🐶";
+    update_versions_text[15] = "版本号：v1.14\n更新日期：2020/6/14\n\n更新描述：\n新增：热门网站的快捷搜索方式\n新增：快捷搜索方式动画特效\n新增：“更多”按钮\n优化：网站稳定性\n优化：快捷搜索方式的代码逻辑\n修复：搜索图标动画变小的bug";
+    update_versions_text[16] = "版本号：v1.15\n更新日期：2020/6/21\n\n更新描述：\n新增：其他一些网站的快捷方式\n新增：在“欢迎菜单”中本人的B站账号\n修复：快捷方式入口需要点击两次的bug\n优化：对于快捷方式隐藏的判定\n\n\n\n\n\n\n\n\n\n\n\n\n啊~~~，今天又是咕咕咕的一天呢";
+    update_versions_text[17] = "版本号：v1.16\n更新日期：2020/12/7\n\n更新描述： \n" + "优化：搜索框毛玻璃效果\n修复：bing壁纸API接口调用失败的问题\n重做：“about”窗口“取消”按键图标";
+    update_versions_text[18] = "版本号：v-.--\n\n信息：Han已经正在开发“Quick HSearch II”\nQuick HSearch将不会再更新\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuick HSearch II 是一次大版本更新，UI会很好看\n敬请期待.....";
+    update_versions_text[19] = "注：以下为Quick HSearch II 的更新日志\n版本号：v2.0\n\n更新日期：2021/1/27\n\n更新描述：\n大版本更新，GUI全部重做\n全部代码重写\n优化使用体验，优化自适应代码\n优化毛玻璃效果，所有动效全部重做\n此网站重新命名为'Quick HSearch II'"
+    update_versions_text[20] = "版本号：v2.1\n更新日期：2020/12/7\n\n更新描述：\n新增：时间显示，设置界面，亿些细节\n优化：毛玻璃效果\n重做：窗口动画效果，图标\n重新整理版本号\n\n注：\n以后会添加日期显示\n设置中只有‘启动时自动展开搜索框’ 有效，以后会逐渐完善\n此版本为公测版本，如有疑问和建议，请发送您的意见到我的邮箱‘tianzihan5357@163.com’\n感谢使用\n\nHappy New Year!";
 
     resizeObject();
     CookieDataUpdate();
     setTimeout(function () {showClock()}, 500);
     setInterval(function () {updateTime()}, 500);
 
+    han_title.innerHTML = "© 2021「 Han 」v" + String(cur_version);
+
+    if(is_start_spread === "1") {
+        switch_start_spread.checked = true;
+        setTimeout(function () {
+            click_input_bar();
+            input_bar.focus();
+        }, 400);
+    } else {
+        switch_start_spread.checked = false;
+    }
+
     function click_input_bar() {
         show_click_inputBar();
         input_bar_onkeyup();
         show_search_mode();
         isClick = true;
+
+        if(isSittingOpening) {
+            hide_sittings_win();
+        }
     }
 
     function show_click_inputBar() {
@@ -592,31 +814,31 @@
         /*    background-color: black;*/
         /*    !*color: black;*!*/
         /*}*/
-        //////////////Input Bar////////////////////////
+        /*Input Bar*/
         input_bar.style.width = String(input_bar_str_width)+"px";
         input_bar.style.marginLeft = String(input_bar_str_width / -2)+"px";
         input_bar.style.borderRadius = "10px";
         input_bar.style.color = "white";
-        input_bar.style.backgroundColor = "rgba(0, 0, 0, .7)";
-        input_bar.style.boxShadow = "rgba(0, 0, 0, .6) 3px 6px 8px";
-        /////////////////Search Icon///////////////////
+        input_bar.style.backgroundColor = "rgba(0, 0, 0, .8)";
+        input_bar.style.boxShadow = "rgba(0, 0, 0, .8) 3px 6px 8px";
+        /*Search Icon*/
         search_icon.style.marginLeft = String(input_bar_str_width / 2 - 35)+"px";
-        /////////////////Background////////////////////
+        /*Background*/
         img_box.style.backgroundColor = "rgba(20, 20, 20, .4)";
         img_bg.style.transform = "scale(1.08)";
     }
 
     function hide_click_inputBar() {
-        //////////////Input Bar////////////////////////
+        /*Input Bar*/
         input_bar.style.width = String(input_bar_width)+"px";
         input_bar.style.marginLeft = String(input_bar_width / -2)+"px";
         input_bar.style.borderRadius = "40px";
         input_bar.style.backgroundColor = "rgba(0, 0, 0, .5)";
         input_bar.style.color = "rgba(0, 0, 0, 0)";
         input_bar.style.boxShadow = "rgba(0, 0, 0, .6) 3px 6px 8px";
-        /////////////////Search Icon///////////////////
+        /*Search Icon*/
         search_icon.style.marginLeft = String(input_bar_width / -2 + 10)+"px";
-        /////////////////Background////////////////////
+        /*Background*/
         img_box.style.backgroundColor = "rgba(0, 0, 0, 0)";
         img_bg.style.transform = "scale(1)";
 
@@ -625,8 +847,13 @@
     }
 
     function click_bg() {
-        hide_click_inputBar();
-        isClick = false;
+        if(isSittingOpening) {
+            hide_sittings_win();
+            input_bar.focus();
+        } else {
+            hide_click_inputBar();
+            isClick = false;
+        }
     }
 
     function input_bar_onMouse() {
@@ -656,8 +883,8 @@
     function msgWindowOver() {
         // transform: rotate3d(5, -0.5, -0.5, -10deg);
         // box-shadow: rgba(0, 0, 0, .4) 2px 8px 15px;
-        msg_box.style.transform = "rotate3d(-1, 0, 0, 1deg)";
-        msg_box.style.boxShadow = "rgba(0, 0, 0, .5) 7px 2px 10px";
+        msg_box.style.transform = "rotate3d(-1, 0, 0, 5deg)";
+        msg_box.style.boxShadow = "rgba(0, 0, 0, .5) 7px 3px 10px";
         // box-shadow: rgba(0, 0, 0, .7) 5px 8px 10px;
     }
 
@@ -667,19 +894,22 @@
     }
 
     function msgWindowHide() {
-        msg_box.style.transform = "rotate3d(-1, 0, 0, 4deg)";
+        msg_box.style.animation = "MsgWindowHideAnim .5s";
+        // msg_box.style.transform = "rotate3d(-1, 0, 0, 4deg)";
         msg_pp_box.style.opacity = "0";
-        msg_pp_box.style.top = "15%";
+        // msg_pp_box.style.top = "15%";
         msg_pp_box.style.visibility = "hidden";
     }
 
     function msgWindowShow() {
         msg_text.innerHTML = "";
-        update_text_num = 19;
+        update_text_num = update_text_num_max;
         hide_click_inputBar();
-        msg_pp_box.style.opacity = "1";
-        msg_pp_box.style.top = "20%";
+        // msg_pp_box.style.opacity = "1";
+        // msg_pp_box.style.top = "20%";
+        msg_box.style.animation = "MsgWindowShowAnim .5s";
         msg_pp_box.style.visibility = "inherit";
+        msg_pp_box.style.opacity = "1";
         update_text_update();
     }
 
@@ -689,8 +919,8 @@
             update_text_num = 1;
         if(update_text_num > update_text_num_max)
             update_text_num = update_text_num_max;
-        setTimeout(function () {msg_text.innerHTML = update_versions_text[update_text_num]},190)
-        setTimeout(function () {msg_text.style.animation = "none"}, 301)
+        msg_text.innerHTML = update_versions_text[update_text_num];
+        setTimeout(function () {msg_text.style.animation = "none"}, 301);
     }
 
     function left_arrow_click() {
@@ -742,7 +972,7 @@
     }
 
     function show_search_mode() {
-        search_mode_box.style.transitionDelay = ".3s";
+        search_mode_box.style.transitionDelay = ".2s";
         search_mode_box.style.visibility = "inherit";
         search_mode_box.style.opacity = "1";
         search_mode_box.style.marginTop = "-27px";
@@ -782,7 +1012,15 @@
         2:Baidu
         3:Google
         */
-        const search_mode = getCookie("searchMode");
+        /*
+        Input Bar Start Spread(startSpread):
+        1:true
+        0:false
+        */
+
+        let search_mode = getCookie("searchMode");
+        is_start_spread = getCookie("startSpread");
+
         switch (search_mode) {
             case "1":
                 setBing();
@@ -798,8 +1036,8 @@
                 break;
         }
 
-        const version = getCookie("version");
-        if (version !== String(cur_version)) {
+        let version = parseFloat(getCookie("version"));
+        if (version !== cur_version) {
             newUpdateMsg.style.animation = "newUpdateAnim 5s";
             setCookie("version", String(cur_version), 200);
         }
@@ -887,7 +1125,7 @@
         if(winX < 600 || winY < 500) {
             msg_box.style.width = String(winX - 20) + "px";
             if(screen_to_body >= 0.52)
-                msg_box.style.top = String(winY / -10) + "px";
+                msg_box.style.top = String(winY / -100) + "px";
             if(winY <= 550)
                 msg_box.style.top = "-100px";
             msg_box.style.marginLeft = String((winX - 20) / -2) + "px";
@@ -913,6 +1151,29 @@
     function showClock() {
         clock_box.style.animation = "clockShowAnim .4s";
         clock_box.style.bottom = "0";
+    }
+
+    function onClick_switch_start_spread() {
+        if(switch_start_spread.checked) {
+            setCookie("startSpread", "1", 200);
+        } else {
+            setCookie("startSpread", "0", 200);
+        }
+        CookieDataUpdate();
+    }
+
+    function show_sittings_win() {
+        sittings_window.style.animation = "sittings-show-Anim .5s";
+        sittings_window.style.visibility = "inherit";
+        sittings_window.style.opacity = "1";
+        isSittingOpening = true;
+    }
+
+    function hide_sittings_win() {
+        sittings_window.style.animation = "sittings-hide-Anim .5s";
+        sittings_window.style.visibility = "hidden";
+        sittings_window.style.opacity = "0";
+        isSittingOpening = false;
     }
 </script>
 
