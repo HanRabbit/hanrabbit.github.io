@@ -1274,10 +1274,10 @@
     }
 
     function click_low_mode_ctrl() {
-        if(switch_low_mode.checked == true) {
-            setCookie("IsLowMode", "1");
+        if(switch_low_mode.checked === true) {
+            setCookie("IsLowMode", "1", 200);
         } else {
-            setCookie("IsLowMode", "0");
+            setCookie("IsLowMode", "0", 200);
         }
         low_mode_ctrl();
     }
